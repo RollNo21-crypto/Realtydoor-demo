@@ -1,0 +1,24 @@
+# Cloudflare Pages Configuration
+# Note: Cloudflare Pages requires @cloudflare/next-on-pages adapter
+# Install with: npm install --save-dev @cloudflare/next-on-pages
+
+name = "reznicocare"
+compatibility_date = "2024-01-01"
+
+# Pages configuration
+pages_build_output_dir = ".vercel/output/static"
+
+# Environment variables (set these in Cloudflare dashboard)
+# DATABASE_URL
+# NEXTAUTH_SECRET
+# NEXTAUTH_URL
+
+[build]
+command = "npm run build"
+
+[build.environment]
+NODE_VERSION = "18"
+
+# For Cloudflare Workers/Pages
+# Note: PostgreSQL connections may require a connection pooler like Supabase Pooler or Neon
+# or use Cloudflare D1 (SQLite) instead of PostgreSQL
