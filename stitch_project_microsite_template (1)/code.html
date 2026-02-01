@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Eco-Luxury Estates | The Serenity Manor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2D3E35", // Forest Green
+                        accent: "#8B9D83",  // Sage/Moss Green
+                        earth: "#D9C5B2",   // Clay Earth Tone
+                        "bg-eco": "#F4F5F0", // Soft Cream/Grey
+                        "leaf": "#1B4332",
+                    },
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        'DEFAULT': '1.5rem',
+                        '2xl': '2rem',
+                        '3xl': '3rem',
+                    },
+                },
+            },
+        };
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .glass-nav {
+                background: rgba(244, 245, 240, 0.85);
+                backdrop-filter: blur(16px);
+                -webkit-backdrop-filter: blur(16px);
+            }
+            .hero-gradient {
+                background: linear-gradient(to bottom, rgba(45, 62, 53, 0.4) 0%, rgba(45, 62, 53, 0) 40%, rgba(45, 62, 53, 0.7) 100%);
+            }
+            .material-symbols-outlined {
+                font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            }
+        }
+    </style>
+</head>
+<body class="bg-bg-eco text-primary font-sans transition-colors duration-300">
+<nav class="fixed top-0 w-full z-50 glass-nav border-b border-primary/5">
+<div class="max-w-7xl mx-auto px-8 h-24 flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="text-2xl font-display font-bold tracking-tight text-primary">ECO<span class="text-accent">LIVING</span></span>
+</div>
+<div class="hidden md:flex items-center space-x-12 text-sm font-semibold uppercase tracking-widest text-primary/70">
+<a class="hover:text-primary transition-colors" href="#overview">Overview</a>
+<a class="hover:text-primary transition-colors" href="#sustainability">Impact</a>
+<a class="hover:text-primary transition-colors" href="#pricing">Villas</a>
+<a class="hover:text-primary transition-colors" href="#amenities">Nature</a>
+</div>
+<button class="bg-primary text-white px-8 py-3.5 rounded-full text-sm font-bold hover:bg-leaf transition-all shadow-lg shadow-primary/10">
+            Download Dossier
+        </button>
+</div>
+</nav>
+<section class="relative h-[95vh] w-full flex items-end overflow-hidden m-4 rounded-[3rem]">
+<img alt="Cinematic view of luxury property architecture" class="absolute inset-0 w-full h-full object-cover scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkl5XXmQOTZX1mNwi9YA1Gq42KrRDqP6pQ6RucW2HpIDI4s1GrzOqC2oKidL3EuZ-bdCDSDNjHfYpbGuJv2i1B2HNwvdt-1b_3vZJSwNP4uRtyDJF1G8zfjNLlk6QROmG9yn9F0fD-FD4Ykqpj9G5GVcEtzLb1Xseb6V2rZlSrdZ9tiNtCfsRhbOuynJ3-wuIIEvmJrqLvu3nD6_oQL0beqPq-6nuYHG4Jl8N6JVlnL7u_CjVR9MbY1Vzu8R84IiCRHO_-rHvtzLh6"/>
+<div class="absolute inset-0 hero-gradient"></div>
+<div class="relative max-w-7xl mx-auto px-12 pb-24 w-full">
+<div class="max-w-3xl">
+<span class="inline-block px-5 py-2 bg-white/20 backdrop-blur-md text-white text-xs font-bold uppercase tracking-[0.2em] rounded-full mb-8 border border-white/30">Sustainability Gold Standard</span>
+<h1 class="text-6xl md:text-8xl font-display text-white leading-[1.1] mb-8">The Serenity <br/>Manor <span class="italic font-normal">Residences</span></h1>
+<p class="text-xl text-white/90 mb-10 max-w-xl font-light">An organic sanctuary where carbon-neutral design meets uncompromising luxury. Nestled within the ancient canopy of Golden Valley.</p>
+<div class="flex flex-wrap gap-6">
+<div class="flex items-center text-white bg-primary/40 backdrop-blur-xl px-7 py-4 rounded-3xl border border-white/10">
+<span class="material-symbols-outlined mr-3 text-earth">location_on</span>
+<span class="text-base font-medium">Beverly Hills, CA</span>
+</div>
+<div class="flex items-center text-white bg-primary/40 backdrop-blur-xl px-7 py-4 rounded-3xl border border-white/10">
+<span class="material-symbols-outlined mr-3 text-earth">energy_savings_leaf</span>
+<span class="text-base font-medium">Net Zero Ready</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-white" id="sustainability">
+<div class="max-w-7xl mx-auto px-8">
+<div class="bg-bg-eco rounded-[3.5rem] p-12 lg:p-20 flex flex-col lg:flex-row items-center gap-16">
+<div class="lg:w-1/2">
+<div class="inline-flex items-center space-x-2 text-leaf font-bold uppercase tracking-widest text-xs mb-6">
+<span class="w-8 h-[1px] bg-leaf"></span>
+<span>Environmental Intelligence</span>
+</div>
+<h2 class="text-5xl font-display mb-8 leading-tight text-primary">Our Sustainability <br/><span class="text-accent italic">Commitment.</span></h2>
+<p class="text-lg text-primary/70 mb-10 leading-relaxed">We don't just build homes; we restore ecosystems. Every Serenity Manor residence is audited for its lifetime carbon footprint and features integrated regenerative systems.</p>
+<div class="grid grid-cols-2 gap-8">
+<div class="flex flex-col">
+<span class="text-4xl font-display text-leaf mb-1">94%</span>
+<span class="text-sm font-bold uppercase text-primary/40">Water Recycled</span>
+</div>
+<div class="flex flex-col">
+<span class="text-4xl font-display text-leaf mb-1">0.0</span>
+<span class="text-sm font-bold uppercase text-primary/40">VOC Emissions</span>
+</div>
+</div>
+</div>
+<div class="lg:w-1/2 w-full">
+<div class="bg-white p-12 rounded-[2.5rem] shadow-xl shadow-primary/5 border border-primary/5 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-accent/10 rounded-bl-full"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-center mb-8">
+<h3 class="text-2xl font-display font-bold">Sustainability Score</h3>
+<span class="bg-leaf text-white px-4 py-1.5 rounded-full text-xs font-bold">EXCEPTIONAL</span>
+</div>
+<div class="space-y-8">
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-sm font-bold text-primary/60 uppercase">Solar Autonomy</span>
+<span class="text-sm font-bold text-leaf uppercase">98/100</span>
+</div>
+<div class="h-2 w-full bg-bg-eco rounded-full overflow-hidden">
+<div class="h-full bg-leaf rounded-full" style="width: 98%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-sm font-bold text-primary/60 uppercase">Biophilic Design</span>
+<span class="text-sm font-bold text-leaf uppercase">95/100</span>
+</div>
+<div class="h-2 w-full bg-bg-eco rounded-full overflow-hidden">
+<div class="h-full bg-accent rounded-full" style="width: 95%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between mb-2">
+<span class="text-sm font-bold text-primary/60 uppercase">Materials Lifecycle</span>
+<span class="text-sm font-bold text-leaf uppercase">92/100</span>
+</div>
+<div class="h-2 w-full bg-bg-eco rounded-full overflow-hidden">
+<div class="h-full bg-earth rounded-full" style="width: 92%"></div>
+</div>
+</div>
+</div>
+<p class="mt-10 text-xs text-primary/40 leading-relaxed font-medium uppercase tracking-wider">Scored by the Global Institute for Regenerative Architecture, 2024.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 max-w-7xl mx-auto px-8" id="overview">
+<div class="grid lg:grid-cols-2 gap-20 items-center">
+<div>
+<h2 class="text-5xl font-display mb-10 leading-tight">Elevated Living, <br/><span class="text-accent italic">Guided by Nature.</span></h2>
+<div class="space-y-8 text-lg text-primary/70 leading-relaxed">
+<p>Designed by world-renowned architects, Serenity Manor is a masterwork of low-impact construction. We use RAMMED EARTH techniques combined with state-of-the-art smart systems.</p>
+<div class="p-8 bg-earth/10 border-l-[6px] border-earth rounded-r-[2rem]">
+<div class="flex items-center mb-4">
+<span class="material-symbols-outlined text-leaf mr-3">eco</span>
+<span class="text-sm font-bold uppercase tracking-widest text-leaf">AI Environmental Summary</span>
+</div>
+<p class="text-primary italic font-medium leading-relaxed">Adaptive thermal massing reduces HVAC dependency by 60%. Natural cross-ventilation corridors utilize the valley's breeze patterns for passive cooling in all residence variants.</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="space-y-6">
+<div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-primary/5 hover:border-accent transition-colors">
+<p class="text-5xl font-display text-leaf mb-2">12</p>
+<p class="text-xs font-bold uppercase tracking-[0.2em] text-primary/40">Organic Plans</p>
+</div>
+<div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-primary/5 hover:border-accent transition-colors">
+<p class="text-5xl font-display text-leaf mb-2">A++</p>
+<p class="text-xs font-bold uppercase tracking-[0.2em] text-primary/40">Climate Rating</p>
+</div>
+</div>
+<div class="space-y-6 pt-12">
+<div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-primary/5 hover:border-accent transition-colors">
+<p class="text-5xl font-display text-leaf mb-2">1.2k</p>
+<p class="text-xs font-bold uppercase tracking-[0.2em] text-primary/40">Native Trees</p>
+</div>
+<div class="bg-white p-10 rounded-[2.5rem] shadow-sm border border-primary/5 hover:border-accent transition-colors">
+<p class="text-5xl font-display text-leaf mb-2">Net</p>
+<p class="text-xs font-bold uppercase tracking-[0.2em] text-primary/40">Positive Energy</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-white" id="gallery">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div>
+<h2 class="text-4xl font-display mb-4">The Organic Aesthetic</h2>
+<p class="text-primary/50 text-lg">A visual journey through sustainably sourced luxury.</p>
+</div>
+<button class="flex items-center space-x-3 text-leaf font-bold hover:translate-x-2 transition-transform uppercase text-sm tracking-widest">
+<span>Explore Full Portfolio</span>
+<span class="material-symbols-outlined">trending_flat</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 h-[800px]">
+<div class="md:col-span-7 rounded-[3rem] overflow-hidden group relative">
+<img alt="Living room interior" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAX_n0fCfpfsGL9PQdyON7ye_FjzOBFrhzXZzktcqxutATvIKq7Bmn6Vu4zfRm190mWqF7jQ0Fun4fYsnkOB62h3DDLH3jEYEptz71rzGIDZeL1YL6N9h-3Ek5ZKG64BnAQIKTalE5eaWxmsQZHHvMogtrxG_WAO1RA5crPVrhGg398xDnz-4_fbkSM9IjYfQD4vGwuql6WFfMJMAnyl9dZJNydkbRUAVHii4I4f-aDiWCShbQ4QQ7IoWw2QM2WDAQk-k0v9-nYa8S5"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+<span class="material-symbols-outlined text-white text-6xl">fullscreen</span>
+</div>
+</div>
+<div class="md:col-span-5 grid grid-rows-2 gap-8">
+<div class="rounded-[2.5rem] overflow-hidden group relative">
+<img alt="Gourmet kitchen" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDcv5gdk-7IMm12LIpTeaBaw9Cm6qe9nzkD8bo7bo6jYbXuVi-XnoXZoGanp795biuA9HLGEZDgVwfWPRSbO5rWyvcM8XmuKTv6agyvDmKUUBJUoPseSO78Mae-tlvBQZ5vt7TIYdv8doT3ofW6sBcn2yS62Qw1qAwn1Ans9Q1lFox86eXE_eBUCbv7yiwajYLtudxnipOUNyVrp3h05ug6-wacY8YXsOflsCa4HYfnwZJ4-5zyC9NZCuLlsWaYPof5fLKJWTeANri"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+<span class="material-symbols-outlined text-white text-4xl">fullscreen</span>
+</div>
+</div>
+<div class="rounded-[2.5rem] overflow-hidden group relative">
+<img alt="Master suite" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbRWkFCrVAD92b0cu66nmeGGTLHWfT6nNDq17ZaP4DKyitR8wzyq7DBP4A7_8qAb4q-4FOITBoS1m3M_iUtqmSuTazVDq3srcDArexvREzWIenMYEh1JRa4EU0zRIIi6Ic0lBICv29ya8uJXepdi-osfSVbil1R3mVFPEdSeDKBHbzjHMVIh_07OcG0OS1t28f4FwSTKZx4G7Na499Yas0GY71SrPw1t9gpec7irwboD2arGHgvLBJ3lsAXd9Xa9N-4FGZXf7teuDk"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+<span class="material-symbols-outlined text-white text-4xl">fullscreen</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-32 bg-bg-eco" id="pricing">
+<div class="max-w-7xl mx-auto px-8">
+<div class="text-center mb-20">
+<h2 class="text-5xl font-display mb-6">Sustainable Configurations</h2>
+<p class="text-primary/60 max-w-2xl mx-auto text-lg leading-relaxed">Each floor plan is oriented to maximize solar energy and natural ventilation without compromising on spatial grandeur.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-10">
+<div class="bg-white rounded-[3rem] overflow-hidden border border-primary/5 hover:shadow-2xl hover:shadow-primary/5 transition-all group flex flex-col h-full">
+<div class="relative h-72 overflow-hidden">
+<img alt="Sky Penthouse" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcnON9JRXXbwhuL5MBUC9lXmDl5ArbSOT8I0yisWwgrZTQoOm39wbBqxgPo3S2qn99Kpjfp2xwp1ycRE43LcMInyDyytPGqug23Mof0W5CHmOL-qDJDeO1-53U0tuxKkSeiwisy0u-c5bidQewzkMcXuj6F--eaYl6U5uOz7KZ-32zDUHhmie9QSaAYRAxJr-O_zk3-7Jdg909hP01xOgXpXaHN-dV_HV-YuFE6AJB1brJt06s7ExE_dsn5RtCWhf01Rjbop4K0Hgc"/>
+<div class="absolute top-6 left-6 flex space-x-2">
+<span class="bg-leaf text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">Available</span>
+<span class="bg-white/90 backdrop-blur-md text-primary text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">LEED Platinum</span>
+</div>
+</div>
+<div class="p-10 flex flex-col flex-grow">
+<h3 class="text-2xl font-display font-bold mb-3">Canopy Penthouse</h3>
+<p class="text-primary/40 text-sm font-bold uppercase tracking-wider mb-8">3 Bedrooms | 3,200 sq.ft | Zero-Waste Ready</p>
+<div class="mt-auto">
+<div class="flex items-end justify-between mb-10">
+<div>
+<p class="text-[10px] text-primary/30 font-bold uppercase tracking-widest mb-1">Estate Value</p>
+<p class="text-3xl font-display font-bold text-leaf">$4,250,000</p>
+</div>
+</div>
+<button class="w-full py-5 border-2 border-primary text-primary rounded-full font-bold hover:bg-primary hover:text-white transition-all text-sm tracking-widest uppercase">Request Blueprints</button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-[3rem] overflow-hidden border-2 border-accent shadow-2xl shadow-accent/10 transition-all group flex flex-col h-full relative">
+<div class="relative h-72 overflow-hidden">
+<img alt="4BHK Villa" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5v9g9Px_urmsin8rYzU7FchvqEyYj_43TjweXm6gcC2mVXfYvyA7UYeR3Qm2CWRyiO7-eMCiVHIw9NAhyxT2J66pD_SoDEPbTl0qc9EbYUdQoGgx2K9RoqnFzylSuED7UIJ2OvlIlq3SpMTRVA6MnexX5XpETC-Ta4wiT08hDzX3YRXepEu-90Mx4SvwVJIm56DcrYtk7ocGMsLLFwVlWz0K4u6IbO8W4RVEoBDvBezye7i3ISA2VYYZ-6WWt6VlvF9jfEEUAVpmL"/>
+<div class="absolute top-6 left-6">
+<span class="bg-accent text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">Selling Fast</span>
+</div>
+</div>
+<div class="p-10 flex flex-col flex-grow">
+<h3 class="text-2xl font-display font-bold mb-3">The Earth Villa</h3>
+<p class="text-primary/40 text-sm font-bold uppercase tracking-wider mb-8">4 Bedrooms | 5,500 sq.ft | Geothermal Cooling</p>
+<div class="mt-auto">
+<div class="flex items-end justify-between mb-10">
+<div>
+<p class="text-[10px] text-primary/30 font-bold uppercase tracking-widest mb-1">Estate Value</p>
+<p class="text-3xl font-display font-bold text-leaf">$6,100,000</p>
+</div>
+</div>
+<button class="w-full py-5 bg-leaf text-white rounded-full font-bold hover:bg-primary transition-all shadow-lg shadow-leaf/20 text-sm tracking-widest uppercase">Schedule Private Tour</button>
+</div>
+</div>
+</div>
+<div class="bg-white rounded-[3rem] overflow-hidden border border-primary/5 hover:shadow-2xl hover:shadow-primary/5 transition-all group flex flex-col h-full">
+<div class="relative h-72 overflow-hidden">
+<img alt="5BHK Estate" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhyOyrwCFxk1zDnWOeClC2Dz-A9PvXp3GVR6wuLutmathqpncbKKstwcghFwD1_OdHq0Clf6pgt748hoV2FlQDE94g_TVH54Lbb0b1QwHDtD1H9655hjnuOVvv5EkivjSZ33qdzp7K8WV_LbhaT_WJcjxpduTLy154pK8ARXUQkC7kfSVPIHQPgi67AsPPb2IKJMzpy9JxWX2-w-ApGUdvvdLk5T-SYv9PMiw2yvlktCB-Q5znNIoT02BTRSpCN32SYoJD6WNbN28X"/>
+<div class="absolute top-6 left-6">
+<span class="bg-primary/50 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full">Only 1 Left</span>
+</div>
+</div>
+<div class="p-10 flex flex-col flex-grow">
+<h3 class="text-2xl font-display font-bold mb-3">Forest Estate</h3>
+<p class="text-primary/40 text-sm font-bold uppercase tracking-wider mb-8">5 Bedrooms | 7,800 sq.ft | Full Solar Array</p>
+<div class="mt-auto">
+<div class="flex items-end justify-between mb-10">
+<div>
+<p class="text-[10px] text-primary/30 font-bold uppercase tracking-widest mb-1">Estate Value</p>
+<p class="text-3xl font-display font-bold text-leaf">$8,450,000</p>
+</div>
+</div>
+<button class="w-full py-5 border-2 border-primary text-primary rounded-full font-bold hover:bg-primary hover:text-white transition-all text-sm tracking-widest uppercase">Request Blueprints</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-32 bg-white" id="amenities">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid lg:grid-cols-3 gap-24">
+<div class="lg:col-span-1">
+<h2 class="text-5xl font-display mb-8 leading-[1.2]">Nature-First <br/><span class="text-accent italic">Amenities</span></h2>
+<p class="text-primary/60 mb-10 text-lg leading-relaxed">Beyond luxury, we provide a lifestyle that nurtures both the soul and the planet.</p>
+<div class="inline-flex items-center space-x-5 p-5 bg-bg-eco rounded-3xl border border-primary/5">
+<div class="w-14 h-14 rounded-2xl bg-white flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-leaf text-3xl">verified_user</span>
+</div>
+<div>
+<p class="text-xs font-bold text-primary/40 uppercase tracking-widest">Certification</p>
+<p class="text-sm font-bold text-primary">LEED Zero Energy Building</p>
+</div>
+</div>
+</div>
+<div class="lg:col-span-2 grid grid-cols-2 md:grid-cols-3 gap-y-16 gap-x-12">
+<div class="space-y-5">
+<div class="w-12 h-12 rounded-2xl bg-earth/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-leaf">pool</span>
+</div>
+<h4 class="text-xl font-bold font-display">Natural Bio-Pool</h4>
+<p class="text-sm text-primary/50 leading-relaxed">Chemical-free, self-cleaning ecosystem pool with native flora.</p>
+</div>
+<div class="space-y-5">
+<div class="w-12 h-12 rounded-2xl bg-earth/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-leaf">self_improvement</span>
+</div>
+<h4 class="text-xl font-bold font-display">Zen Garden</h4>
+<p class="text-sm text-primary/50 leading-relaxed">Quiet meditation zones among rare botanical specimens.</p>
+</div>
+<div class="space-y-5">
+<div class="w-12 h-12 rounded-2xl bg-earth/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-leaf">nutrition</span>
+</div>
+<h4 class="text-xl font-bold font-display">Vertical Orchard</h4>
+<p class="text-sm text-primary/50 leading-relaxed">Private organic produce grown right within the terrace systems.</p>
+</div>
+<div class="space-y-5">
+<div class="w-12 h-12 rounded-2xl bg-earth/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-leaf">solar_power</span>
+</div>
+<h4 class="text-xl font-bold font-display">Energy Hub</h4>
+<p class="text-sm text-primary/50 leading-relaxed">Shared battery bank and smart-grid energy optimization center.</p>
+</div>
+<div class="space-y-5">
+<div class="w-12 h-12 rounded-2xl bg-earth/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-leaf">spa</span>
+</div>
+<h4 class="text-xl font-bold font-display">Earth Spa</h4>
+<p class="text-sm text-primary/50 leading-relaxed">Holistic therapies using oils from our own botanical gardens.</p>
+</div>
+<div class="space-y-5">
+<div class="w-12 h-12 rounded-2xl bg-earth/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-3xl text-leaf">ev_station</span>
+</div>
+<h4 class="text-xl font-bold font-display">Smart Mobility</h4>
+<p class="text-sm text-primary/50 leading-relaxed">V2G (Vehicle-to-Grid) enabled ultra-fast charging stations.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-32 bg-bg-eco" id="location">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid lg:grid-cols-5 gap-20 items-center">
+<div class="lg:col-span-2 space-y-10">
+<div>
+<h2 class="text-4xl font-display mb-6">Harmonious Connectivity</h2>
+<p class="text-primary/60 text-lg">Located at the edge of the protected forest reserve, yet minutes from the city's pulse.</p>
+</div>
+<div class="space-y-8">
+<div class="flex items-start space-x-6">
+<span class="bg-white text-leaf px-4 py-2 rounded-2xl text-xs font-bold shadow-sm border border-primary/5 uppercase">08m</span>
+<div>
+<h5 class="font-bold text-lg mb-1">Canyon Trails</h5>
+<p class="text-sm text-primary/50">Direct access to 40 miles of pristine hiking and biking routes.</p>
+</div>
+</div>
+<div class="flex items-start space-x-6">
+<span class="bg-white text-leaf px-4 py-2 rounded-2xl text-xs font-bold shadow-sm border border-primary/5 uppercase">15m</span>
+<div>
+<h5 class="font-bold text-lg mb-1">Eco-Innovation District</h5>
+<p class="text-sm text-primary/50">Proximity to the city's premier clean-tech and design firms.</p>
+</div>
+</div>
+<div class="flex items-start space-x-6">
+<span class="bg-white text-leaf px-4 py-2 rounded-2xl text-xs font-bold shadow-sm border border-primary/5 uppercase">10m</span>
+<div>
+<h5 class="font-bold text-lg mb-1">Organic Market</h5>
+<p class="text-sm text-primary/50">The region's finest farm-to-table shopping destination.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-3 h-[600px] bg-white rounded-[3.5rem] overflow-hidden relative shadow-2xl shadow-primary/5 border border-primary/5 p-4">
+<div class="absolute inset-0 flex flex-col items-center justify-center p-12 text-center z-10">
+<div class="w-20 h-20 bg-bg-eco rounded-full flex items-center justify-center mb-6 shadow-inner">
+<span class="material-symbols-outlined text-4xl text-leaf">map</span>
+</div>
+<h3 class="text-2xl font-display font-bold mb-4">Interactive Ecological Map</h3>
+<p class="text-primary/50 max-w-sm mb-8">Detailed view of air quality sensors, local bio-diversity corridors, and noise levels.</p>
+<button class="px-10 py-4 bg-primary text-white rounded-full font-bold text-sm tracking-widest uppercase hover:bg-leaf transition-all shadow-lg">Explore Neighborhood</button>
+</div>
+<img alt="Neighborhood map overview" class="absolute inset-0 w-full h-full object-cover opacity-10 grayscale brightness-90" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3iqSjg9SvSfsvHfNdReNd7FmAm5XzD40B50-IOaxxcm-pAXedEwm76xrclgG8M3VC_Fy0McDpjfl4fVsnr4fm7INCT3GP2fiIz9h1Z4cstz0yXbaB9NNiJ6A_HB5qQs2NfI6UAn71kyuTyyjHiB0MSbZ9nuv_r_ZbHN5CoEJuom-fRBlgGoxdDd6XaY6viMLC60hV_mbhVPHCVrPYydkGQ4aLxbtLAlnKI423Eg8yt6E7L9kqJe_0EOz2-ufVAxf9CLtez8B2aRdF"/>
+</div>
+</div>
+</div>
+</section>
+<footer class="bg-primary text-white pt-32 pb-12 rounded-t-[4rem]">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid md:grid-cols-4 gap-16 pb-20 border-b border-white/5">
+<div class="col-span-2">
+<span class="text-3xl font-display font-bold tracking-tight block mb-8">ECO<span class="text-accent">LIVING</span></span>
+<p class="text-white/50 max-w-sm mb-10 text-lg font-light leading-relaxed">Pioneers in high-intent, low-impact luxury real estate. Building the future of our planet, one home at a time.</p>
+<div class="flex space-x-5">
+<a class="w-12 h-12 rounded-2xl border border-white/10 flex items-center justify-center hover:bg-accent hover:border-accent transition-all group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-white">public</span>
+</a>
+<a class="w-12 h-12 rounded-2xl border border-white/10 flex items-center justify-center hover:bg-accent hover:border-accent transition-all group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-white">eco</span>
+</a>
+<a class="w-12 h-12 rounded-2xl border border-white/10 flex items-center justify-center hover:bg-accent hover:border-accent transition-all group" href="#">
+<span class="material-symbols-outlined text-xl group-hover:text-white">psychology</span>
+</a>
+</div>
+</div>
+<div>
+<h5 class="font-bold text-xs uppercase tracking-[0.2em] mb-8 text-accent">Navigation</h5>
+<ul class="space-y-5 text-white/50 text-sm font-medium">
+<li><a class="hover:text-white transition-colors" href="#">Impact Report 2024</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Architectural Vision</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Builder Ethics</a></li>
+<li><a class="hover:text-white transition-colors" href="#">Global Locations</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-bold text-xs uppercase tracking-[0.2em] mb-8 text-accent">Journal</h5>
+<p class="text-sm text-white/50 mb-6 leading-relaxed">Insights on regenerative living and sustainable architecture.</p>
+<div class="relative">
+<input class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-sm focus:outline-none focus:border-accent text-white" placeholder="your@email.com" type="email"/>
+<button class="absolute right-2 top-2 bg-accent text-white w-10 h-10 rounded-xl flex items-center justify-center hover:bg-white hover:text-primary transition-all shadow-lg">
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+<div class="pt-12 flex flex-col md:flex-row justify-between items-center text-[10px] text-white/30 tracking-[0.3em] uppercase font-bold">
+<p>© 2024 ECO-LUXURY ESTATES. CARBON NEUTRAL PLATFORM.</p>
+<p class="mt-6 md:mt-0 italic font-normal tracking-widest">Designed for the conscious few</p>
+</div>
+</div>
+</footer>
+<a class="fixed bottom-10 right-10 z-[60] bg-[#25D366] text-white px-6 py-4 rounded-[2rem] shadow-2xl flex items-center space-x-3 hover:scale-105 transition-transform group" href="https://wa.me/yournumber">
+<svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12.031 6.172c-2.32 0-4.519.903-6.16 2.544-3.399 3.4-3.399 8.937 0 12.337a8.653 8.653 0 0 0 6.16 2.544c1.112 0 2.214-.216 3.255-.64l4.634 1.214-1.214-4.634c.424-1.041.64-2.143.64-3.255.001-4.757-3.869-8.627-8.627-8.627l-.688.018zm.688 15.637a7.02 7.02 0 0 1-3.535-.953l-.254-.15-2.628.69.702-2.564-.164-.262a7.037 7.037 0 0 1-1.077-3.746c0-3.877 3.155-7.032 7.032-7.032 3.877 0 7.032 3.155 7.032 7.032.001 3.877-3.155 7.032-7.032 7.032l-.076-.017zm3.843-5.26c-.211-.106-1.247-.617-1.44-.686-.194-.069-.335-.106-.476.106-.141.211-.546.686-.67.828-.123.141-.247.159-.458.053-.211-.106-.893-.329-1.701-1.05-.63-.561-1.055-1.254-1.179-1.465-.123-.211-.013-.326.092-.431.095-.094.211-.247.317-.37.106-.124.141-.211.211-.353.07-.141.035-.265-.018-.37-.053-.106-.476-1.146-.652-1.57-.172-.413-.346-.357-.476-.364-.123-.007-.264-.007-.405-.007s-.37.053-.564.265c-.194.211-.741.724-.741 1.764s.758 2.046.864 2.187c.106.141 1.491 2.278 3.612 3.192.505.217.898.347 1.206.445.508.162.97.139 1.334.085.405-.06 1.247-.511 1.422-1.005.176-.494.176-.917.123-1.005-.052-.088-.194-.141-.405-.247z"></path></svg>
+<span class="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 ease-in-out whitespace-nowrap font-bold text-sm tracking-widest uppercase">Consult with Eco-Advisor</span>
+</a>
+<script>
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('opacity-100', 'translate-y-0');
+                entry.target.classList.remove('opacity-0', 'translate-y-12');
+            }
+        });
+    }, observerOptions);
+    document.querySelectorAll('section').forEach(section => {
+        section.classList.add('transition-all', 'duration-1000', 'translate-y-12', 'opacity-0', 'ease-out');
+        observer.observe(section);
+    });
+</script>
+
+</body></html>
