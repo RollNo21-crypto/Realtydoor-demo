@@ -5,12 +5,14 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Menu, X, ChevronDown } from 'lucide-react';
+import { JoinUsModal } from '@/components/join-us-modal';
 
 export function FloatingNav() {
     const [isScrolled, setIsScrolled] = React.useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
     const [isAboutDropdownOpen, setIsAboutDropdownOpen] = React.useState(false);
     const [isServicesDropdownOpen, setIsServicesDropdownOpen] = React.useState(false);
+    const [isJoinUsModalOpen, setIsJoinUsModalOpen] = React.useState(false);
     const dropdownTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
     const servicesDropdownTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
@@ -191,7 +193,7 @@ export function FloatingNav() {
                             </Link>
 
                             {/* Vibrant CTA Button */}
-                            <button className="relative ml-2 px-6 py-2.5 text-sm font-semibold text-white rounded-full overflow-hidden group transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,87,34,0.6)]">
+                            <button onClick={() => setIsJoinUsModalOpen(true)} className="relative ml-2 px-6 py-2.5 text-sm font-semibold text-white rounded-full overflow-hidden group transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(255,87,34,0.6)]">
                                 {/* Animated Gradient Background */}
                                 <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-orange-600 transition-transform duration-300 group-hover:scale-110" />
                                 {/* Shimmer Effect */}
@@ -377,7 +379,7 @@ export function FloatingNav() {
                             <div className="flex-1" />
 
                             {/* CTA Button */}
-                            <button className="relative mt-4 px-6 py-4 text-base font-semibold text-white rounded-2xl overflow-hidden group shadow-lg shadow-orange-500/20">
+                            <button onClick={() => { setIsJoinUsModalOpen(true); setIsMobileMenuOpen(false); }} className="relative mt-4 px-6 py-4 text-base font-semibold text-white rounded-2xl overflow-hidden group shadow-lg shadow-orange-500/20 w-full">
                                 <div className="absolute inset-0 bg-gradient-to-r from-orange-500 to-orange-600" />
                                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-full group-active:translate-x-full transition-transform duration-700" />
                                 <span className="relative z-10">Join Us / Sell with Us</span>
@@ -386,6 +388,9 @@ export function FloatingNav() {
                     </div>
                 </>
             )}
+
+            {/* Join Us Modal */}
+            <JoinUsModal isOpen={isJoinUsModalOpen} onClose={() => setIsJoinUsModalOpen(false)} />
         </nav>
     );
 }
