@@ -20,9 +20,6 @@ const nextConfig = {
     typescript: {
         ignoreBuildErrors: false,
     },
-    eslint: {
-        ignoreDuringBuilds: false,
-    },
     experimental: {
         serverActions: {
             bodySizeLimit: '5mb',

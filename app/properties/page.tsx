@@ -1,9 +1,11 @@
 'use client';
 
+// Force dynamic rendering for this page
+export const dynamic = 'force-dynamic';
+
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useSearchParams, useRouter } from 'next/navigation';
 import { FloatingNav } from '@/components/floating-nav';
 import { Footer } from '@/components/footer';
 import { Button } from '@/components/ui/button';
@@ -26,8 +28,6 @@ interface FilterState {
 }
 
 export default function PropertiesPage() {
-    const searchParams = useSearchParams();
-    const router = useRouter();
     const [filteredProperties, setFilteredProperties] = useState(mockProperties);
     const [showMobileFilters, setShowMobileFilters] = useState(false);
     const [filters, setFilters] = useState<FilterState>({
