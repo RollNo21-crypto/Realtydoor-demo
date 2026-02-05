@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { toast } from 'sonner';
+// import { toast } from 'sonner';
 import { inquirySchema, type InquiryInput } from '@/lib/validations/property';
 
 interface ContactFormProps {
@@ -43,15 +43,11 @@ export function ContactForm({ propertyId, propertyTitle }: ContactFormProps) {
                 throw new Error('Failed to submit inquiry');
             }
 
-            toast.success('Inquiry sent successfully!', {
-                description: 'An agent will contact you shortly.',
-            });
+            alert('Inquiry sent successfully! An agent will contact you shortly.');
 
             form.reset();
         } catch (error) {
-            toast.error('Failed to send inquiry', {
-                description: 'Please try again later.',
-            });
+            alert('Failed to send inquiry. Please try again later.');
         } finally {
             setIsLoading(false);
         }

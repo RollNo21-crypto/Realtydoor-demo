@@ -9,14 +9,9 @@ import { getPropertyById } from '@/lib/mock-data';
 import { formatPrice, formatNumber } from '@/lib/utils';
 import { Bed, Bath, Maximize, MapPin, Calendar, Home } from 'lucide-react';
 
-interface PageProps {
-    params: {
-        id: string;
-    };
-}
-
-export async function generateMetadata({ params }: PageProps) {
-    const property = getPropertyById(params.id);
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
+    const { id } = await params;
+    const property = getPropertyById(id);
 
     if (!property) {
         return { title: 'Property Not Found' };
@@ -28,9 +23,12 @@ export async function generateMetadata({ params }: PageProps) {
     };
 }
 
-export default async function PropertyDetailPage({ params }: PageProps) {
+export default async function PropertyDetailPage({ params }: { params: Promise<{ id: string }> }) {
+    // Await params in Next.js 15
+    const { id } = await params;
+
     // Use mock data instead of database
-    const property = getPropertyById(params.id);
+    const property = getPropertyById(id);
 
     if (!property) {
         notFound();

@@ -1,8 +1,5 @@
 'use client';
 
-// Force dynamic rendering
-export const dynamic = 'force-dynamic';
-
 import Image from 'next/image';
 import { FloatingNav } from '@/components/floating-nav';
 import { PropertySectionTabs } from '@/components/property-section-tabs';

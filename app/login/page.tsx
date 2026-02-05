@@ -1,8 +1,5 @@
 'use client';
 
-// Force dynamic rendering for this page
-export const dynamic = 'force-dynamic';
-
 import { signIn } from 'next-auth/react';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -11,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { toast } from 'sonner';
+// import { toast } from 'sonner';
 
 export default function LoginPage() {
     const router = useRouter();
@@ -30,18 +27,14 @@ export default function LoginPage() {
             });
 
             if (result?.error) {
-                toast.error('Invalid credentials', {
-                    description: 'Please check your email and password.',
-                });
+                alert('Invalid credentials. Please check your email and password.');
             } else {
-                toast.success('Welcome back!');
+                alert('Welcome back!');
                 router.push('/dashboard');
                 router.refresh();
             }
         } catch (error) {
-            toast.error('Something went wrong', {
-                description: 'Please try again later.',
-            });
+            alert('Something went wrong. Please try again later.');
         } finally {
             setIsLoading(false);
         }

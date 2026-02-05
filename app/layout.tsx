@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Playfair_Display, Inter } from 'next/font/google';
 import './globals.css';
-import { Toaster } from 'sonner';
+// import { Toaster } from 'sonner';
 import { WhatsAppWidget } from '@/components/whatsapp-widget';
 
 const playfair = Playfair_Display({
@@ -71,7 +71,7 @@ export default function RootLayout({
         <html lang="en" suppressHydrationWarning>
             <body className={`${playfair.variable} ${inter.variable} antialiased`}>
                 {children}
-                <Toaster position="top-right" richColors />
+                {/* <Toaster position="top-right" richColors /> */}
                 <WhatsAppWidget />
             </body>
         </html>
