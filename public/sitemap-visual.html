@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Realtydoor – Visual Sitemap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0c0c10;
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding: 48px 24px 80px;
+        }
+
+        /* ── Header ── */
+        .page-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .page-header h1 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #c9a84c 0%, #f5d98b 50%, #a07830 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+        }
+
+        .page-header p {
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+
+        /* ── Stats bar ── */
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 48px;
+        }
+
+        .stat {
+            background: #18181f;
+            border: 1px solid #2d2d3a;
+            border-radius: 12px;
+            padding: 12px 24px;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .stat-num {
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .stat-lbl {
+            font-size: 0.72rem;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+
+        /* ── Root node (centre top) ── */
+        .root-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 0;
+        }
+
+        .root-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #c9a84c, #f5d98b, #a07830);
+            color: #1a1208;
+            border-radius: 50px;
+            padding: 12px 32px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            letter-spacing: 0.2px;
+            box-shadow: 0 0 40px rgba(201, 168, 76, 0.3);
+        }
+
+        .root-arrow {
+            width: 2px;
+            height: 32px;
+            background: linear-gradient(to bottom, #c9a84c44, #2d2d3a);
+            margin: 0 auto;
+        }
+
+        /* ── Grid of cards ── */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ── Card ── */
+        .card {
+            background: #13131a;
+            border: 1px solid #22222e;
+            border-radius: 18px;
+            overflow: hidden;
+            transition: transform 0.18s, box-shadow 0.18s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Card header strip */
+        .card-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 16px;
+            border-bottom: 1px solid #22222e;
+        }
+
+        .card-icon {
+            font-size: 1.1rem;
+            line-height: 1;
+            flex-shrink: 0;
+        }
+
+        .card-title {
+            font-weight: 700;
+            font-size: 0.88rem;
+            flex: 1;
+        }
+
+        .card-url {
+            font-size: 0.65rem;
+            font-family: monospace;
+            color: #4b5563;
+            background: #0f0f14;
+            border: 1px solid #1f1f2e;
+            border-radius: 6px;
+            padding: 2px 7px;
+            flex-shrink: 0;
+        }
+
+        /* Card body */
+        .card-body {
+            padding: 12px 16px;
+        }
+
+        .page-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 0;
+            border-bottom: 1px solid #1a1a24;
+            font-size: 0.8rem;
+            color: #9ca3af;
+        }
+
+        .page-row:last-child {
+            border-bottom: none;
+        }
+
+        .page-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .page-name {
+            flex: 1;
+        }
+
+        .page-slug {
+            font-size: 0.62rem;
+            font-family: monospace;
+            color: #374151;
+        }
+
+        /* ── Colour themes per card ── */
+        .t-gold .card-head {
+            background: linear-gradient(90deg, #1c1608, #13131a);
+            border-color: #c9a84c44;
+        }
+
+        .t-gold .card-title {
+            color: #f5d98b;
+        }
+
+        .t-gold .page-dot {
+            background: #c9a84c;
+        }
+
+        .t-blue .card-head {
+            background: linear-gradient(90deg, #080e1e, #13131a);
+            border-color: #3b82f644;
+        }
+
+        .t-blue .card-title {
+            color: #93c5fd;
+        }
+
+        .t-blue .page-dot {
+            background: #3b82f6;
+        }
+
+        .t-green .card-head {
+            background: linear-gradient(90deg, #071410, #13131a);
+            border-color: #22c55e44;
+        }
+
+        .t-green .card-title {
+            color: #86efac;
+        }
+
+        .t-green .page-dot {
+            background: #22c55e;
+        }
+
+        .t-purple .card-head {
+            background: linear-gradient(90deg, #110b1e, #13131a);
+            border-color: #a855f744;
+        }
+
+        .t-purple .card-title {
+            color: #d8b4fe;
+        }
+
+        .t-purple .page-dot {
+            background: #a855f7;
+        }
+
+        .t-rose .card-head {
+            background: linear-gradient(90deg, #1a0a0e, #13131a);
+            border-color: #f43f5e44;
+        }
+
+        .t-rose .card-title {
+            color: #fda4af;
+        }
+
+        .t-rose .page-dot {
+            background: #f43f5e;
+        }
+
+        .t-cyan .card-head {
+            background: linear-gradient(90deg, #071618, #13131a);
+            border-color: #06b6d444;
+        }
+
+        .t-cyan .card-title {
+            color: #67e8f9;
+        }
+
+        .t-cyan .page-dot {
+            background: #06b6d4;
+        }
+
+        .t-amber .card-head {
+            background: linear-gradient(90deg, #181008, #13131a);
+            border-color: #f59e0b44;
+        }
+
+        .t-amber .card-title {
+            color: #fcd34d;
+        }
+
+        .t-amber .page-dot {
+            background: #f59e0b;
+        }
+
+        .t-indigo .card-head {
+            background: linear-gradient(90deg, #0c0c20, #13131a);
+            border-color: #6366f144;
+        }
+
+        .t-indigo .card-title {
+            color: #a5b4fc;
+        }
+
+        .t-indigo .page-dot {
+            background: #6366f1;
+        }
+
+        .t-teal .card-head {
+            background: linear-gradient(90deg, #071614, #13131a);
+            border-color: #14b8a644;
+        }
+
+        .t-teal .card-title {
+            color: #5eead4;
+        }
+
+        .t-teal .page-dot {
+            background: #14b8a6;
+        }
+
+        .t-lime .card-head {
+            background: linear-gradient(90deg, #0b1a06, #13131a);
+            border-color: #84cc1644;
+        }
+
+        .t-lime .card-title {
+            color: #bef264;
+        }
+
+        .t-lime .page-dot {
+            background: #84cc16;
+        }
+
+        .t-orange .card-head {
+            background: linear-gradient(90deg, #1a0e05, #13131a);
+            border-color: #f9731644;
+        }
+
+        .t-orange .card-title {
+            color: #fdba74;
+        }
+
+        .t-orange .page-dot {
+            background: #f97316;
+        }
+
+        .t-pink .card-head {
+            background: linear-gradient(90deg, #1a0613, #13131a);
+            border-color: #ec489944;
+        }
+
+        .t-pink .card-title {
+            color: #f9a8d4;
+        }
+
+        .t-pink .page-dot {
+            background: #ec4899;
+        }
+
+        /* ── Wide card spans 2 cols on large screens ── */
+        .span2 {
+            grid-column: span 2;
+        }
+
+        @media (max-width: 620px) {
+            .span2 {
+                grid-column: span 1;
+            }
+        }
+
+        /* ── Footer ── */
+        footer {
+            margin-top: 56px;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #374151;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <div class="page-header">
+        <h1>🏠 Realtydoor — Site Map</h1>
+        <p>Visual overview for Design · Content · BDE teams &nbsp;|&nbsp; Last updated Feb 2026</p>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats">
+        <div class="stat">
+            <div class="stat-num" style="color:#f5d98b">14</div>
+            <div class="stat-lbl">Main Sections</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num" style="color:#93c5fd">8</div>
+            <div class="stat-lbl">Plot Detail Pages</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num" style="color:#bef264">5</div>
+            <div class="stat-lbl">Chatbots / Widgets</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num" style="color:#d8b4fe">6</div>
+            <div class="stat-lbl">Service Pages</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num" style="color:#86efac">35+</div>
+            <div class="stat-lbl">Total Features</div>
+        </div>
+    </div>
+
+    <!-- Root -->
+    <div class="root-wrap">
+        <div class="root-pill">🌐 Realtydoor.com</div>
+        <div class="root-arrow"></div>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid">
+
+        <!-- Homepage -->
+        <div class="card t-gold span2">
+            <div class="card-head">
+                <div class="card-icon">🏠</div>
+                <div class="card-title">Homepage</div>
+                <div class="card-url">/</div>
+            </div>
+            <div class="card-body" style="display:grid;grid-template-columns:1fr 1fr;gap:0 16px;">
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Hero Banner</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Why Choose Us</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Featured Plot Listings</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Testimonials</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Hot Deals</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">CTA / Contact Strip</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Plots & Land -->
+        <div class="card t-blue span2">
+            <div class="card-head">
+                <div class="card-icon">🏞️</div>
+                <div class="card-title">Plots &amp; Land</div>
+                <div class="card-url">/properties</div>
+            </div>
+            <div class="card-body" style="display:grid;grid-template-columns:1fr 1fr;gap:0 16px;">
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Greenfield Residency</div>
+                    <div class="page-slug">Hoskote</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Prestige Enclave Plots</div>
+                    <div class="page-slug">Whitefield</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Serene Villa Plots</div>
+                    <div class="page-slug">Devanahalli</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Horizon Plots</div>
+                    <div class="page-slug">Mysore Road</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Greens Township</div>
+                    <div class="page-slug">Kanakapura Rd</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Pharma City Plots</div>
+                    <div class="page-slug">Hyderabad</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Commercial Plot</div>
+                    <div class="page-slug">Anekal</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">NewtownJ Township</div>
+                    <div class="page-slug">Punganur</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects -->
+        <div class="card t-green">
+            <div class="card-head">
+                <div class="card-icon">🏗️</div>
+                <div class="card-title">Projects</div>
+                <div class="card-url">/projects</div>
+            </div>
+            <div class="card-body">
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Ongoing Projects</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Completed Projects</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Upcoming Projects</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services -->
+        <div class="card t-purple">
+            <div class="card-head">
+                <div class="card-icon">🛠️</div>
+                <div class="card-title">Services</div>
+                <div class="card-url">/services</div>
+            </div>
+            <div class="card-body">
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Construction</div>
+                    <div class="page-slug">/construction</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Legal</div>
+                    <div class="page-slug">/legal</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Loan Assistance</div>
+                    <div class="page-slug">/loan-assistance</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Property Management</div>
+                    <div class="page-slug">/property-management</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Resale</div>
+                    <div class="page-slug">/resale</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Valuation</div>
+                    <div class="page-slug">/valuation</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Us -->
+        <div class="card t-rose">
+            <div class="card-head">
+                <div class="card-icon">👥</div>
+                <div class="card-title">About Us</div>
+                <div class="card-url">/about</div>
+            </div>
+            <div class="card-body">
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Our Story</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Team</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Vision &amp; Mission</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blog -->
+        <div class="card t-cyan">
+            <div class="card-head">
+                <div class="card-icon">📰</div>
+                <div class="card-title">Blog / Insights</div>
+                <div class="card-url">/blog</div>
+            </div>
+            <div class="card-body">
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Market Insights</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Buying Guides</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Investment Tips</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">News &amp; Updates</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQs -->
+        <div class="card t-amber">
+            <div class="card-head">
+                <div class="card-icon">❓</div>
+                <div class="card-title">FAQs</div>
+                <div class="card-url">/faqs</div>
+            </div>
+            <div class="card-body">
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Buying Process</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Payments &amp; Loans</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Legal Queries</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="card t-indigo">
+            <div class="card-head">
+                <div class="card-icon">📞</div>
+                <div class="card-title">Contact Us</div>
+                <div class="card-url">/contact</div>
+            </div>
+            <div class="card-body">
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Enquiry Form</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Office Locations</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">WhatsApp Chat</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Careers -->
+        <div class="card t-teal">
+            <div class="card-head">
+                <div class="card-icon">💼</div>
+                <div class="card-title">Careers</div>
+                <div class="card-url">/careers</div>
+            </div>
+            <div class="card-body">
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Open Positions</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Join Us Form</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Work Culture</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WhatsApp Chatbot & Widget -->
+        <div class="card t-lime">
+            <div class="card-head">
+                <div class="card-icon">💬</div>
+                <div class="card-title">WhatsApp Chatbot</div>
+                <div class="card-url">Global Widget</div>
+            </div>
+            <div class="card-body">
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Floating WhatsApp Button</div>
+                    <div class="page-slug">whatsapp-widget.tsx</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Chat Conversation UI</div>
+                    <div class="page-slug">whatsapp-chat.tsx</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Lead Pre-qualification Gate</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Auto Agent Routing</div>
+                    <div class="page-slug">whatsapp-config.ts</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lead Capture Form -->
+        <div class="card t-orange">
+            <div class="card-head">
+                <div class="card-icon">📋</div>
+                <div class="card-title">Lead Capture Form</div>
+                <div class="card-url">Global Overlay</div>
+            </div>
+            <div class="card-body">
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Name &amp; Contact Fields</div>
+                    <div class="page-slug">lead-capture-form.tsx</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Buildesk CRM Integration</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">WhatsApp Handoff on Submit</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Join Us Modal -->
+        <div class="card t-pink">
+            <div class="card-head">
+                <div class="card-icon">🤝</div>
+                <div class="card-title">Join Us Modal</div>
+                <div class="card-url">Nav CTA → Modal</div>
+            </div>
+            <div class="card-body">
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Agent / Partner Application</div>
+                    <div class="page-slug">join-us-modal.tsx</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Join Us Form Fields</div>
+                    <div class="page-slug">join-us-form.tsx</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Sell With Us CTA</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Nav & Global CTAs -->
+        <div class="card t-indigo">
+            <div class="card-head">
+                <div class="card-icon">🧭</div>
+                <div class="card-title">Floating Nav &amp; Global CTAs</div>
+                <div class="card-url">All Pages</div>
+            </div>
+            <div class="card-body">
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Sticky Floating Navigation</div>
+                    <div class="page-slug">floating-nav.tsx</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Floating CTA Button</div>
+                    <div class="page-slug">floating-cta.tsx</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Mobile Nav Sheet</div>
+                    <div class="page-slug">navigation.tsx</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Property Section Tabs</div>
+                    <div class="page-slug">property-section-tabs.tsx</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tools & Calculators -->
+        <div class="card t-cyan">
+            <div class="card-head">
+                <div class="card-icon">🧮</div>
+                <div class="card-title">Tools &amp; Calculators</div>
+                <div class="card-url">Embedded Widgets</div>
+            </div>
+            <div class="card-body">
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Loan / EMI Calculator</div>
+                    <div class="page-slug">loan-calculator.tsx</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Property Search Form</div>
+                    <div class="page-slug">property-search-form.tsx</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Property Categories Filter</div>
+                    <div class="page-slug">property-categories.tsx</div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /grid -->
+
+    <footer>
+        Realtydoor · Visual Sitemap · Feb 2026 · For internal team use only
+    </footer>
+
+</body>
+
+</html>

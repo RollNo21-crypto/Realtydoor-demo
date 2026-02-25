@@ -17,7 +17,7 @@ export default function JoinUsPage() {
                             Join Our Network
                         </h1>
                         <p className="text-xl text-muted-foreground leading-relaxed">
-                            Partner with CURATED to connect with high-intent buyers and grow your real estate business.
+                            Partner with RealtyDoor to connect with high-intent buyers and grow your real estate business.
                             Join a community of premium agents, brokers, and developers.
                         </p>
                     </div>
@@ -28,7 +28,7 @@ export default function JoinUsPage() {
             <section className="py-20 bg-white">
                 <div className="max-w-7xl mx-auto px-8">
                     <div className="text-center mb-16">
-                        <h2 className="font-display text-4xl md:text-5xl mb-4">Why Join CURATED?</h2>
+                        <h2 className="font-display text-4xl md:text-5xl mb-4">Why Join RealtyDoor?</h2>
                         <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                             Access exclusive opportunities and grow your business with our premium platform
                         </p>
@@ -44,7 +44,7 @@ export default function JoinUsPage() {
                             {
                                 icon: Building2,
                                 title: 'Premium Listings',
-                                description: 'Showcase your properties to a curated audience of qualified clients',
+                                description: 'Showcase your properties to a RealtyDoor audience of qualified clients',
                             },
                             {
                                 icon: TrendingUp,
@@ -118,13 +118,13 @@ export default function JoinUsPage() {
                 <div className="max-w-4xl mx-auto px-8 text-center">
                     <h2 className="font-display text-4xl md:text-5xl mb-6">Ready to Get Started?</h2>
                     <p className="text-xl text-white/80 mb-8">
-                        Join CURATED today and take your real estate business to the next level.
+                        Join RealtyDoor today and take your real estate business to the next level.
                         Our team will review your application and get back to you within 48 hours.
                     </p>
                     <p className="text-white/60">
                         Questions? Email us at{' '}
-                        <a href="mailto:partners@curated.com" className="text-primary hover:underline">
-                            partners@curated.com
+                        <a href="mailto:partners@RealtyDoor.com" className="text-primary hover:underline">
+                            partners@RealtyDoor.com
                         </a>
                     </p>
                 </div>

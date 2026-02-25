@@ -243,7 +243,7 @@ export default function AboutPage() {
                             </div>
                             <h3 className="font-display text-xl mb-3">Premium Properties</h3>
                             <p className="text-sm text-muted-foreground leading-relaxed">
-                                Curated selection of verified luxury properties across prime locations.
+                                RealtyDoor selection of verified luxury properties across prime locations.
                             </p>
                         </div>
 

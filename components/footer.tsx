@@ -22,7 +22,7 @@ export function Footer() {
                             />
                         </Link>
                         <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
-                            Curated discovery platform for ultra-high-end real estate.
+                            RealtyDoor discovery platform for ultra-high-end real estate.
                         </p>
                         <div className="flex gap-3">
                             <a

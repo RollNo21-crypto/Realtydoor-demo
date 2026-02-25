@@ -14,6 +14,14 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'res.cloudinary.com',
             },
+            {
+                protocol: 'https',
+                hostname: 'realtydoor.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'img.youtube.com',
+            },
         ],
         formats: ['image/avif', 'image/webp'],
     },

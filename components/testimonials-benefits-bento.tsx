@@ -22,7 +22,7 @@ const testimonials: Testimonial[] = [
         company: 'Tech Innovations Inc.',
         image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400',
         rating: 5,
-        quote: 'The team at CURATED made finding our dream office space effortless. Their attention to detail and market knowledge is unparalleled.',
+        quote: 'The team at RealtyDoor made finding our dream office space effortless. Their attention to detail and market knowledge is unparalleled.',
     },
     {
         id: '2',
@@ -31,7 +31,7 @@ const testimonials: Testimonial[] = [
         company: 'Chen Holdings',
         image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400',
         rating: 5,
-        quote: 'I\'ve worked with many real estate platforms, but CURATED stands out for their verified listings and transparent process.',
+        quote: 'I\'ve worked with many real estate platforms, but RealtyDoor stands out for their verified listings and transparent process.',
     },
 ];
 
@@ -51,7 +51,7 @@ export function TestimonialsBenefitsBento() {
                 {/* Section Header */}
                 <div className="mb-16 text-center">
                     <h2 className="font-display text-4xl md:text-5xl mb-6">
-                        Why Choose CURATED
+                        Why Choose RealtyDoor
                     </h2>
                     <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
                         Trusted by thousands of satisfied clients worldwide with unparalleled service and verified quality

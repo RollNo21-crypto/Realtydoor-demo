@@ -45,7 +45,7 @@ export default function LoginPage() {
             <Card className="w-full max-w-md">
                 <CardHeader className="text-center">
                     <Link href="/" className="mb-4 inline-block font-display text-2xl font-bold">
-                        CURATED
+                        RealtyDoor
                     </Link>
                     <CardTitle className="text-2xl">Welcome back</CardTitle>
                     <CardDescription>Sign in to your account to continue</CardDescription>

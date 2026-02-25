@@ -18,11 +18,11 @@ const inter = Inter({
 
 export const metadata: Metadata = {
     title: {
-        default: 'CURATED | Premium Real Estate',
-        template: '%s | CURATED Real Estate',
+        default: 'RealtyDoor | Premium Real Estate',
+        template: '%s | RealtyDoor Real Estate',
     },
     description:
-        'A curated marketplace connecting high-intent buyers with the world\'s most reputable premium builders. Discover luxury properties that match your lifestyle.',
+        'A RealtyDoor marketplace connecting high-intent buyers with the world\'s most reputable premium builders. Discover luxury properties that match your lifestyle.',
     keywords: [
         'real estate',
         'luxury homes',
@@ -31,13 +31,13 @@ export const metadata: Metadata = {
         'buy home',
         'real estate marketplace',
     ],
-    authors: [{ name: 'CURATED Real Estate' }],
+    authors: [{ name: 'RealtyDoor Real Estate' }],
     openGraph: {
         type: 'website',
         locale: 'en_US',
         url: 'https://your-domain.com',
-        siteName: 'CURATED Real Estate',
-        title: 'CURATED | Premium Real Estate Marketplace',
+        siteName: 'RealtyDoor Real Estate',
+        title: 'RealtyDoor | Premium Real Estate Marketplace',
         description:
             'Discover hand-vetted premium properties from verified builders worldwide.',
         images: [
@@ -45,13 +45,13 @@ export const metadata: Metadata = {
                 url: '/og-image.jpg',
                 width: 1200,
                 height: 630,
-                alt: 'CURATED Real Estate',
+                alt: 'RealtyDoor Real Estate',
             },
         ],
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'CURATED | Premium Real Estate',
+        title: 'RealtyDoor | Premium Real Estate',
         description:
             'Discover hand-vetted premium properties from verified builders worldwide.',
         images: ['/og-image.jpg'],

@@ -83,14 +83,15 @@ export default async function HomePage() {
             </section>
 
             {/* Trust Indicators */}
-            <section className="border-b border-border bg-background py-16">
+
+            {/* <section className="border-b border-border bg-background py-16">
                 <div className="mx-auto max-w-7xl px-6">
                     <p className="mb-10 text-center text-xs font-bold uppercase tracking-widest text-muted-foreground">
                         Trusted by Premier Developers Worldwide
                     </p>
                     <div className="overflow-hidden">
                         <div className="flex animate-scroll-left">
-                            {/* First set of logos */}
+                          
                             <div className="flex items-center gap-12 md:gap-24 flex-shrink-0">
                                 <div className="font-display text-xl font-bold italic opacity-50 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0 hover-scale whitespace-nowrap">L'ARCHITECTE</div>
                                 <div className="font-display text-xl font-bold opacity-50 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0 hover-scale whitespace-nowrap">ESTATE&CO</div>
@@ -98,7 +99,7 @@ export default async function HomePage() {
                                 <div className="font-display text-xl font-semibold opacity-50 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0 hover-scale whitespace-nowrap">MODERNIST</div>
                                 <div className="font-display text-xl font-light opacity-50 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0 hover-scale whitespace-nowrap">ELEVATE</div>
                             </div>
-                            {/* Duplicate set for seamless loop */}
+                           
                             <div className="flex items-center gap-12 md:gap-24 flex-shrink-0 ml-12 md:ml-24">
                                 <div className="font-display text-xl font-bold italic opacity-50 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0 hover-scale whitespace-nowrap">L'ARCHITECTE</div>
                                 <div className="font-display text-xl font-bold opacity-50 grayscale transition-all duration-500 hover:opacity-100 hover:grayscale-0 hover-scale whitespace-nowrap">ESTATE&CO</div>
@@ -109,7 +110,7 @@ export default async function HomePage() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
 
             {/* Featured Projects */}
             <section className="bg-background py-24">

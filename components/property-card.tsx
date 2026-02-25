@@ -92,10 +92,10 @@ export function PropertyCard({
 
                     {images && images.length > 0 && !imageError ? (
                         <Carousel className="w-full h-full">
-                            <CarouselContent>
+                            <CarouselContent className="h-full">
                                 {images.slice(0, 5).map((image) => (
-                                    <CarouselItem key={image.id}>
-                                        <div className="relative h-full w-full">
+                                    <CarouselItem key={image.id} className="h-full">
+                                        <div className="relative aspect-[16/10] w-full">
                                             <Image
                                                 src={image.url}
                                                 alt={image.alt || title}

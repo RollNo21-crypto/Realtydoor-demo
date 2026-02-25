@@ -27,7 +27,7 @@ export default function ServicesPage() {
             icon: Award,
             title: 'Premium Listings',
             description: 'Exclusive access to verified premium properties from top builders across India.',
-            features: ['Curated Properties', 'Exclusive Deals', 'Pre-Launch Access', 'VIP Treatment']
+            features: ['RealtyDoor Properties', 'Exclusive Deals', 'Pre-Launch Access', 'VIP Treatment']
         }
     ];
 
