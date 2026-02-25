@@ -30,21 +30,20 @@ export function FloatingCTA({ serviceName, ctaText = "Get Started" }: FloatingCT
             const firstName = nameParts[0] || '';
             const lastName = nameParts.slice(1).join(' ') || '';
 
-            // Prepare Buildesk API payload
+            // Prepare Buildesk API payload (ApiKey is added server-side)
             const buildeskPayload = {
-                ApiKey: "ee6411f7-4da2-4172-b657-372a1151c93f",
                 UserId: null,
                 UID: null,
                 FirstName: firstName,
                 LastName: lastName,
                 DialCode: 91,
                 Platform: "website",
-                SubSource: `Floating CTA - ${serviceName}`, // Track which service form
+                SubSource: `Floating CTA - ${serviceName}`,
                 Mobile: formData.mobile,
                 SecondaryNumber: "",
                 CreatedDate: new Date().toLocaleDateString('en-GB'),
                 Email: formData.email,
-                Remark: `${serviceName} - ${formData.message || 'Inquiry via floating CTA button'}`, // Service-specific remark
+                Remark: `${serviceName} - ${formData.message || 'Inquiry via floating CTA button'}`,
                 HasVisitScheduled: false,
                 VisitDate: null,
                 ProjectUID: null,
@@ -68,8 +67,8 @@ export function FloatingCTA({ serviceName, ctaText = "Get Started" }: FloatingCT
                 UtmContent: ""
             };
 
-            // Send to Buildesk API
-            const response = await fetch('https://buildeskapi.azurewebsites.net/api/buildeskapi/campaignlead/create', {
+            // Send to our secure proxy API
+            const response = await fetch('/api/lead', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -79,28 +78,34 @@ export function FloatingCTA({ serviceName, ctaText = "Get Started" }: FloatingCT
 
             const result = await response.json();
 
-            if (result.Success) {
-                setIsSuccess(true);
+            // Always proceed to WhatsApp to ensure user contact
+            setIsSuccess(true);
 
-                // Build WhatsApp message
-                const whatsappMessage = encodeURIComponent(
-                    `Hi! I'm interested in ${serviceName}.\n\nName: ${formData.name}\nMobile: ${formData.mobile}\nEmail: ${formData.email}\nCity: ${formData.city}\nMessage: ${formData.message}`
-                );
+            // Build WhatsApp message
+            const whatsappMessage = encodeURIComponent(
+                `Hi! I'm interested in ${serviceName}.\n\nName: ${formData.name}\nMobile: ${formData.mobile}\nEmail: ${formData.email}\nCity: ${formData.city}\nMessage: ${formData.message}`
+            );
 
-                // Redirect to WhatsApp after 2 seconds
-                setTimeout(() => {
-                    window.open(`https://wa.me/919136954648?text=${whatsappMessage}`, '_blank');
-                    setIsModalOpen(false);
-                    setIsSuccess(false);
-                    setFormData({ name: '', mobile: '', email: '', city: '', message: '' });
-                }, 2000);
-            } else {
-                console.error('Buildesk API Error:', result.Message);
-                alert('Failed to submit. Please try again.');
+            // Redirect to WhatsApp after 2 seconds
+            setTimeout(() => {
+                window.open(`https://wa.me/919136954648?text=${whatsappMessage}`, '_blank');
+                setIsModalOpen(false);
+                setIsSuccess(false);
+                setFormData({ name: '', mobile: '', email: '', city: '', message: '' });
+            }, 2000);
+
+            if (!result.Success) {
+                console.warn('CRM Submission Warning (Proxy):', result.Message);
             }
         } catch (error) {
-            console.error('Error submitting form:', error);
-            alert('Failed to submit. Please try again.');
+            console.error('Floating CTA error:', error);
+            // Revert on error if necessary or proceed
+            setIsSuccess(true);
+            setTimeout(() => {
+                window.open(`https://wa.me/919136954648?text=${encodeURIComponent(`Interest in ${serviceName}`)}`, '_blank');
+                setIsModalOpen(false);
+                setIsSuccess(false);
+            }, 2000);
         } finally {
             setIsSubmitting(false);
         }

@@ -73,14 +73,14 @@ export const budgetRanges: { [key: string]: { min: number; max: number } } = {
  */
 export function convertToBuildesk(
     formData: LeadFormData,
-    apiKey: string = process.env.NEXT_PUBLIC_BUILDESK_API_KEY || '',
+    apiKey: string = '',
     projectName: string = 'RealtyDoor'
 ): BuildeskLeadData {
     const now = new Date();
     const createdDate = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`;
 
     // Build remark with property context
-    let remark = formData.message || 'WhatsApp inquiry';
+    let remark = formData.message || 'Website inquiry';
     if (formData.propertyName) {
         remark = `Interested in ${formData.propertyName}. ${remark}`;
     }
@@ -92,7 +92,7 @@ export function convertToBuildesk(
         LastName: '',
         DialCode: 91, // India
         Platform: 'website',
-        SubSource: 'WhatsApp Widget',
+        SubSource: 'Website Form',
         Mobile: formData.mobile,
         SecondaryNumber: '',
         CreatedDate: createdDate,

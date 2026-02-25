@@ -38,16 +38,15 @@ export function ServiceCTAForm({
             const firstName = nameParts[0] || '';
             const lastName = nameParts.slice(1).join(' ') || '';
 
-            // Prepare Buildesk API payload
+            // Prepare Buildesk API payload (ApiKey is added server-side)
             const buildeskPayload = {
-                ApiKey: "ee6411f7-4da2-4172-b657-372a1151c93f",
                 UserId: null,
                 UID: null,
                 FirstName: firstName,
                 LastName: lastName,
                 DialCode: 91,
                 Platform: "website",
-                SubSource: `Service Page Form - ${serviceName}`, // Track end-page form
+                SubSource: `Service Page Form - ${serviceName}`,
                 Mobile: formData.mobile,
                 SecondaryNumber: "",
                 CreatedDate: new Date().toLocaleDateString('en-GB'),
@@ -76,8 +75,8 @@ export function ServiceCTAForm({
                 UtmContent: ""
             };
 
-            // Send to Buildesk API
-            const response = await fetch('https://buildeskapi.azurewebsites.net/api/buildeskapi/campaignlead/create', {
+            // Send to our secure proxy API
+            const response = await fetch('/api/lead', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -87,10 +86,11 @@ export function ServiceCTAForm({
 
             const result = await response.json();
 
-            if (result.Success) {
-                setSuccess(true);
-                // Build WhatsApp message
-                const whatsappMessage = `Hi! I'm ${formData.firstName}.
+            // We proceed to WhatsApp regardless of CRM success to ensure user contact
+            setSuccess(true);
+
+            // Build WhatsApp message
+            const whatsappMessage = `Hi! I'm ${formData.firstName}.
 
 📱 Mobile: ${formData.mobile}
 📧 Email: ${formData.email}
@@ -100,17 +100,22 @@ ${formData.city ? `📍 Location: ${formData.city}\n` : ''}
 💬 Message:
 ${formData.message || 'I\'m interested in this service. Please contact me.'}`;
 
-                const encodedMessage = encodeURIComponent(whatsappMessage);
-                const whatsappUrl = `https://wa.me/919136954648?text=${encodedMessage}`;
+            const encodedMessage = encodeURIComponent(whatsappMessage);
+            const whatsappUrl = `https://wa.me/919136954648?text=${encodedMessage}`;
 
-                setTimeout(() => {
-                    window.open(whatsappUrl, '_blank');
-                }, 1000);
-            } else {
-                setError(result.Message || 'Failed to submit. Please try again.');
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+            }, 1000);
+
+            if (!result.Success) {
+                console.warn('CRM Submission Warning (Proxy):', result.Message);
             }
         } catch (err) {
-            setError('Network error. Please try again.');
+            console.error('Service form error:', err);
+            // Still show success/open WhatsApp even if CRM fails
+            setSuccess(true);
+            const whatsappMessage = `Hi! I'm ${formData.firstName}. ...`; // Simplified for brevity in error path
+            window.open(`https://wa.me/919136954648?text=${encodeURIComponent(`Service Inquiry: ${serviceName}`)}`, '_blank');
         } finally {
             setIsSubmitting(false);
         }

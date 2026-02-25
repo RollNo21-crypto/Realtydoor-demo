@@ -10,7 +10,7 @@ export async function POST(request: Request) {
 
         const session = await auth();
 
-        // Create inquiry
+        // Create inquiry locally
         const inquiry = await prisma.inquiry.create({
             data: {
                 name: validatedData.name,
@@ -20,7 +20,73 @@ export async function POST(request: Request) {
                 propertyId: validatedData.propertyId,
                 userId: session?.user?.id,
             },
+            include: {
+                property: {
+                    select: { title: true }
+                }
+            }
         });
+
+        // Forward to Buildesk CRM
+        try {
+            const BUILDESK_ENDPOINT = 'https://buildeskapi.azurewebsites.net/api/buildeskapi/campaignlead/create';
+            const API_KEY = process.env.BUILDESK_API_KEY || '';
+
+            if (API_KEY) {
+                const nameParts = validatedData.name.trim().split(' ');
+                const firstName = nameParts[0] || '';
+                const lastName = nameParts.slice(1).join(' ') || '';
+
+                const buildeskPayload = {
+                    ApiKey: API_KEY,
+                    UserId: null,
+                    UID: null,
+                    FirstName: firstName,
+                    LastName: lastName,
+                    DialCode: 91,
+                    Platform: "website",
+                    SubSource: "Property Inquiry Form",
+                    Mobile: validatedData.phone || "",
+                    SecondaryNumber: "",
+                    CreatedDate: new Date().toLocaleDateString('en-GB'),
+                    Email: validatedData.email,
+                    Remark: `Inquiry for ${inquiry.property.title}: ${validatedData.message}`,
+                    HasVisitScheduled: false,
+                    VisitDate: null,
+                    ProjectUID: validatedData.propertyId,
+                    ProjectName: inquiry.property.title,
+                    CampaignUID: "",
+                    Campaign: "Property Inquiry",
+                    CampaignChannel: "Property Page",
+                    CampaignChannelUID: "",
+                    City: "",
+                    MinBudget: null,
+                    MaxBudget: null,
+                    EmploymentType: "",
+                    Income: null,
+                    Designation: "",
+                    UtmCampaign: "",
+                    UtmMedium: "",
+                    UtmSource: "",
+                    UtmTerm: "",
+                    GCLId: "",
+                    FbId: "",
+                    UtmContent: ""
+                };
+
+                await fetch(BUILDESK_ENDPOINT, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'ApiKey': API_KEY,
+                    },
+                    body: JSON.stringify(buildeskPayload),
+                });
+            }
+        } catch (crmError) {
+            console.error('Failed to forward inquiry to Buildesk:', crmError);
+            // We don't fail the main request if CRM forwarding fails
+        }
 
         return NextResponse.json(
             { message: 'Inquiry submitted successfully', inquiry },
