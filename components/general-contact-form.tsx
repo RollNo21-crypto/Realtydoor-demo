@@ -28,7 +28,6 @@ export function GeneralContactForm() {
 
             // Prepare Buildesk API payload
             const buildeskPayload = {
-                ApiKey: "ee6411f7-4da2-4172-b657-372a1151c93f",
                 UserId: null,
                 UID: null,
                 FirstName: firstName,
@@ -65,11 +64,10 @@ export function GeneralContactForm() {
             };
 
             // Send to Buildesk API
-            const response = await fetch('https://buildeskapi.azurewebsites.net/api/buildeskapi/campaignlead/create', {
+            // POST to our own API route — server adds the ApiKey securely
+            const response = await fetch('/api/lead', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(buildeskPayload)
             });
 

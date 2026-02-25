@@ -73,7 +73,7 @@ export const budgetRanges: { [key: string]: { min: number; max: number } } = {
  */
 export function convertToBuildesk(
     formData: LeadFormData,
-    apiKey: string,
+    apiKey: string = process.env.NEXT_PUBLIC_BUILDESK_API_KEY || '',
     projectName: string = 'RealtyDoor'
 ): BuildeskLeadData {
     const now = new Date();
@@ -124,7 +124,8 @@ export function convertToBuildesk(
 
 /**
  * Submit lead to Buildesk CRM API
- * Note: This should be called from server-side API route, not directly from client
+ * IMPORTANT: ApiKey must be in BOTH the HTTP header AND the request body.
+ * Confirmed via live API testing - body-only returns "Please pass ApiKey".
  */
 export async function submitLeadToBuildesk(
     leadData: BuildeskLeadData,
@@ -132,13 +133,16 @@ export async function submitLeadToBuildesk(
     apiEndpoint: string = 'https://buildeskapi.azurewebsites.net/api/buildeskapi/campaignlead/create'
 ): Promise<BuildeskApiResponse> {
     try {
+        // ApiKey must be in BOTH the header AND the body
+        const payload = { ApiKey: apiKey, ...leadData };
+
         const response = await fetch(apiEndpoint, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'ApiKey': apiKey,
+                'ApiKey': apiKey,  // required in header too
             },
-            body: JSON.stringify(leadData),
+            body: JSON.stringify(payload),
         });
 
         if (!response.ok) {

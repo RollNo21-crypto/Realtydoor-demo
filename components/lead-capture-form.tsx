@@ -147,33 +147,32 @@ export function LeadCaptureForm({
 
     const submitToAPI = useCallback(async (data: LeadFormData) => {
         try {
-            // Split name into first and last name
             const nameParts = data.firstName.trim().split(' ');
             const firstName = nameParts[0] || '';
             const lastName = nameParts.slice(1).join(' ') || '';
 
-            // Prepare Buildesk API payload for General Query (WhatsApp)
             const buildeskPayload = {
-                ApiKey: "ee6411f7-4da2-4172-b657-372a1151c93f",
                 UserId: null,
                 UID: null,
                 FirstName: firstName,
                 LastName: lastName,
                 DialCode: 91,
                 Platform: "website",
-                SubSource: "General Query - WhatsApp", // Label WhatsApp as General Query
+                SubSource: "WhatsApp Widget",
                 Mobile: data.mobile,
                 SecondaryNumber: "",
                 CreatedDate: new Date().toLocaleDateString('en-GB'),
                 Email: data.email,
-                Remark: `General Query - ${data.message || 'WhatsApp inquiry'}`,
+                Remark: data.propertyName
+                    ? `Interested in ${data.propertyName}. ${data.message || 'WhatsApp inquiry'}`
+                    : (data.message || 'WhatsApp inquiry'),
                 HasVisitScheduled: false,
                 VisitDate: null,
                 ProjectUID: null,
                 ProjectName: data.propertyName || "RealtyDoor",
                 CampaignUID: "",
-                Campaign: "General Query",
-                CampaignChannel: "WhatsApp Chat",
+                Campaign: "WhatsApp Chat",
+                CampaignChannel: "WhatsApp Widget",
                 CampaignChannelUID: "",
                 City: data.city || "",
                 MinBudget: null,
@@ -190,32 +189,33 @@ export function LeadCaptureForm({
                 UtmContent: ""
             };
 
-            const response = await fetch('https://buildeskapi.azurewebsites.net/api/buildeskapi/campaignlead/create', {
+            // POST to our own API route — server adds the ApiKey securely
+            const response = await fetch('/api/lead', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(buildeskPayload),
             });
 
             const result = await response.json();
 
             if (result.Success) {
-                setTimeout(() => {
-                    setCurrentStep('success');
-                    addBotMessage("All set! Redirecting you to WhatsApp now... ✅");
-                    setTimeout(() => {
-                        onSuccess(data);
-                    }, 2000);
-                }, 1000);
+                addBotMessage("All set! Redirecting you to WhatsApp now... ✅");
             } else {
-                setError(result.Message || 'Failed to submit. Please try again.');
-                setCurrentStep('message');
+                // CRM error — log it but still proceed to WhatsApp
+                console.warn('Buildesk CRM warning:', result.Message);
+                addBotMessage("Almost there! Connecting you to WhatsApp... ✅");
             }
         } catch (err) {
-            setError('Network error. Please try again.');
-            setCurrentStep('message');
+            // Network error — log it but still proceed to WhatsApp
+            console.error('Buildesk API error:', err);
+            addBotMessage("Connecting you to WhatsApp now... ✅");
         }
+
+        // Always proceed to success + WhatsApp regardless of CRM result
+        setCurrentStep('success');
+        setTimeout(() => {
+            onSuccess(data);
+        }, 1800);
     }, [addBotMessage, onSuccess]);
 
     const handleSubmitInput = useCallback(async (overrideValue?: string) => {
