@@ -51,17 +51,31 @@ export function calculateTotalAmount(
  * Format currency for display
  */
 export function formatCurrency(amount: number): string {
-    return new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('en-IN', {
         style: 'currency',
-        currency: 'USD',
+        currency: 'INR',
         minimumFractionDigits: 0,
         maximumFractionDigits: 0,
     }).format(amount);
 }
 
 /**
- * Format number with commas
+ * Format amount in Indian Lakhs / Crores for compact display
+ * e.g. 1850000 → "₹18.5 L", 10000000 → "₹1 Cr"
+ */
+export function formatIndianLakh(amount: number): string {
+    if (amount >= 10000000) {
+        return `₹${(amount / 10000000).toFixed(2).replace(/\.00$/, '')} Cr`;
+    }
+    if (amount >= 100000) {
+        return `₹${(amount / 100000).toFixed(2).replace(/\.00$/, '')} L`;
+    }
+    return `₹${amount.toLocaleString('en-IN')}`;
+}
+
+/**
+ * Format number with Indian commas (e.g. 1,00,000)
  */
 export function formatNumberWithCommas(num: number): string {
-    return new Intl.NumberFormat('en-US').format(num);
+    return new Intl.NumberFormat('en-IN').format(num);
 }

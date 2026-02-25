@@ -3,11 +3,12 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { FloatingNav } from '@/components/floating-nav';
 import { Footer } from '@/components/footer';
 import { Button } from '@/components/ui/button';
 import {
-    MapPin, Maximize, Home, Building2, TreePine, Building, Hotel,
+    MapPin, Maximize, Home,
     Sparkles, X, SlidersHorizontal, Search, Check, Ruler, Tag
 } from 'lucide-react';
 import { mockProperties, formatIndianPrice } from '@/lib/mock-data';
@@ -23,6 +24,7 @@ interface FilterState {
 }
 
 export default function PropertiesPage() {
+    const searchParams = useSearchParams();
     const [filteredProperties, setFilteredProperties] = useState(mockProperties);
     const [showMobileFilters, setShowMobileFilters] = useState(false);
     const [filters, setFilters] = useState<FilterState>({
@@ -35,10 +37,19 @@ export default function PropertiesPage() {
         searchQuery: '',
     });
 
+    // Read URL search params (from PropertySearchForm navigation)
+    useEffect(() => {
+        const locationParam = searchParams.get('location') || '';
+        const typeParam = searchParams.get('type') || '';
+        setFilters(prev => ({
+            ...prev,
+            location: locationParam,
+            propertyTypes: typeParam ? [typeParam] : [],
+        }));
+    }, [searchParams]);
+
     const propertyTypes = [
         { value: 'RESIDENTIAL_PLOT', label: 'Residential Plot', icon: Home },
-        { value: 'VILLA_PLOT', label: 'Villa Plot', icon: Hotel },
-        { value: 'COMMERCIAL_PLOT', label: 'Commercial Plot', icon: Building2 },
     ];
 
     const amenitiesList = [
@@ -138,33 +149,43 @@ export default function PropertiesPage() {
         filters.amenities.length +
         (filters.priceMin > 0 || filters.priceMax < 200000000 ? 1 : 0);
 
+    const uniqueLocations = Array.from(
+        new Set(mockProperties.map(p => `${p.city}, ${p.state}`))
+    );
+
     const FilterSidebar = () => (
         <div className="space-y-6">
-            {/* Search */}
+            {/* Search — property name dropdown */}
             <div>
-                <label className="text-sm font-semibold uppercase tracking-wider mb-3 block">Search</label>
-                <div className="relative">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                    <input
-                        type="text"
-                        placeholder="Search plots, city, area..."
-                        value={filters.searchQuery}
-                        onChange={(e) => setFilters(prev => ({ ...prev, searchQuery: e.target.value }))}
-                        className="w-full pl-10 pr-4 py-3 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/50"
-                    />
-                </div>
+                <label className="text-sm font-semibold uppercase tracking-wider mb-3 block flex items-center gap-2">
+                    <Search className="h-4 w-4 text-primary" />
+                    Search
+                </label>
+                <select
+                    value={filters.searchQuery}
+                    onChange={(e) => setFilters(prev => ({ ...prev, searchQuery: e.target.value }))}
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 appearance-none cursor-pointer"
+                >
+                    <option value="">All Properties</option>
+                    {mockProperties.map(p => (
+                        <option key={p.id} value={p.title}>{p.title}</option>
+                    ))}
+                </select>
             </div>
 
-            {/* Location */}
+            {/* Location dropdown */}
             <div>
                 <label className="text-sm font-semibold uppercase tracking-wider mb-3 block">Location</label>
-                <input
-                    type="text"
-                    placeholder="City or State"
+                <select
                     value={filters.location}
                     onChange={(e) => setFilters(prev => ({ ...prev, location: e.target.value }))}
-                    className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/50"
-                />
+                    className="w-full px-4 py-3 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/50 appearance-none cursor-pointer"
+                >
+                    <option value="">All Locations</option>
+                    {uniqueLocations.map(loc => (
+                        <option key={loc} value={loc.split(',')[0].trim()}>{loc}</option>
+                    ))}
+                </select>
             </div>
 
             {/* Plot Type */}
@@ -293,7 +314,7 @@ export default function PropertiesPage() {
                         Premium Plots & Land
                     </h1>
                     <p className="text-base md:text-xl lg:text-2xl font-light mb-6 md:mb-8 text-slate-300">
-                        Handpicked plotted developments across Bangalore, Hyderabad & Andhra Pradesh
+                        Handpicked plotted developments across Bangalore &amp; Andhra Pradesh
                     </p>
                     <div className="flex items-center justify-center gap-3 md:gap-4 text-xs md:text-sm uppercase tracking-wider">
                         <span className="text-primary font-semibold">{filteredProperties.length} Plots</span>
@@ -323,41 +344,33 @@ export default function PropertiesPage() {
                         )}
                     </div>
 
-                    <div className="overflow-x-auto scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
-                        <div className="flex md:flex-wrap gap-2 md:gap-3 min-w-max md:min-w-0">
-                            {[
-                                { icon: Home, label: 'Residential Plots', type: 'RESIDENTIAL_PLOT', color: 'from-blue-500 to-blue-600' },
-                                { icon: Hotel, label: 'Villa Plots', type: 'VILLA_PLOT', color: 'from-purple-500 to-purple-600' },
-                                { icon: Building2, label: 'Commercial Plots', type: 'COMMERCIAL_PLOT', color: 'from-amber-500 to-amber-600' },
-                                { icon: TreePine, label: 'Township', type: 'TOWNSHIP', color: 'from-green-500 to-green-600' },
-                                { icon: Building, label: 'Gated Community', type: 'GATED', color: 'from-pink-500 to-pink-600' },
-                            ].map((category, idx) => {
-                                const isActive = filters.propertyTypes.includes(category.type);
-                                return (
-                                    <button
-                                        key={idx}
-                                        onClick={() => togglePropertyType(category.type)}
-                                        className={`group relative flex items-center gap-2 md:gap-3 px-4 md:px-5 py-2.5 md:py-3 rounded-full border transition-all hover:scale-105 ${isActive
-                                            ? 'bg-gradient-to-r from-orange-600 to-orange-700 border-transparent text-white shadow-lg'
-                                            : 'bg-background border-border hover:border-primary/50'
-                                            }`}
-                                    >
-                                        <div className={`flex items-center justify-center transition-all ${isActive ? '' : 'group-hover:scale-110'}`}>
-                                            <category.icon className={`h-4 w-4 md:h-5 md:w-5 ${isActive ? 'text-white' : 'text-primary'}`} />
-                                        </div>
-                                        <span className={`font-semibold text-xs md:text-sm whitespace-nowrap ${isActive ? 'text-white' : 'text-foreground group-hover:text-primary'}`}>
-                                            {category.label}
-                                        </span>
-                                        {isActive && <Check className="hidden md:block h-4 w-4 text-white" />}
-                                        {isActive && (
-                                            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-orange-600 to-orange-700 blur-xl opacity-50 -z-10"></div>
-                                        )}
-                                    </button>
-                                );
-                            })}
-                        </div>
+                    <div className="flex flex-wrap gap-2 md:gap-3">
+                        {[
+                            { icon: Home, label: 'Residential Plots', type: 'RESIDENTIAL_PLOT' },
+                        ].map((category, idx) => {
+                            const count = mockProperties.filter(p => p.propertyType === category.type).length;
+                            const isActive = filters.propertyTypes.includes(category.type);
+                            return (
+                                <button
+                                    key={idx}
+                                    onClick={() => togglePropertyType(category.type)}
+                                    className={`group relative flex items-center gap-2 md:gap-3 px-4 md:px-5 py-2.5 md:py-3 rounded-full border transition-all hover:scale-105 ${isActive
+                                        ? 'bg-gradient-to-r from-orange-600 to-orange-700 border-transparent text-white shadow-lg'
+                                        : 'bg-background border-border hover:border-primary/50'
+                                        }`}
+                                >
+                                    <category.icon className={`h-4 w-4 md:h-5 md:w-5 ${isActive ? 'text-white' : 'text-primary'}`} />
+                                    <span className={`font-semibold text-xs md:text-sm ${isActive ? 'text-white' : 'text-foreground group-hover:text-primary'}`}>
+                                        {category.label}
+                                    </span>
+                                    <span className={`text-xs px-2 py-0.5 rounded-full ${isActive ? 'bg-white/20 text-white' : 'bg-muted text-muted-foreground'}`}>
+                                        {count}
+                                    </span>
+                                    {isActive && <Check className="hidden md:block h-4 w-4 text-white" />}
+                                </button>
+                            );
+                        })}
                     </div>
-                    <p className="md:hidden text-xs text-muted-foreground text-center mt-3 opacity-60">← Scroll to see more →</p>
                 </div>
             </section>
 
