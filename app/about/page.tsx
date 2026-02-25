@@ -63,12 +63,12 @@ export default function AboutPage() {
                             </div>
 
                             <h1 className="font-display text-5xl md:text-7xl text-white leading-tight">
-                                Curating Legacies,
-                                <span className="block gradient-text italic">Defining Excellence</span>
+                                Securing Legacies,
+                                <span className="block gradient-text italic">Verified Excellence</span>
                             </h1>
 
                             <p className="text-xl text-slate-300 leading-relaxed max-w-xl">
-                                RealtyDoor is India's most trusted real estate consultancy, dedicated to transforming the asset acquisition experience through uncompromising transparency and expert data-driven insights.
+                                RealtyDoor is Bengaluru's premier RERA-plot consultancy, specializing in BMRDA/BBMP-approved residential developments. We bridge the gap between discerning investors and gold-standard land opportunities.
                             </p>
 
                             <div className="flex flex-wrap gap-4">
@@ -122,7 +122,7 @@ export default function AboutPage() {
                             </div>
                             <h2 className="font-display text-3xl mb-4">Our Mission</h2>
                             <p className="text-muted-foreground text-lg leading-relaxed italic">
-                                "To democratize access to premium residential plots by eliminating ambiguity, ensuring every investment is backed by absolute legal certainty and ethical excellence."
+                                "To democratize access to premium residential plots by eliminating ambiguity, ensuring every Khata transfer and legal due diligence process is backed by absolute certainty."
                             </p>
                         </div>
 
@@ -132,7 +132,7 @@ export default function AboutPage() {
                             </div>
                             <h2 className="font-display text-3xl mb-4">Our Vision</h2>
                             <p className="text-muted-foreground text-lg leading-relaxed italic">
-                                "To become the global benchmark for trust in the Indian real estate sector, leveraging predictive technology and human expertise to build tomorrow's heritage today."
+                                "To become the definitive authority for land investment in South India, leveraging 360-degree verification protocols to build tomorrow's heritage today."
                             </p>
                         </div>
                     </div>

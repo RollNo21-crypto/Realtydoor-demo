@@ -18,42 +18,43 @@ const inter = Inter({
 
 export const metadata: Metadata = {
     title: {
-        default: 'RealtyDoor | Premium Real Estate',
-        template: '%s | RealtyDoor Real Estate',
+        default: 'RealtyDoor | Premium Residential Plots in Bengaluru',
+        template: '%s | RealtyDoor Residential Plots',
     },
     description:
-        'A RealtyDoor marketplace connecting high-intent buyers with the world\'s most reputable premium builders. Discover luxury properties that match your lifestyle.',
+        'RealtyDoor connects you with Bengaluru\'s finest RERA-verified residential plots. Expert consultancy for secure land investment in India\'s most prestigious growth corridors.',
     keywords: [
-        'real estate',
-        'luxury homes',
-        'premium properties',
-        'property listings',
-        'buy home',
-        'real estate marketplace',
+        'residential plots Bengaluru',
+        'premium plots Bangalore',
+        'buy land Bengaluru',
+        'RERA verified plots',
+        'real estate investment Bengaluru',
+        'plotted development Bengaluru',
+        'RealtyDoor',
     ],
     authors: [{ name: 'RealtyDoor Real Estate' }],
     openGraph: {
         type: 'website',
-        locale: 'en_US',
-        url: 'https://your-domain.com',
-        siteName: 'RealtyDoor Real Estate',
-        title: 'RealtyDoor | Premium Real Estate Marketplace',
+        locale: 'en_IN',
+        url: 'https://realtydoor.in',
+        siteName: 'RealtyDoor Residential Plots',
+        title: 'RealtyDoor | Premium Residential Plots in Bengaluru',
         description:
-            'Discover hand-vetted premium properties from verified builders worldwide.',
+            'Secure your legacy with RERA-verified premium residential plots in Bengaluru\'s top growth corridors.',
         images: [
             {
                 url: '/og-image.jpg',
                 width: 1200,
                 height: 630,
-                alt: 'RealtyDoor Real Estate',
+                alt: 'RealtyDoor - Premium Residential Plots',
             },
         ],
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'RealtyDoor | Premium Real Estate',
+        title: 'RealtyDoor | Premium Residential Plots',
         description:
-            'Discover hand-vetted premium properties from verified builders worldwide.',
+            'Discover hand-vetted premium residential plots in Bengaluru.',
         images: ['/og-image.jpg'],
     },
     robots: {

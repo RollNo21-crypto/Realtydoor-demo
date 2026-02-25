@@ -9,8 +9,7 @@ import { PropertyCard } from '@/components/property-card';
 import { PropertySearchForm } from '@/components/property-search-form';
 import { PropertyCategories } from '@/components/property-categories';
 import { TestimonialsBenefitsBento } from '@/components/testimonials-benefits-bento';
-import { LoanCalculator } from '@/components/loan-calculator';
-import { HotDeals } from '@/components/hot-deals';
+import { EmiDealsPanel } from '@/components/emi-deals-panel';
 import { getFeaturedProperties } from '@/lib/mock-data';
 import { ArrowRight, Shield, Eye, Sparkles, Award, Users, TrendingUp, CheckCircle } from 'lucide-react';
 
@@ -35,6 +34,7 @@ const homeJsonLd = {
     '@graph': [
         {
             '@type': 'Organization',
+            '@id': 'https://realtydoor.in/#organization',
             name: 'RealtyDoor',
             url: 'https://realtydoor.in',
             logo: 'https://realtydoor.in/logo.png',
@@ -43,18 +43,38 @@ const homeJsonLd = {
         },
         {
             '@type': 'WebSite',
+            '@id': 'https://realtydoor.in/#website',
             name: 'RealtyDoor',
             url: 'https://realtydoor.in',
             potentialAction: { '@type': 'SearchAction', target: 'https://realtydoor.in/properties?q={search_term_string}', 'query-input': 'required name=search_term_string' },
         },
         {
             '@type': 'RealEstateAgent',
+            '@id': 'https://realtydoor.in/#agent',
             name: 'RealtyDoor',
-            description: 'RealtyDoor is a premium real estate platform connecting buyers with verified residential plots in Bengaluru and across India.',
+            description: 'Bengaluru\'s premium consultancy for RERA-verified residential plots in key growth corridors like Hoskote, Bagalur, and Sarjapur Road.',
             url: 'https://realtydoor.in',
-            areaServed: { '@type': 'City', name: 'Bengaluru' },
+            image: 'https://realtydoor.in/logo.png',
+            address: {
+                '@type': 'PostalAddress',
+                addressLocality: 'Bengaluru',
+                addressRegion: 'Karnataka',
+                addressCountry: 'IN'
+            },
+            areaServed: [
+                { '@type': 'City', name: 'Bengaluru' },
+                { '@type': 'City', name: 'Hoskote' },
+                { '@type': 'City', name: 'Bagalur' }
+            ],
             aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '2400' },
         },
+        {
+            '@type': 'Service',
+            name: 'Residential Plot Consultancy',
+            serviceType: 'Real Estate Advisory',
+            provider: { '@id': 'https://realtydoor.in/#organization' },
+            description: 'Expert guidance on purchasing RERA-verified residential plots, including legal due diligence and title verification.'
+        }
     ],
 };
 
@@ -213,29 +233,19 @@ export default async function HomePage() {
 
 
             {/* Investment Tools & Exclusive Deals */}
-            <section className="bg-background py-24">
+            <section className="bg-background py-24 relative overflow-hidden">
+                <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-80 w-80 rounded-full bg-primary/8 blur-[100px]" />
                 <div className="mx-auto max-w-7xl px-6">
-                    <div className="mb-16 text-center">
-                        <span className="inline-block text-primary font-bold uppercase tracking-widest text-sm mb-4">Strategic Framework</span>
-                        <h2 className="font-display text-4xl md:text-6xl mb-6">
-                            Wealth <span className="italic font-normal gradient-text">Planning</span> & Opportunities
+                    <div className="mb-12 text-center">
+                        <span className="inline-block text-primary font-bold uppercase tracking-widest text-sm mb-4">Strategic Tools</span>
+                        <h2 className="font-display text-4xl md:text-6xl mb-4">
+                            Plan & <span className="italic font-normal gradient-text">Invest</span>
                         </h2>
-                        <p className="mx-auto max-w-2xl text-xl text-muted-foreground">
-                            Leverage our analytical tools to calculate your asset's performance and explore time-sensitive high-yield opportunities.
+                        <p className="mx-auto max-w-xl text-lg text-muted-foreground">
+                            Calculate your EMI or browse featured plots — all in one place.
                         </p>
                     </div>
-
-                    <div className="grid gap-12 lg:grid-cols-2">
-                        {/* Loan Calculator */}
-                        <div className="glass-card p-1">
-                            <LoanCalculator />
-                        </div>
-
-                        {/* Hot Deals */}
-                        <div className="glass-card p-1">
-                            <HotDeals />
-                        </div>
-                    </div>
+                    <EmiDealsPanel />
                 </div>
             </section>
 

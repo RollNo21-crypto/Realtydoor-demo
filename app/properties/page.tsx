@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, Suspense } from 'react';
+import Script from 'next/script';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
@@ -290,8 +291,42 @@ function PropertiesPageContent() {
         </div>
     );
 
+    const collectionJsonLd = {
+        '@context': 'https://schema.org',
+        '@graph': [
+            {
+                '@type': 'BreadcrumbList',
+                'itemListElement': [
+                    { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://realtydoor.in' },
+                    { '@type': 'ListItem', 'position': 2, 'name': 'Properties', 'item': 'https://realtydoor.in/properties' }
+                ]
+            },
+            {
+                '@type': 'CollectionPage',
+                'name': 'Premium Residential Plots in Bengaluru',
+                'description': 'A curated collection of RERA-verified residential plots in Bengaluru\'s top growth corridors.',
+                'url': 'https://realtydoor.in/properties',
+                'mainEntity': {
+                    '@type': 'ItemList',
+                    'numberOfItems': filteredProperties.length,
+                    'itemListElement': filteredProperties.map((p, i) => ({
+                        '@type': 'ListItem',
+                        'position': i + 1,
+                        'item': {
+                            '@type': 'RealEstateListing',
+                            'name': p.title,
+                            'url': `https://realtydoor.in/properties/${p.id}`,
+                            'image': p.images[0]?.url
+                        }
+                    }))
+                }
+            }
+        ]
+    };
+
     return (
         <div className="min-h-screen bg-background">
+            <Script id="collection-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }} />
             <FloatingNav />
 
             {/* Hero Section */}
