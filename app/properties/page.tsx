@@ -295,33 +295,81 @@ export default function PropertiesPage() {
             <FloatingNav />
 
             {/* Hero Section */}
-            <section className="relative h-[40vh] md:h-[60vh] min-h-[400px] md:min-h-[500px] flex items-center justify-center overflow-hidden">
+            <section className="relative min-h-[75vh] flex flex-col justify-end overflow-hidden">
+                {/* Background image */}
                 <Image
-                    src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1920&q=80"
+                    src="https://realtydoor.com/wp-content/uploads/2025/12/banner-3-scaled.webp"
                     alt="Premium Plots & Land"
                     fill
-                    className="object-cover"
+                    className="object-cover object-center scale-105"
                     priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80"></div>
 
-                <div className="relative z-10 text-center text-white max-w-4xl px-4 md:px-8">
-                    <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-primary/20 border border-primary/30 backdrop-blur-sm mb-4 md:mb-6">
-                        <Sparkles className="h-3 w-3 md:h-4 md:w-4 text-primary" />
-                        <span className="text-xs md:text-sm font-semibold">RERA Approved · Clear Title</span>
+                {/* Layered gradient for depth */}
+                <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/60 to-black/20" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30" />
+
+                {/* Decorative orange glow */}
+                <div className="absolute bottom-0 left-0 w-[500px] h-[300px] bg-primary/20 blur-[120px] rounded-full -translate-x-1/4 translate-y-1/3 pointer-events-none" />
+
+                {/* Main content */}
+                <div className="relative z-10 max-w-7xl mx-auto w-full px-6 md:px-8 pb-16 pt-32 flex flex-col md:flex-row items-end justify-between gap-8">
+
+                    {/* Left: Title block */}
+                    <div className="flex-1">
+                        {/* Trust pill */}
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/40 backdrop-blur-sm mb-6">
+                            <Sparkles className="h-3.5 w-3.5 text-primary" />
+                            <span className="text-xs font-bold uppercase tracking-widest text-primary">RERA Approved · Clear Title · 0% Brokerage</span>
+                        </div>
+
+                        <h1 className="font-display text-5xl md:text-7xl lg:text-8xl leading-[1.02] text-white mb-6">
+                            Premium<br />
+                            <span className="text-[#FF5722]">
+                                Plots &amp; Land
+                            </span>
+                        </h1>
+
+                        <p className="text-lg md:text-xl text-slate-300 font-light max-w-xl leading-relaxed">
+                            Handpicked plotted developments across Bangalore &amp; Andhra Pradesh — bank loan ready, RERA certified.
+                        </p>
                     </div>
-                    <h1 className="font-display text-4xl md:text-6xl lg:text-8xl mb-4 md:mb-6 leading-tight">
-                        Premium Plots & Land
-                    </h1>
-                    <p className="text-base md:text-xl lg:text-2xl font-light mb-6 md:mb-8 text-slate-300">
-                        Handpicked plotted developments across Bangalore &amp; Andhra Pradesh
-                    </p>
-                    <div className="flex items-center justify-center gap-3 md:gap-4 text-xs md:text-sm uppercase tracking-wider">
-                        <span className="text-primary font-semibold">{filteredProperties.length} Plots</span>
-                        <span className="text-primary">•</span>
-                        <span className="text-slate-300">South India</span>
-                        <span className="text-primary">•</span>
-                        <span className="text-slate-300">Bank Loan Available</span>
+
+                    {/* Right: Floating stat card */}
+                    <div className="flex-shrink-0 w-full md:w-auto">
+                        <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-6 md:p-8 grid grid-cols-2 gap-6 min-w-[260px]">
+                            <div>
+                                <p className="font-display text-4xl font-bold text-white">{mockProperties.length}</p>
+                                <p className="text-xs uppercase tracking-widest text-slate-400 mt-1">Active Listings</p>
+                            </div>
+                            <div>
+                                <p className="font-display text-4xl font-bold text-[#FF5722]">₹0</p>
+                                <p className="text-xs uppercase tracking-widest text-slate-400 mt-1">Brokerage</p>
+                            </div>
+                            <div>
+                                <p className="font-display text-4xl font-bold text-white">2</p>
+                                <p className="text-xs uppercase tracking-widest text-slate-400 mt-1">States</p>
+                            </div>
+                            <div>
+                                <p className="font-display text-4xl font-bold text-white">100%</p>
+                                <p className="text-xs uppercase tracking-widest text-slate-400 mt-1">RERA Approved</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Bottom stats ribbon */}
+                <div className="relative z-10 bg-black/60 backdrop-blur-md border-t border-white/10">
+                    <div className="max-w-7xl mx-auto px-6 md:px-8 py-4 flex flex-wrap items-center justify-between gap-4 text-sm">
+                        <div className="flex items-center gap-2 text-white">
+                            <MapPin className="h-4 w-4 text-primary" />
+                            <span>Hoskote · Kanakapura · Jigani · Punganur</span>
+                        </div>
+                        <div className="flex items-center gap-6 text-slate-400">
+                            <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-primary inline-block" />Bank Loan Available</span>
+                            <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-primary inline-block" />Clear Title</span>
+                            <span className="flex items-center gap-1.5"><span className="h-2 w-2 rounded-full bg-primary inline-block" />Gated Community</span>
+                        </div>
                     </div>
                 </div>
             </section>
