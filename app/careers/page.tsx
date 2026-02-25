@@ -1,12 +1,33 @@
 import { Metadata } from 'next';
+import Script from 'next/script';
 import { FloatingNav } from '@/components/floating-nav';
 import { Footer } from '@/components/footer';
 import { Briefcase, TrendingUp, Heart, Users, Award, Sparkles, MapPin, Clock, DollarSign, Mail } from 'lucide-react';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-    title: 'Careers | RealtyDoor - Join Our Team',
-    description: 'Join RealtyDoor and be part of India\'s fastest-growing real estate platform. Explore career opportunities and grow with us.',
+    title: 'Careers at RealtyDoor | Real Estate Jobs in India',
+    description: 'Join RealtyDoor, India\'s fastest-growing real estate platform. Open positions in sales, operations, technology, legal, and marketing. Apply now and grow with us.',
+    keywords: ['real estate jobs India', 'careers RealtyDoor', 'property jobs Bengaluru', 'real estate sales jobs', 'real estate company jobs India'],
+    alternates: { canonical: 'https://realtydoor.in/careers' },
+    openGraph: {
+        title: 'Careers at RealtyDoor | Real Estate Jobs in India',
+        description: 'Competitive pay, 95% employee satisfaction, 200+ team members. Join India\'s fastest-growing real estate platform.',
+        url: 'https://realtydoor.in/careers',
+        type: 'website',
+        images: [{ url: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200', width: 1200, height: 630, alt: 'Careers at RealtyDoor' }],
+    },
+    twitter: { card: 'summary_large_image', title: 'Careers at RealtyDoor', description: 'Join India\'s fastest-growing real estate platform.' },
+};
+
+const careersJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Open Positions at RealtyDoor',
+    itemListElement: [
+        { '@type': 'ListItem', position: 1, item: { '@type': 'JobPosting', title: 'Senior Real Estate Consultant', description: 'Join our Sales team as a Senior Real Estate Consultant in Mumbai.', datePosted: '2026-02-01', employmentType: 'FULL_TIME', hiringOrganization: { '@type': 'Organization', name: 'RealtyDoor', sameAs: 'https://realtydoor.in' }, jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressLocality: 'Mumbai', addressCountry: 'IN' } } } },
+        { '@type': 'ListItem', position: 2, item: { '@type': 'JobPosting', title: 'Full Stack Developer', description: 'Remote Full Stack Developer opportunity at RealtyDoor.', datePosted: '2026-02-01', employmentType: 'FULL_TIME', hiringOrganization: { '@type': 'Organization', name: 'RealtyDoor', sameAs: 'https://realtydoor.in' }, jobLocation: { '@type': 'Place', address: { '@type': 'PostalAddress', addressLocality: 'Remote', addressCountry: 'IN' } } } },
+    ],
 };
 
 export default function CareersPage() {

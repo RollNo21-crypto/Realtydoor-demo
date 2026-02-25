@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Script from 'next/script';
 import { FloatingNav } from '@/components/floating-nav';
 import { Footer } from '@/components/footer';
 import { ServiceCTAForm } from '@/components/service-cta-form';
@@ -7,20 +8,54 @@ import { Building2, Users, Wrench, DollarSign, ClipboardCheck, Shield, CheckCirc
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-    title: 'Property Management | RealtyDoor - Professional Property Care',
-    description: 'Comprehensive property management services. Tenant management, maintenance, rent collection, and more. Let us handle your property while you relax.',
+    title: 'Plot & Land Management Services in Bengaluru | RealtyDoor',
+    description: 'Professional plot and land management in Bengaluru. Secure your land with boundary fencing, regular inspections, legal upkeep, and appreciation tracking. Hassle-free land ownership.',
+    keywords: ['plot management Bengaluru', 'land management services', 'plot maintenance', 'land manager Bengaluru', 'vacant land security', 'plot care services Bengaluru'],
+    alternates: { canonical: 'https://realtydoor.in/services/property-management' },
+    openGraph: {
+        title: 'Plot & Land Management Services | RealtyDoor',
+        description: 'Professional land management — boundary security, regular inspections, and value appreciation tracking for your residential plots.',
+        url: 'https://realtydoor.in/services/property-management',
+        type: 'website',
+        images: [{ url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200', width: 1200, height: 630, alt: 'Plot Management Services - RealtyDoor' }],
+    },
+    twitter: { card: 'summary_large_image', title: 'Plot Management | RealtyDoor', description: 'Hassle-free plot and land management in Bengaluru.' },
+};
+
+const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+        {
+            '@type': 'Service',
+            name: 'Plot & Land Management Services',
+            description: 'Professional land management including security, regular site visits, legal upkeep, and appreciation reporting for residential plots.',
+            provider: { '@type': 'Organization', name: 'RealtyDoor', url: 'https://realtydoor.in' },
+            areaServed: { '@type': 'City', name: 'Bengaluru' },
+            serviceType: 'Plot Management',
+            url: 'https://realtydoor.in/services/property-management',
+        },
+        {
+            '@type': 'FAQPage',
+            mainEntity: [
+                { '@type': 'Question', name: 'What is included in plot management services?', acceptedAnswer: { '@type': 'Answer', text: 'RealtyDoor\'s plot management includes regular site visits, boundary stone maintenance, fencing security, taxes/dues management, and quarterly appreciation reports.' } },
+                { '@type': 'Question', name: 'How do you ensure my plot is not encroached?', acceptedAnswer: { '@type': 'Answer', text: 'We perform regular physical inspections, documented with geo-tagged photos, and maintain clear boundary markings. We also assist in professional fencing if required.' } },
+                { '@type': 'Question', name: 'Can RealtyDoor help me sell my plot later?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. As part of our resale services, we leverage our investor network to help you exit your plot at the best market valuation.' } },
+            ],
+        },
+    ],
 };
 
 export default function PropertyManagementPage() {
     return (
         <>
+            <Script id="property-mgmt-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
             <FloatingNav />
 
             <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-zinc-900 via-black to-zinc-900">
                 <div className="absolute inset-0">
                     <Image
                         src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920"
-                        alt="Property Management"
+                        alt="Plot Management"
                         fill
                         className="object-cover opacity-20"
                         priority
@@ -33,16 +68,16 @@ export default function PropertyManagementPage() {
                         <div className="space-y-8">
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/30 backdrop-blur-sm">
                                 <Sparkles className="h-4 w-4 text-primary" />
-                                <span className="text-sm font-semibold text-white">Full-Service Management</span>
+                                <span className="text-sm font-semibold text-white">Full-Service Land Care</span>
                             </div>
 
                             <h1 className="font-display text-5xl md:text-7xl text-white leading-tight">
                                 Hassle-Free
-                                <span className="block gradient-text italic">Property Management</span>
+                                <span className="block gradient-text italic">Plot Management</span>
                             </h1>
 
                             <p className="text-xl text-slate-300 leading-relaxed">
-                                Professional management for your rental properties. We handle tenants, maintenance, and everything in between.
+                                Professional management for your land assets. We handle security, maintenance, and appreciation tracking while you stay stress-free.
                             </p>
 
                             <div className="flex flex-wrap gap-4">

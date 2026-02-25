@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Script from 'next/script';
 import { FloatingNav } from '@/components/floating-nav';
 import { Footer } from '@/components/footer';
 import { ServiceCTAForm } from '@/components/service-cta-form';
@@ -7,20 +8,54 @@ import { Hammer, Ruler, Paintbrush, CheckCircle2, Clock, Award, ArrowRight, Spar
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-    title: 'Construction Services | RealtyDoor - Build Your Dream Home',
-    description: 'End-to-end construction services. Custom home building, renovations, and project management with quality assurance and timely delivery.',
+    title: 'Plot Development & Construction Services in Bengaluru | RealtyDoor',
+    description: 'Expert plot development and construction consultancy in Bengaluru. From land leveling and layout planning to custom building on your premium residential plot.',
+    keywords: ['plot development Bengaluru', 'land development services', 'build on plot Bengaluru', 'residential plot construction', 'land leveling Bengaluru', 'RealtyDoor'],
+    alternates: { canonical: 'https://realtydoor.in/services/construction' },
+    openGraph: {
+        title: 'Plot Development & Construction | RealtyDoor',
+        description: 'Expert plot development and construction consultancy for premium residential plots in Bengaluru.',
+        url: 'https://realtydoor.in/services/construction',
+        type: 'website',
+        images: [{ url: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200', width: 1200, height: 630, alt: 'Plot Development Services - RealtyDoor' }],
+    },
+    twitter: { card: 'summary_large_image', title: 'Plot Development | RealtyDoor', description: 'Expert plot development and construction services in Bengaluru.' },
+};
+
+const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+        {
+            '@type': 'Service',
+            name: 'Plot Development & Construction',
+            description: 'Expert plot development services including land leveling, fencing, and construction consultancy for residential plots.',
+            provider: { '@type': 'Organization', name: 'RealtyDoor', url: 'https://realtydoor.in' },
+            areaServed: { '@type': 'City', name: 'Bengaluru' },
+            serviceType: 'Plot Development',
+            url: 'https://realtydoor.in/services/construction',
+        },
+        {
+            '@type': 'FAQPage',
+            mainEntity: [
+                { '@type': 'Question', name: 'What does plot development include?', acceptedAnswer: { '@type': 'Answer', text: 'Plot development includes land leveling, boundary fencing, layout planning, and ensuring the plot is ready for construction or investment appreciation.' } },
+                { '@type': 'Question', name: 'Can you help build a house on my newly purchased plot?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. RealtyDoor provides end-to-end construction consultancy and execution for plot owners who wish to build their custom homes.' } },
+                { '@type': 'Question', name: 'Do you handle plot approvals and RERA compliance?', acceptedAnswer: { '@type': 'Answer', text: 'Absolutely. We manage all statutory approvals and ensure the plot is fully compliant with RERA and local municipal norms.' } },
+            ],
+        },
+    ],
 };
 
 export default function ConstructionPage() {
     return (
         <>
+            <Script id="construction-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
             <FloatingNav />
 
             <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-zinc-900 via-black to-zinc-900">
                 <div className="absolute inset-0">
                     <Image
                         src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920"
-                        alt="Construction Services"
+                        alt="Plot Development Services"
                         fill
                         className="object-cover opacity-20"
                         priority
@@ -33,16 +68,16 @@ export default function ConstructionPage() {
                         <div className="space-y-8">
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/30 backdrop-blur-sm">
                                 <Sparkles className="h-4 w-4 text-primary" />
-                                <span className="text-sm font-semibold text-white">Premium Construction</span>
+                                <span className="text-sm font-semibold text-white">Strategic Plot Development</span>
                             </div>
 
                             <h1 className="font-display text-5xl md:text-7xl text-white leading-tight">
-                                Build Your
-                                <span className="block gradient-text italic">Dream Home</span>
+                                Prepare Your
+                                <span className="block gradient-text italic">Premium Plot</span>
                             </h1>
 
                             <p className="text-xl text-slate-300 leading-relaxed">
-                                End-to-end construction services with quality craftsmanship, timely delivery, and complete project management.
+                                End-to-end plot development services—from land leveling and boundary security to construction consultancy for your legacy home.
                             </p>
 
                             <div className="flex flex-wrap gap-4">

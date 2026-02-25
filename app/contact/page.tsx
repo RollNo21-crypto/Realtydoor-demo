@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Script from 'next/script';
 import { FloatingNav } from '@/components/floating-nav';
 import { Footer } from '@/components/footer';
 import { Mail, Phone, MapPin, Clock, Send, Sparkles, MessageCircle, Headphones } from 'lucide-react';
@@ -6,13 +7,39 @@ import Image from 'next/image';
 import { GeneralContactForm } from '@/components/general-contact-form';
 
 export const metadata: Metadata = {
-    title: 'Contact Us | RealtyDoor - Get in Touch',
-    description: 'Contact RealtyDoor for all your real estate needs. Our team is available 24/7 to assist you with buying, selling, or renting properties.',
+    title: 'Contact RealtyDoor | Real Estate Experts in Bengaluru',
+    description: 'Contact RealtyDoor for buying, selling, or renting properties in Bengaluru. Available 24/7 via WhatsApp, phone, or email. Expert real estate guidance at your fingertips.',
+    keywords: ['contact RealtyDoor', 'real estate agent contact Bengaluru', 'property inquiry', 'RealtyDoor phone number', 'property help Bengaluru'],
+    alternates: { canonical: 'https://realtydoor.in/contact' },
+    openGraph: {
+        title: 'Contact RealtyDoor | Bengaluru Real Estate Experts',
+        description: 'Reach RealtyDoor 24/7 for all your property needs. WhatsApp, phone, or email — we\'re always available.',
+        url: 'https://realtydoor.in/contact',
+        type: 'website',
+        images: [{ url: 'https://realtydoor.in/og-image.jpg', width: 1200, height: 630, alt: 'Contact RealtyDoor' }],
+    },
+    twitter: { card: 'summary_large_image', title: 'Contact RealtyDoor', description: 'Get in touch with our real estate experts anytime.' },
+};
+
+const contactJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: 'Contact RealtyDoor',
+    url: 'https://realtydoor.in/contact',
+    mainEntity: {
+        '@type': 'Organization',
+        name: 'RealtyDoor',
+        telephone: '+91-91369-54648',
+        email: 'info@realtydoor.in',
+        address: { '@type': 'PostalAddress', addressLocality: 'Bengaluru', addressRegion: 'Karnataka', addressCountry: 'IN' },
+        openingHoursSpecification: { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: '09:00', closes: '20:00' },
+    },
 };
 
 export default function ContactPage() {
     return (
         <>
+            <Script id="contact-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(contactJsonLd) }} />
             <FloatingNav />
 
             {/* Hero Section */}
@@ -33,29 +60,29 @@ export default function ContactPage() {
                         <div className="space-y-8">
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/30 backdrop-blur-sm">
                                 <Sparkles className="h-4 w-4 text-primary" />
-                                <span className="text-sm font-semibold text-white">We're Here to Help</span>
+                                <span className="text-sm font-semibold text-white">Your Expert Real Estate Concierge</span>
                             </div>
 
                             <h1 className="font-display text-5xl md:text-7xl text-white leading-tight">
-                                Get in
-                                <span className="block gradient-text italic">Touch</span>
+                                Start Your
+                                <span className="block gradient-text italic">Journey</span>
                             </h1>
 
-                            <p className="text-xl text-slate-300 leading-relaxed">
-                                Have questions? Our expert team is ready to assist you with all your real estate needs. Reach out and let's start a conversation.
+                            <p className="text-xl text-slate-300 leading-relaxed max-w-xl">
+                                Whether you're acquiring land, building a legacy, or diversifying your portfolio, our specialized consultants are ready to provide the clarity you deserve.
                             </p>
 
                             <div className="flex flex-wrap gap-4">
                                 <a href="#contact-form">
                                     <button className="px-8 py-4 bg-gradient-to-r from-primary to-primary/90 text-white font-semibold rounded-full hover:shadow-[0_0_30px_rgba(255,87,34,0.5)] transition-all duration-300 hover:scale-105 flex items-center gap-2">
                                         <MessageCircle className="h-5 w-5" />
-                                        Send Message
+                                        Request Callback
                                     </button>
                                 </a>
                                 <a href="tel:+919136954648">
                                     <button className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-full border border-white/20 hover:bg-white/20 transition-all duration-300 flex items-center gap-2">
                                         <Phone className="h-5 w-5" />
-                                        Call Now
+                                        Priority Line
                                     </button>
                                 </a>
                             </div>
@@ -65,23 +92,23 @@ export default function ContactPage() {
                         <div className="grid grid-cols-2 gap-4">
                             <div className="col-span-2 rounded-3xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 p-8 backdrop-blur-sm">
                                 <Clock className="h-8 w-8 text-primary mb-4" />
-                                <div className="text-2xl font-display text-white mb-2">24/7 Support</div>
-                                <div className="text-white/80">Always available to assist you</div>
+                                <div className="text-2xl font-display text-white mb-2">Omnichannel Support</div>
+                                <div className="text-white/80 font-medium">Standard response time: &lt; 2 Hours</div>
                             </div>
                             <div className="rounded-3xl bg-white/5 border border-white/10 p-6 backdrop-blur-sm hover-lift">
                                 <Phone className="h-6 w-6 text-primary mb-3" />
-                                <div className="text-sm text-white/70 mb-1">Phone</div>
+                                <div className="text-sm text-white/70 mb-1">Direct Consultant</div>
                                 <div className="text-white font-semibold">+91 91369 54648</div>
                             </div>
                             <div className="rounded-3xl bg-white/5 border border-white/10 p-6 backdrop-blur-sm hover-lift">
                                 <Mail className="h-6 w-6 text-primary mb-3" />
-                                <div className="text-sm text-white/70 mb-1">Email</div>
-                                <div className="text-white font-semibold text-sm">info@realtydoor.com</div>
+                                <div className="text-sm text-white/70 mb-1">Inquiries</div>
+                                <div className="text-white font-semibold text-sm">sales@realtydoor.com</div>
                             </div>
                             <div className="col-span-2 rounded-3xl bg-white/5 border border-white/10 p-6 backdrop-blur-sm hover-lift">
                                 <MapPin className="h-6 w-6 text-primary mb-3" />
-                                <div className="text-sm text-white/70 mb-1">Office</div>
-                                <div className="text-white font-semibold">Mumbai, Maharashtra, India</div>
+                                <div className="text-sm text-white/70 mb-1">Regional Headquarters</div>
+                                <div className="text-white font-semibold">Bengaluru • Mumbai • Chittoor</div>
                             </div>
                         </div>
                     </div>

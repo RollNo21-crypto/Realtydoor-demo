@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Script from 'next/script';
 import { FloatingNav } from '@/components/floating-nav';
 import { Footer } from '@/components/footer';
 import { ServiceCTAForm } from '@/components/service-cta-form';
@@ -7,13 +8,48 @@ import { Home, TrendingUp, Camera, Users, FileText, Handshake, CheckCircle2, Arr
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-    title: 'Resale Services | RealtyDoor - Sell Your Property Fast',
-    description: 'Professional property resale services. Get the best price for your property with our expert marketing, valuation, and negotiation support.',
+    title: 'Property Resale Services in Bengaluru | Sell Fast | RealtyDoor',
+    description: 'Sell your property fast in Bengaluru with RealtyDoor resale services. Expert property marketing, professional photography, skilled negotiation, and 500+ properties sold.',
+    keywords: ['property resale Bengaluru', 'sell property Bengaluru', 'property resale services', 'best price property sale', 'resale apartment Bengaluru', 'property selling agents'],
+    alternates: { canonical: 'https://realtydoor.in/services/resale' },
+    openGraph: {
+        title: 'Property Resale Services in Bengaluru | RealtyDoor',
+        description: 'Sell your property at the best price. Expert marketing, qualified buyers, and end-to-end support from RealtyDoor.',
+        url: 'https://realtydoor.in/services/resale',
+        type: 'website',
+        images: [{ url: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200', width: 1200, height: 630, alt: 'Property Resale Services - RealtyDoor' }],
+    },
+    twitter: { card: 'summary_large_image', title: 'Property Resale Services | RealtyDoor', description: 'Sell your property fast at the best price in Bengaluru.' },
+};
+
+const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+        {
+            '@type': 'Service',
+            name: 'Property Resale Services',
+            description: 'Expert property resale services with professional marketing, photography, and skilled negotiation to maximise your property value.',
+            provider: { '@type': 'Organization', name: 'RealtyDoor', url: 'https://realtydoor.in' },
+            areaServed: { '@type': 'City', name: 'Bengaluru' },
+            serviceType: 'Real Estate',
+            url: 'https://realtydoor.in/services/resale',
+        },
+        {
+            '@type': 'FAQPage',
+            mainEntity: [
+                { '@type': 'Question', name: 'How long does it take to sell a property in Bengaluru?', acceptedAnswer: { '@type': 'Answer', text: 'With RealtyDoor\'s expert marketing and qualified buyer network, properties typically sell within 30 days at the right price.' } },
+                { '@type': 'Question', name: 'How does RealtyDoor market my property?', acceptedAnswer: { '@type': 'Answer', text: 'We use professional photography, virtual tours, and multi-channel campaigns across all major portals plus our exclusive buyer network to maximise your property\'s visibility.' } },
+                { '@type': 'Question', name: 'What is the commission for selling property through RealtyDoor?', acceptedAnswer: { '@type': 'Answer', text: 'Our commission is competitive and transparent. Contact us for a free consultation and we will explain the structure with no hidden fees.' } },
+                { '@type': 'Question', name: 'Can RealtyDoor help me sell my property at a higher price?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Our valuers analyse comparable sales and market trends to ensure optimal pricing, and our skilled negotiators work to secure the best possible deal for you.' } },
+            ],
+        },
+    ],
 };
 
 export default function ResaleServicesPage() {
     return (
         <>
+            <Script id="resale-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
             <FloatingNav />
 
             {/* Hero Section - Bento Style */}

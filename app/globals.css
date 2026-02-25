@@ -251,16 +251,13 @@
   /* Gradient Effects */
   .hero-gradient {
     background: linear-gradient(to bottom,
-        rgba(0, 0, 0, 0.5) 0%,
-        rgba(0, 0, 0, 0) 40%,
-        rgba(0, 0, 0, 0.8) 100%);
+        rgba(0, 0, 0, 0.7) 0%,
+        rgba(0, 0, 0, 0.4) 40%,
+        rgba(0, 0, 0, 0.9) 100%);
   }
 
   .gradient-overlay {
-    background: linear-gradient(135deg,
-        rgba(255, 87, 34, 0.1) 0%,
-        rgba(255, 112, 67, 0.05) 50%,
-        rgba(230, 74, 25, 0.1) 100%);
+    background: rgba(0, 0, 0, 0.6);
   }
 
   .gradient-text {

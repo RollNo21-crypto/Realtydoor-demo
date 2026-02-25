@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Script from 'next/script';
 import { FloatingNav } from '@/components/floating-nav';
 import { Footer } from '@/components/footer';
 import { ServiceCTAForm } from '@/components/service-cta-form';
@@ -7,13 +8,48 @@ import { TrendingUp, BarChart3, FileSearch, Target, Calculator, Award, CheckCirc
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-    title: 'Valuation Services | RealtyDoor - Property Appraisal Experts',
-    description: 'Professional property valuation services. Accurate market analysis, investment advisory, and comprehensive property appraisal reports.',
+    title: 'Property Valuation Services in Bengaluru | RealtyDoor',
+    description: 'Professional property valuation in Bengaluru by certified valuers. Accurate market analysis, investment advisory, and detailed appraisal reports within 48 hours.',
+    keywords: ['property valuation Bengaluru', 'property appraisal India', 'home value estimate', 'certified property valuer', 'market value property', 'property assessment Bengaluru'],
+    alternates: { canonical: 'https://realtydoor.in/services/valuation' },
+    openGraph: {
+        title: 'Property Valuation Services in Bengaluru | RealtyDoor',
+        description: 'Get an accurate property valuation from certified experts. 48-hour reports, 5000+ properties valued, 98% accuracy rate.',
+        url: 'https://realtydoor.in/services/valuation',
+        type: 'website',
+        images: [{ url: 'https://images.unsplash.com/photo-1460472178825-e5240623afd5?w=1200', width: 1200, height: 630, alt: 'Property Valuation Services - RealtyDoor' }],
+    },
+    twitter: { card: 'summary_large_image', title: 'Property Valuation | RealtyDoor', description: 'Accurate property valuations in Bengaluru by certified valuers.' },
+};
+
+const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+        {
+            '@type': 'Service',
+            name: 'Property Valuation Services',
+            description: 'Professional property appraisal and market analysis services with certified valuers and 48-hour detailed report delivery.',
+            provider: { '@type': 'Organization', name: 'RealtyDoor', url: 'https://realtydoor.in' },
+            areaServed: { '@type': 'City', name: 'Bengaluru' },
+            serviceType: 'Property Valuation',
+            url: 'https://realtydoor.in/services/valuation',
+        },
+        {
+            '@type': 'FAQPage',
+            mainEntity: [
+                { '@type': 'Question', name: 'How is property valuation calculated in India?', acceptedAnswer: { '@type': 'Answer', text: 'Property valuation in India considers location, size, age, condition, comparable sales, and market trends. RealtyDoor\'s certified valuers use industry-standard methodologies approved by financial institutions.' } },
+                { '@type': 'Question', name: 'Why do I need a property valuation?', acceptedAnswer: { '@type': 'Answer', text: 'Property valuation is essential for home loan applications, sale/purchase negotiations, capital gains tax calculations, insurance, and legal disputes. It establishes the fair market value of your property.' } },
+                { '@type': 'Question', name: 'How long does a property valuation take?', acceptedAnswer: { '@type': 'Answer', text: 'After a site inspection, RealtyDoor delivers a comprehensive valuation report within 48 hours. The site inspection itself typically takes 1–2 hours.' } },
+                { '@type': 'Question', name: 'Is property valuation legally recognised in India?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. Valuations by certified and registered valuers are recognised by banks, courts, and government authorities in India for loan, legal, and tax purposes.' } },
+            ],
+        },
+    ],
 };
 
 export default function ValuationPage() {
     return (
         <>
+            <Script id="valuation-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
             <FloatingNav />
 
             <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-zinc-900 via-black to-zinc-900">

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Script from 'next/script';
 import { FloatingNav } from '@/components/floating-nav';
 import { Footer } from '@/components/footer';
 import { ServiceCTAForm } from '@/components/service-cta-form';
@@ -7,13 +8,48 @@ import { Scale, FileText, ShieldCheck, Search, Stamp, Users, CheckCircle2, Arrow
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-    title: 'Legal Services | RealtyDoor - Property Legal Assistance',
-    description: 'Expert legal services for property transactions. Title verification, documentation, registration, and complete legal compliance support.',
+    title: 'Property Legal Services in Bengaluru | RealtyDoor',
+    description: 'Expert property legal services in Bengaluru — title verification, documentation, registration, and complete RERA compliance support. Consult our property lawyers today.',
+    keywords: ['property legal services Bengaluru', 'title verification', 'property registration', 'RERA compliance', 'property lawyer', 'sale deed drafting', 'encumbrance certificate'],
+    alternates: { canonical: 'https://realtydoor.in/services/legal' },
+    openGraph: {
+        title: 'Property Legal Services in Bengaluru | RealtyDoor',
+        description: 'Comprehensive legal services for property transactions. Title verification, documentation, and RERA compliance from RealtyDoor expert lawyers.',
+        url: 'https://realtydoor.in/services/legal',
+        type: 'website',
+        images: [{ url: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1200', width: 1200, height: 630, alt: 'Property Legal Services - RealtyDoor' }],
+    },
+    twitter: { card: 'summary_large_image', title: 'Property Legal Services | RealtyDoor', description: 'Expert property legal support in Bengaluru.' },
+};
+
+const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+        {
+            '@type': 'Service',
+            name: 'Property Legal Services',
+            description: 'Expert legal services for property transactions including title verification, documentation, registration, and RERA compliance.',
+            provider: { '@type': 'Organization', name: 'RealtyDoor', url: 'https://realtydoor.in' },
+            areaServed: { '@type': 'City', name: 'Bengaluru' },
+            serviceType: 'Legal Services',
+            url: 'https://realtydoor.in/services/legal',
+        },
+        {
+            '@type': 'FAQPage',
+            mainEntity: [
+                { '@type': 'Question', name: 'What is title verification in property?', acceptedAnswer: { '@type': 'Answer', text: 'Title verification is a comprehensive search of ownership history to confirm the seller has clear and marketable title to the property, checking for encumbrances, disputes, or liens.' } },
+                { '@type': 'Question', name: 'What documents are required for property registration in Bengaluru?', acceptedAnswer: { '@type': 'Answer', text: 'You will need sale deed, encumbrance certificate, Khata certificate, property tax receipts, ID proof, and PAN card. RealtyDoor handles the entire documentation process.' } },
+                { '@type': 'Question', name: 'Is RERA verification important before buying property?', acceptedAnswer: { '@type': 'Answer', text: 'Yes. RERA (Real Estate Regulatory Authority) registration ensures the project is legally compliant, on schedule, and the developer is accountable. Always verify before purchasing.' } },
+                { '@type': 'Question', name: 'How long does property registration take in Bengaluru?', acceptedAnswer: { '@type': 'Answer', text: 'Property registration in Bengaluru typically takes 1–3 days once all documents are in order. RealtyDoor coordinates the entire process for a smooth experience.' } },
+            ],
+        },
+    ],
 };
 
 export default function LegalServicesPage() {
     return (
         <>
+            <Script id="legal-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
             <FloatingNav />
 
             <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-zinc-900 via-black to-zinc-900">

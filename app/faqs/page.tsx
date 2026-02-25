@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Script from 'next/script';
 import { FloatingNav } from '@/components/floating-nav';
 import { Footer } from '@/components/footer';
 import { Search, Sparkles, HelpCircle, ChevronDown } from 'lucide-react';
@@ -6,8 +7,31 @@ import Image from 'next/image';
 import { FAQAccordion } from '@/components/faq-accordion';
 
 export const metadata: Metadata = {
-    title: 'FAQs | RealtyDoor - Frequently Asked Questions',
-    description: 'Find answers to common questions about buying, selling, renting properties, loans, legal services, and more.',
+    title: 'Real Estate FAQs | Buying, Selling & Loans | RealtyDoor',
+    description: 'Get answers to the most common real estate questions in India. Buying, selling, home loans, legal services, and property management explained by RealtyDoor experts.',
+    keywords: ['real estate FAQ India', 'property buying questions', 'home loan FAQ', 'property registration questions', 'RERA FAQ', 'sell property FAQ'],
+    alternates: { canonical: 'https://realtydoor.in/faqs' },
+    openGraph: {
+        title: 'Real Estate FAQs | RealtyDoor',
+        description: 'All your property questions answered. Buying, selling, loans, legal and management — covered by experts.',
+        url: 'https://realtydoor.in/faqs',
+        type: 'website',
+        images: [{ url: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1200', width: 1200, height: 630, alt: 'RealtyDoor FAQs' }],
+    },
+    twitter: { card: 'summary_large_image', title: 'Real Estate FAQs | RealtyDoor', description: 'Expert answers to all your property questions.' },
+};
+
+const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: [
+        { '@type': 'Question', name: 'How do I search for properties on RealtyDoor?', acceptedAnswer: { '@type': 'Answer', text: 'You can search for properties using our advanced search filters on the homepage. Filter by location, price range, property type, bedrooms, and amenities to find your perfect home.' } },
+        { '@type': 'Question', name: 'Are all properties on RealtyDoor verified?', acceptedAnswer: { '@type': 'Answer', text: 'Yes, every property listed on RealtyDoor undergoes thorough verification. We check ownership documents, legal clearances, and physical inspection before listing.' } },
+        { '@type': 'Question', name: 'What is the minimum down payment required for a home loan?', acceptedAnswer: { '@type': 'Answer', text: 'Banks typically require 10–20% down payment. This varies based on property value, credit score, and the lending institution.' } },
+        { '@type': 'Question', name: 'How long does it take to sell a property on RealtyDoor?', acceptedAnswer: { '@type': 'Answer', text: 'Properties listed on RealtyDoor sell within 30–90 days on average. With expert marketing, many sell within 30 days at the right price.' } },
+        { '@type': 'Question', name: 'What legal services does RealtyDoor provide?', acceptedAnswer: { '@type': 'Answer', text: 'We provide title verification, document drafting, registration assistance, legal due diligence, and dispute resolution services.' } },
+        { '@type': 'Question', name: 'What documents do I need to buy a property in India?', acceptedAnswer: { '@type': 'Answer', text: 'You will need PAN card, Aadhaar card, address proof, income proof, bank statements, and passport-size photographs. RealtyDoor guides you through the full process.' } },
+    ],
 };
 
 export default function FAQsPage() {

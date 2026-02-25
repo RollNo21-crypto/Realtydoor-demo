@@ -1,3 +1,5 @@
+import { Metadata } from 'next';
+import Script from 'next/script';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -12,6 +14,50 @@ import { HotDeals } from '@/components/hot-deals';
 import { getFeaturedProperties } from '@/lib/mock-data';
 import { ArrowRight, Shield, Eye, Sparkles, Award, Users, TrendingUp, CheckCircle } from 'lucide-react';
 
+export const metadata: Metadata = {
+    title: 'RealtyDoor | Premium Residential Plots in Bengaluru | RERA Verified',
+    description: 'Discover RERA-verified premium residential plots in Bengaluru. RealtyDoor offers expert consultancy, title verification, and end-to-end support for plot investments.',
+    keywords: ['premium residential plots Bengaluru', 'buy plots Bengaluru', 'plots for sale Bengaluru', 'residential land investment', 'RERA verified plots', 'real estate investment Bengaluru', 'RealtyDoor'],
+    alternates: { canonical: 'https://realtydoor.in' },
+    openGraph: {
+        title: 'RealtyDoor | Premium Residential Plots in Bengaluru',
+        description: 'Discover RERA-verified premium residential plots in Bengaluru. Expert advisory, legal support, and 5000+ happy families.',
+        url: 'https://realtydoor.in',
+        type: 'website',
+        siteName: 'RealtyDoor',
+        images: [{ url: 'https://realtydoor.in/og-image.jpg', width: 1200, height: 630, alt: 'RealtyDoor - Premium Residential Plots' }],
+    },
+    twitter: { card: 'summary_large_image', title: 'RealtyDoor | Premium Residential Plots in Bengaluru', description: 'Invest in RERA-verified residential plots in Bengaluru.' },
+};
+
+const homeJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+        {
+            '@type': 'Organization',
+            name: 'RealtyDoor',
+            url: 'https://realtydoor.in',
+            logo: 'https://realtydoor.in/logo.png',
+            contactPoint: { '@type': 'ContactPoint', telephone: '+91-91369-54648', contactType: 'customer service', areaServed: 'IN' },
+            sameAs: ['https://www.facebook.com/realtydoor', 'https://www.instagram.com/realtydoor'],
+        },
+        {
+            '@type': 'WebSite',
+            name: 'RealtyDoor',
+            url: 'https://realtydoor.in',
+            potentialAction: { '@type': 'SearchAction', target: 'https://realtydoor.in/properties?q={search_term_string}', 'query-input': 'required name=search_term_string' },
+        },
+        {
+            '@type': 'RealEstateAgent',
+            name: 'RealtyDoor',
+            description: 'RealtyDoor is a premium real estate platform connecting buyers with verified residential plots in Bengaluru and across India.',
+            url: 'https://realtydoor.in',
+            areaServed: { '@type': 'City', name: 'Bengaluru' },
+            aggregateRating: { '@type': 'AggregateRating', ratingValue: '4.9', reviewCount: '2400' },
+        },
+    ],
+};
+
 export default async function HomePage() {
     // Use mock data instead of database
     const featuredProperties = getFeaturedProperties();
@@ -19,34 +65,36 @@ export default async function HomePage() {
     return (
         <>
             <FloatingNav />
+            <Script id="home-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(homeJsonLd) }} />
 
             {/* Hero Section with Video Background */}
             <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
-                {/* Video Background */}
-                <video
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="absolute inset-0 h-full w-full object-cover"
-                >
-                    <source src="/Luxury_Animated_Video_Loop.mp4" type="video/mp4" />
-                </video>
+                {/* Hero Background Image */}
+                <Image
+                    src="https://realtydoor.com/wp-content/uploads/2025/12/banner-3-scaled.webp"
+                    alt="Premium Residential Plots"
+                    fill
+                    className="absolute inset-0 object-cover"
+                    priority
+                />
 
                 <div className="hero-gradient absolute inset-0" />
                 <div className="gradient-overlay absolute inset-0" />
 
                 <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-32">
                     {/* Hero Content - Centered */}
-                    <div className="mx-auto max-w-4xl text-center mb-16 animate-float">
+                    <div className="mx-auto max-w-5xl text-center mb-16 animate-float">
                         <span className="mb-8 inline-block rounded-full border border-white/30 bg-white/20 px-6 py-2 text-sm font-bold uppercase tracking-widest text-white backdrop-blur-sm animate-slide-up">
-                            Premium Properties • Verified Builders
+                            Trusted by 10,000+ Families • RERA Verified
                         </span>
                         <h1 className="font-display text-6xl leading-[1.1] text-white md:text-8xl animate-slide-up stagger-1">
-                            Discover Your Next
+                            Own the <span className="italic font-normal gradient-text font-serif">Earth</span>
                             <br />
-                            <span className="italic font-normal">Luxury</span> Investment
+                            Beneath Your Legacy
                         </h1>
+                        <p className="mt-8 text-xl text-white/80 max-w-2xl mx-auto animate-slide-up stagger-2">
+                            The definitive collection of Bengaluru’s most strategic RERA-verified residential plots. Secure your family's future on India's most prestigious corridors.
+                        </p>
                     </div>
 
                     {/* Property Search Form */}
@@ -113,21 +161,25 @@ export default async function HomePage() {
             </section> */}
 
             {/* Featured Projects */}
-            <section className="bg-background py-24">
-                <div className="mx-auto max-w-7xl px-6">
-                    <div className="mb-16 flex flex-col justify-between md:flex-row md:items-end">
-                        <div className="max-w-2xl">
-                            <h2 className="font-display text-4xl md:text-5xl mb-6">Featured Projects</h2>
-                            <p className="text-lg text-muted-foreground">
-                                Handpicked premium properties from our exclusive collection
-                            </p>
+            <section className="bg-background py-24 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -mr-64 -mt-64" />
+
+                <div className="relative mx-auto max-w-7xl px-6">
+                    <div className="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+                        <div>
+                            <span className="inline-flex items-center gap-2 text-primary font-bold uppercase tracking-widest text-sm mb-4">
+                                <Sparkles className="h-4 w-4" /> Selected Masterpieces
+                            </span>
+                            <h2 className="font-display text-4xl md:text-6xl max-w-2xl">
+                                Featured <span className="italic font-normal gradient-text">Investment</span> Opportunities
+                            </h2>
                         </div>
-                        <Button variant="link" asChild className="mt-8 md:mt-0">
-                            <Link href="/properties" className="group">
-                                View all properties
-                                <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                            </Link>
-                        </Button>
+                        <Link href="/properties">
+                            <Button variant="outline" className="rounded-full px-8 py-6 group hover:bg-primary hover:text-white transition-all duration-300">
+                                View Full Portfolio
+                                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                            </Button>
+                        </Link>
                     </div>
 
                     <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
@@ -164,22 +216,23 @@ export default async function HomePage() {
             <section className="bg-background py-24">
                 <div className="mx-auto max-w-7xl px-6">
                     <div className="mb-16 text-center">
-                        <h2 className="font-display text-4xl md:text-5xl mb-6">
-                            Investment Tools & Exclusive Deals
+                        <span className="inline-block text-primary font-bold uppercase tracking-widest text-sm mb-4">Strategic Framework</span>
+                        <h2 className="font-display text-4xl md:text-6xl mb-6">
+                            Wealth <span className="italic font-normal gradient-text">Planning</span> & Opportunities
                         </h2>
-                        <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-                            Plan your investment with our loan calculator and discover limited-time offers
+                        <p className="mx-auto max-w-2xl text-xl text-muted-foreground">
+                            Leverage our analytical tools to calculate your asset's performance and explore time-sensitive high-yield opportunities.
                         </p>
                     </div>
 
                     <div className="grid gap-12 lg:grid-cols-2">
                         {/* Loan Calculator */}
-                        <div>
+                        <div className="glass-card p-1">
                             <LoanCalculator />
                         </div>
 
                         {/* Hot Deals */}
-                        <div>
+                        <div className="glass-card p-1">
                             <HotDeals />
                         </div>
                     </div>
@@ -187,17 +240,18 @@ export default async function HomePage() {
             </section>
 
             {/* CTA */}
-            <section className="bg-background py-24">
+            <section className="bg-background py-24 relative overflow-hidden">
                 <div className="mx-auto max-w-7xl px-6">
-                    <div className="relative flex flex-col items-center gap-16 overflow-hidden rounded-2xl bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900 p-12 text-center md:flex-row md:p-24 md:text-left">
-                        <div className="absolute inset-0 gradient-overlay opacity-50" />
+                    <div className="relative flex flex-col items-center gap-16 overflow-hidden rounded-[3rem] bg-zinc-950 p-12 text-center md:flex-row md:p-24 md:text-left border border-white/10 group">
+                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+
                         <div className="flex-1 relative z-10">
-                            <h2 className="font-display text-4xl text-white md:text-5xl mb-6">
-                                Ready to find your
+                            <h2 className="font-display text-5xl text-white md:text-7xl mb-8 leading-tight">
+                                Prepare for Your
                                 <br />
-                                next masterpiece?
+                                Next <span className="gradient-text italic">Masterpiece</span>
                             </h2>
-                            <p className="mb-10 text-lg text-slate-400">
+                            <p className="mb-12 text-xl text-slate-400 max-w-lg leading-relaxed">
                                 Join our exclusive network of premium builders and discerning buyers today.
                             </p>
                             <div className="flex flex-col gap-4 sm:flex-row">

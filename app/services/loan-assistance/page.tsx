@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Script from 'next/script';
 import { FloatingNav } from '@/components/floating-nav';
 import { Footer } from '@/components/footer';
 import { ServiceCTAForm } from '@/components/service-cta-form';
@@ -8,13 +9,48 @@ import { Wallet, TrendingDown, Shield, Clock, FileCheck, Headphones, CheckCircle
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-    title: 'Loan Assistance | RealtyDoor - Home Loan Made Easy',
-    description: 'Get the best home loan rates with our expert assistance. Compare offers, calculate EMI, and get end-to-end support for your home loan application.',
+    title: 'Home Loan Assistance in Bengaluru | Best Rates | RealtyDoor',
+    description: 'Get the best home loan rates with expert assistance in Bengaluru. Compare offers from 20+ banks, calculate EMI, and get end-to-end support for your home loan application.',
+    keywords: ['home loan Bengaluru', 'home loan assistance', 'best home loan rates India', 'EMI calculator', 'property loan', 'housing loan', 'loan pre-approval'],
+    alternates: { canonical: 'https://realtydoor.in/services/loan-assistance' },
+    openGraph: {
+        title: 'Home Loan Assistance in Bengaluru | RealtyDoor',
+        description: 'Compare home loan offers from 20+ banks and get expert guidance for fast approval. Use our EMI calculator.',
+        url: 'https://realtydoor.in/services/loan-assistance',
+        type: 'website',
+        images: [{ url: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200', width: 1200, height: 630, alt: 'Home Loan Assistance - RealtyDoor' }],
+    },
+    twitter: { card: 'summary_large_image', title: 'Home Loan Assistance | RealtyDoor', description: 'Get best home loan rates in Bengaluru with expert guidance.' },
+};
+
+const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+        {
+            '@type': 'Service',
+            name: 'Home Loan Assistance',
+            description: 'Expert home loan assistance: compare rates across 20+ banks, EMI calculator, documentation support, and fast approval.',
+            provider: { '@type': 'Organization', name: 'RealtyDoor', url: 'https://realtydoor.in' },
+            areaServed: { '@type': 'City', name: 'Bengaluru' },
+            serviceType: 'Financial Services',
+            url: 'https://realtydoor.in/services/loan-assistance',
+        },
+        {
+            '@type': 'FAQPage',
+            mainEntity: [
+                { '@type': 'Question', name: 'What is the current home loan interest rate in India?', acceptedAnswer: { '@type': 'Answer', text: 'Home loan interest rates in India typically range from 8.5% to 10.5% per annum depending on the bank and applicant profile. RealtyDoor helps you compare and secure the lowest possible rate.' } },
+                { '@type': 'Question', name: 'How much home loan can I get on my salary?', acceptedAnswer: { '@type': 'Answer', text: 'Generally, banks offer home loans up to 60 times your monthly net salary. For example, a monthly salary of ₹50,000 may qualify you for a loan of up to ₹30 Lakhs.' } },
+                { '@type': 'Question', name: 'How long does home loan approval take?', acceptedAnswer: { '@type': 'Answer', text: 'With proper documentation, home loan approval can take 7–15 working days. RealtyDoor facilitates fast-track processing with partner banks within as little as 7 days.' } },
+                { '@type': 'Question', name: 'What documents are needed for a home loan?', acceptedAnswer: { '@type': 'Answer', text: 'You typically need salary slips (3 months), bank statements (6 months), ITR (2 years), identity and address proof, and property documents. RealtyDoor guides you through the entire checklist.' } },
+            ],
+        },
+    ],
 };
 
 export default function LoanAssistancePage() {
     return (
         <>
+            <Script id="loan-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
             <FloatingNav />
 
             {/* Hero Section - Bento Style */}

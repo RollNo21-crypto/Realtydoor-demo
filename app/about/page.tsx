@@ -1,17 +1,44 @@
 import { Metadata } from 'next';
+import Script from 'next/script';
 import { FloatingNav } from '@/components/floating-nav';
 import { Footer } from '@/components/footer';
 import { Target, Users, Award, TrendingUp, Shield, Heart, Building2, CheckCircle2, Sparkles, Calendar, MapPin, Trophy } from 'lucide-react';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-    title: 'About Us | RealtyDoor - Building Dreams, Creating Homes',
-    description: 'Learn about RealtyDoor\'s mission to redefine luxury real estate with trust, transparency, and excellence. Meet our team and discover our values.',
+    title: 'About RealtyDoor | Trusted Real Estate Experts in Bengaluru Since 2015',
+    description: 'RealtyDoor is Bengaluru\'s trusted real estate platform. 9+ years of excellence, 5000+ properties sold, 10,000+ happy clients. Learn about our mission, team, and values.',
+    keywords: ['about RealtyDoor', 'real estate company Bengaluru', 'trusted property agents India', 'real estate experts', 'RealtyDoor team'],
+    alternates: { canonical: 'https://realtydoor.in/about' },
+    openGraph: {
+        title: 'About RealtyDoor | Trusted Real Estate Experts Since 2015',
+        description: '9+ years of excellence, 5000+ properties sold, 10,000+ happy clients. India\'s most trusted real estate platform.',
+        url: 'https://realtydoor.in/about',
+        type: 'website',
+        images: [{ url: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200', width: 1200, height: 630, alt: 'About RealtyDoor' }],
+    },
+    twitter: { card: 'summary_large_image', title: 'About RealtyDoor', description: 'India\'s most trusted real estate platform since 2015.' },
+};
+
+const aboutJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: 'About RealtyDoor',
+    url: 'https://realtydoor.in/about',
+    description: 'RealtyDoor is a premium real estate platform with 9+ years of excellence, connecting buyers with verified properties in Bengaluru and across India.',
+    mainEntity: {
+        '@type': 'Organization',
+        name: 'RealtyDoor',
+        foundingDate: '2015',
+        numberOfEmployees: { '@type': 'QuantitativeValue', value: 200 },
+        url: 'https://realtydoor.in',
+    },
 };
 
 export default function AboutPage() {
     return (
         <>
+            <Script id="about-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutJsonLd) }} />
             <FloatingNav />
 
             {/* Hero Section - Full Screen with Bento Stats */}
@@ -32,27 +59,27 @@ export default function AboutPage() {
                         <div className="space-y-8">
                             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 border border-primary/30 backdrop-blur-sm">
                                 <Sparkles className="h-4 w-4 text-primary" />
-                                <span className="text-sm font-semibold text-white">Since 2015</span>
+                                <span className="text-sm font-semibold text-white">The Gold Standard Since 2015</span>
                             </div>
 
                             <h1 className="font-display text-5xl md:text-7xl text-white leading-tight">
-                                Building Dreams,
-                                <span className="block gradient-text italic">Creating Homes</span>
+                                Curating Legacies,
+                                <span className="block gradient-text italic">Defining Excellence</span>
                             </h1>
 
-                            <p className="text-xl text-slate-300 leading-relaxed">
-                                Redefining luxury real estate with trust, transparency, and excellence. We connect discerning buyers with verified premium properties across India.
+                            <p className="text-xl text-slate-300 leading-relaxed max-w-xl">
+                                RealtyDoor is India's most trusted real estate consultancy, dedicated to transforming the asset acquisition experience through uncompromising transparency and expert data-driven insights.
                             </p>
 
                             <div className="flex flex-wrap gap-4">
                                 <a href="#our-story">
                                     <button className="px-8 py-4 bg-gradient-to-r from-primary to-primary/90 text-white font-semibold rounded-full hover:shadow-[0_0_30px_rgba(255,87,34,0.5)] transition-all duration-300 hover:scale-105">
-                                        Our Story
+                                        Discover Our Heritage
                                     </button>
                                 </a>
                                 <a href="#team">
                                     <button className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-full border border-white/20 hover:bg-white/20 transition-all duration-300">
-                                        Meet the Team
+                                        Meet the Architects of Success
                                     </button>
                                 </a>
                             </div>
@@ -61,24 +88,24 @@ export default function AboutPage() {
                         {/* Stats Bento Grid */}
                         <div className="grid grid-cols-2 gap-4">
                             <div className="col-span-2 rounded-3xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/20 p-8 backdrop-blur-sm">
-                                <div className="text-5xl font-display gradient-text mb-2">9+</div>
-                                <div className="text-white/80">Years of Excellence</div>
+                                <div className="text-5xl font-display gradient-text mb-2">9+ Years</div>
+                                <div className="text-white/80 font-medium">Unmatched Real Estate Authority</div>
                             </div>
                             <div className="rounded-3xl bg-white/5 border border-white/10 p-6 backdrop-blur-sm hover-lift">
                                 <div className="text-3xl font-display text-white mb-2">5000+</div>
-                                <div className="text-sm text-white/70">Properties Sold</div>
+                                <div className="text-sm text-white/70">Premium Closures</div>
                             </div>
                             <div className="rounded-3xl bg-white/5 border border-white/10 p-6 backdrop-blur-sm hover-lift">
                                 <div className="text-3xl font-display text-white mb-2">10K+</div>
-                                <div className="text-sm text-white/70">Happy Clients</div>
+                                <div className="text-sm text-white/70">Discerning Families</div>
                             </div>
                             <div className="rounded-3xl bg-white/5 border border-white/10 p-6 backdrop-blur-sm hover-lift">
                                 <div className="text-3xl font-display text-white mb-2">15+</div>
-                                <div className="text-sm text-white/70">Cities</div>
+                                <div className="text-sm text-white/70">Strategic Hubs</div>
                             </div>
                             <div className="rounded-3xl bg-white/5 border border-white/10 p-6 backdrop-blur-sm hover-lift">
-                                <div className="text-3xl font-display text-white mb-2">98%</div>
-                                <div className="text-sm text-white/70">Satisfaction Rate</div>
+                                <div className="text-3xl font-display text-white mb-2">99%</div>
+                                <div className="text-sm text-white/70">Retention Rate</div>
                             </div>
                         </div>
                     </div>
@@ -94,8 +121,8 @@ export default function AboutPage() {
                                 <Target className="h-8 w-8 text-primary" />
                             </div>
                             <h2 className="font-display text-3xl mb-4">Our Mission</h2>
-                            <p className="text-muted-foreground text-lg leading-relaxed">
-                                To create a trusted ecosystem that connects discerning buyers with verified premium properties, ensuring transparency, quality, and exceptional service at every step of the journey.
+                            <p className="text-muted-foreground text-lg leading-relaxed italic">
+                                "To democratize access to premium residential plots by eliminating ambiguity, ensuring every investment is backed by absolute legal certainty and ethical excellence."
                             </p>
                         </div>
 
@@ -104,8 +131,8 @@ export default function AboutPage() {
                                 <TrendingUp className="h-8 w-8 text-primary" />
                             </div>
                             <h2 className="font-display text-3xl mb-4">Our Vision</h2>
-                            <p className="text-muted-foreground text-lg leading-relaxed">
-                                To be India's most trusted real estate platform, revolutionizing property transactions through technology, transparency, and customer-centric innovation.
+                            <p className="text-muted-foreground text-lg leading-relaxed italic">
+                                "To become the global benchmark for trust in the Indian real estate sector, leveraging predictive technology and human expertise to build tomorrow's heritage today."
                             </p>
                         </div>
                     </div>
