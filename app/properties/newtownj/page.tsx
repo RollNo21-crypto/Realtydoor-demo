@@ -13,6 +13,7 @@ import {
     Clapperboard, Baby, Dumbbell, Car,
 } from 'lucide-react';
 import { StatsTickerBanner } from '@/components/stats-ticker-banner';
+import { PropertyCTA } from '@/components/property-cta';
 
 const img1 = 'https://realtydoor.com/wp-content/uploads/2024/05/j-town-1.webp';
 const img2 = 'https://realtydoor.com/wp-content/uploads/2024/05/j-town-2.webp';
@@ -407,52 +408,7 @@ export default function NewtownJPage() {
 
 
             {/* CTA */}
-            <section className="py-20 px-6 md:px-12 bg-white border-t border-black/6">
-                <div className="max-w-6xl mx-auto">
-                    <div className="grid md:grid-cols-2 gap-0 rounded-3xl overflow-hidden"
-                        style={{ boxShadow: '0 24px 70px rgba(0,0,0,0.1)' }}>
-                        {/* Left — property image */}
-                        <div className="relative min-h-[280px]">
-                            <Image src={img1} alt="NewtownJ" fill className="object-cover" />
-                            <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg,rgba(0,0,0,0.3),rgba(0,0,0,0.1))' }} />
-                            <div className="absolute bottom-6 left-6">
-                                <span className="text-white/70 text-xs font-semibold uppercase tracking-widest">Punganur · Andhra Pradesh</span>
-                                <div className="text-white font-display text-3xl mt-1">NewtownJ</div>
-                            </div>
-                        </div>
-                        {/* Right — orange CTA */}
-                        <div className="flex flex-col justify-center px-10 py-12"
-                            style={{ background: 'linear-gradient(135deg,#FF5722,#E64A19)' }}>
-                            <span className="inline-flex items-center gap-2 w-fit px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest border border-white/30 text-white mb-6">
-                                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                                Limited Plots Available
-                            </span>
-                            <h2 className="font-display text-white leading-[0.95] mb-4"
-                                style={{ fontSize: 'clamp(2rem,4.5vw,3rem)' }}>
-                                Your Future<br />
-                                <span className="italic font-light text-white/70">Starts Here.</span>
-                            </h2>
-                            <p className="text-white/60 font-light text-sm leading-relaxed mb-8">
-                                60-acre smart township · 750 plots · Clear title · PKM-UDA approved · Ready for registration.
-                            </p>
-                            <div className="flex flex-col sm:flex-row gap-3">
-                                <a href="tel:+919845012345">
-                                    <Button className="rounded-full px-8 py-5 font-semibold bg-white text-[#FF5722] hover:bg-white/90 w-full sm:w-auto"
-                                        style={{ boxShadow: '0 8px 20px rgba(0,0,0,0.2)' }}>
-                                        <Phone className="mr-2 h-4 w-4" />Call Now
-                                    </Button>
-                                </a>
-                                <a href="https://wa.me/919845012345" target="_blank" rel="noopener noreferrer">
-                                    <Button variant="outline"
-                                        className="rounded-full px-8 py-5 font-semibold border-white/40 text-white hover:bg-white/10 w-full sm:w-auto">
-                                        WhatsApp Us
-                                    </Button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <PropertyCTA propertyName="NewtownJ" image={img1} variant="overlay" brochureUrl={brochureUrl} />
 
 
             <div className="py-8 text-center bg-white border-t border-black/8">

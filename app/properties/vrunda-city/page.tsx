@@ -30,6 +30,7 @@ import {
     Lock,
 } from 'lucide-react';
 import { StatsTickerBanner } from '@/components/stats-ticker-banner';
+import { PropertyCTA } from '@/components/property-cta';
 
 // Brand palette: #FF5722 (orange), #FF7043 (orange-light), #E64A19 (orange-dark), #000 (black), #fff (white)
 
@@ -467,57 +468,7 @@ export default function VrundaCityPage() {
 
 
             {/* CTA */}
-            <section className="relative overflow-hidden" style={{ minHeight: '75vh' }}>
-                <Image
-                    src="https://realtydoor.com/wp-content/uploads/2025/12/banner-3-scaled.webp"
-                    alt="Vrunda City – Book Your Plot"
-                    fill className="object-cover"
-                />
-                <div className="absolute inset-0 bg-black/65" />
-                <div className="absolute inset-0"
-                    style={{ background: 'linear-gradient(135deg, rgba(255,87,34,0.22) 0%, transparent 65%)' }} />
-                <div className="absolute bottom-0 left-0 right-0 h-1"
-                    style={{ background: 'linear-gradient(90deg, #FF5722, #FF7043, #E64A19)' }} />
-
-                <div className="relative h-full flex items-center justify-center px-6 py-28">
-                    <div className="max-w-2xl w-full mx-auto text-center">
-
-                        {/* pulsing badge */}
-                        <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] mb-8 border border-[#FF5722]/50 bg-[#FF5722]/15 text-[#FF5722]">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#FF5722] animate-pulse" />
-                            Ready for Registration
-                        </div>
-
-                        <h2 className="font-display text-5xl md:text-6xl text-white mb-3">
-                            Secure Your Plot
-                        </h2>
-                        <h2 className="font-display text-5xl md:text-6xl text-[#FF7043] italic font-light mb-8">
-                            in Vrunda City
-                        </h2>
-
-                        <p className="text-white/60 text-lg font-light mb-10 max-w-lg mx-auto">
-                            Limited plots available. Fully developed. Ready for immediate registration.
-                        </p>
-
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a href="tel:+919845012345">
-                                <Button className="rounded-full px-10 py-6 text-base font-semibold text-white w-full sm:w-auto"
-                                    style={{ background: 'linear-gradient(135deg, #FF5722, #E64A19)', boxShadow: '0 8px 30px rgba(255,87,34,0.50)' }}>
-                                    <Phone className="mr-2 h-5 w-5" />
-                                    Call Now
-                                </Button>
-                            </a>
-                            <a href="https://wa.me/919845012345" target="_blank" rel="noopener noreferrer">
-                                <Button variant="outline"
-                                    className="rounded-full px-10 py-6 text-base font-semibold border-[#FF5722]/50 text-[#FF7043] bg-[#FF5722]/10 hover:bg-[#FF5722]/20 w-full sm:w-auto">
-                                    WhatsApp Us
-                                </Button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
+            <PropertyCTA propertyName="Vrunda City" image="https://realtydoor.com/wp-content/uploads/2025/12/banner-3-scaled.webp" variant="split" />
 
             {/* back link */}
             <div className="py-10 text-center bg-white border-t border-black/10">

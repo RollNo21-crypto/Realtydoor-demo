@@ -12,6 +12,7 @@ import {
     LayoutGrid, Leaf, Landmark, Droplets, Lock, FileText, ArrowRight,
 } from 'lucide-react';
 import { StatsTickerBanner } from '@/components/stats-ticker-banner';
+import { PropertyCTA } from '@/components/property-cta';
 
 const img1 = 'https://realtydoor.com/wp-content/uploads/2024/05/aashrithaa-brindhavan1-1.jpg';
 const img2 = 'https://realtydoor.com/wp-content/uploads/2024/05/aashrithaa-brindhavan-2.jpg';
@@ -49,56 +50,74 @@ export default function AashrithaaPage() {
             {/* ═══════════════════════════════════
                 HERO — full-width cinematic image stack 
             ═══════════════════════════════════ */}
-            <section className="relative" id="overview">
+            {/* ══════════════════════════════════════════════════
+                HERO — VisionOS Style Glassmorphism Console
+            ══════════════════════════════════════════════════ */}
+            <section className="relative w-full min-h-[90vh] flex flex-col justify-end pb-8 pt-32 px-4 md:px-8" id="overview">
                 {/* Full-width hero image */}
-                <div className="relative w-full h-[70vh] md:h-[85vh]">
+                <div className="absolute inset-0 w-full h-full z-0">
                     <Image src={img1} alt="Aashrithaa Brindavan" fill className="object-cover" priority />
-                    <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-white" />
-
+                    {/* Deep gradient for massive contrast */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/80" />
                 </div>
 
-                {/* Floating info card — overlaps image bottom / sits on white */}
-                <div className="max-w-5xl mx-auto px-6 -mt-24 relative z-10 pb-8">
-                    <div className="bg-white rounded-3xl shadow-2xl shadow-black/10 p-8 md:p-12 border border-black/6">
-                        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8">
-                            <div>
-                                <div className="flex items-center gap-2 mb-4">
-                                    <MapPin className="h-4 w-4 text-[#FF5722]" />
-                                    <span className="text-xs font-black uppercase tracking-widest text-black/40">Kanakapura Road · Near Art of Living · South Bengaluru</span>
+                {/* Floating Glass Console */}
+                <div className="relative z-10 max-w-7xl mx-auto w-full">
+                    <div className="bg-black/20 backdrop-blur-2xl rounded-[2rem] border border-white/15 p-8 md:p-12 shadow-2xl overflow-hidden relative group">
+
+                        {/* Shimmer effect */}
+                        <div className="absolute top-0 -inset-full h-full w-1/2 z-0 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white/10 opacity-0 group-hover:opacity-100 group-hover:animate-shimmer" />
+
+                        <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-12">
+
+                            {/* Left Side: Title & Description */}
+                            <div className="flex-1">
+                                <div className="flex flex-wrap items-center gap-3 mb-6">
+                                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-[#FF5722] text-white">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                                        Pre-Launch Offer
+                                    </span>
+                                    <div className="flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-widest text-white/70 bg-white/10 px-3 py-1 rounded-full border border-white/10">
+                                        <MapPin className="h-3 w-3 text-[#FF5722]" /> Kanakapura Road · Bengaluru
+                                    </div>
                                 </div>
-                                <h1 className="font-display text-black leading-[0.95]" style={{ fontSize: 'clamp(2.8rem,6vw,5rem)' }}>
+                                <h1 className="font-display text-white leading-[0.95] mb-6" style={{ fontSize: 'clamp(3.5rem,7vw,6.5rem)' }}>
                                     Aashrithaa<br />
                                     <span className="text-[#FF7043] italic font-light">Brindavan</span>
                                 </h1>
-                                <p className="mt-4 text-black/55 font-light max-w-lg leading-relaxed">
-                                    A lush sanctuary next to Art of Living International Center. Discover more than well-crafted
-                                    plots — be embraced by nature&apos;s serene beauty in an idyllic haven.
+                                <p className="text-white/60 font-light text-xl leading-relaxed max-w-xl">
+                                    A lush sanctuary next to Art of Living International Center. Enjoy <span className="text-white font-medium">uncompromised serenity</span> in an idyllic, fully developed haven.
                                 </p>
                             </div>
 
-                            {/* Stats pill column */}
-                            <div className="flex flex-row md:flex-col gap-4 md:gap-3 flex-shrink-0">
-                                {[{ v: '14', u: 'Acres' }, { v: '236', u: 'Plots' }, { v: '916–2155', u: 'Sq. Ft.' }, { v: '30 min', u: 'Airport' }].map(({ v, u }) => (
-                                    <div key={u} className="text-center px-5 py-3 rounded-2xl bg-[#FF5722]/[0.06] border border-[#FF5722]/15">
-                                        <div className="text-xl md:text-2xl font-light text-black">{v}</div>
-                                        <div className="text-[9px] font-black uppercase tracking-widest text-[#FF5722] mt-0.5">{u}</div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
+                            {/* Right Side: Glass Stats & CTA */}
+                            <div className="flex flex-col gap-6 w-full md:w-auto flex-shrink-0">
+                                {/* Stats Grid inside Glass */}
+                                <div className="grid grid-cols-2 gap-3 h-full">
+                                    {[{ v: '14', u: 'Acres Total' }, { v: '236', u: 'Premium Plots' }, { v: '916+', u: 'Sq.Ft. Sizes' }, { v: '30 min', u: 'To Airport' }].map(({ v, u }) => (
+                                        <div key={u} className="bg-white/5 border border-white/10 rounded-2xl p-4 flex flex-col justify-center text-center hover:bg-white/10 transition-colors">
+                                            <div className="text-2xl md:text-3xl font-light text-white mb-1">{v}</div>
+                                            <div className="text-[9px] font-black uppercase tracking-widest text-white/50">{u}</div>
+                                        </div>
+                                    ))}
+                                </div>
 
-                        {/* CTA row */}
-                        <div className="mt-8 pt-8 border-t border-black/6 flex flex-wrap items-center gap-4">
-                            <a href="tel:+919845012345">
-                                <Button className="rounded-full px-8 py-5 font-semibold text-white"
-                                    style={{ background: 'linear-gradient(135deg,#FF5722,#E64A19)', boxShadow: '0 8px 30px rgba(255,87,34,0.35)' }}>
-                                    <Phone className="mr-2 h-4 w-4" />Schedule a Visit
-                                </Button>
-                            </a>
-                            <a href={brochureUrl} target="_blank" rel="noopener noreferrer"
-                                className="flex items-center gap-2 text-sm font-semibold text-[#FF5722] hover:text-[#E64A19] transition-colors">
-                                <FileText className="h-4 w-4" />Download Brochure<ArrowRight className="h-3.5 w-3.5" />
-                            </a>
+                                {/* Actions */}
+                                <div className="flex flex-col sm:flex-row gap-3 mt-2">
+                                    <a href="tel:+919845012345" className="w-full">
+                                        <Button className="w-full rounded-2xl px-8 py-7 font-semibold text-white shadow-xl shadow-[#FF5722]/20 hover:shadow-[#FF5722]/40 transition-all text-base border border-[#FF5722]/50"
+                                            style={{ background: 'linear-gradient(135deg,#FF5722,#E64A19)' }}>
+                                            <Phone className="mr-2 h-5 w-5" />Schedule Visit
+                                        </Button>
+                                    </a>
+                                    <a href={brochureUrl} target="_blank" rel="noopener noreferrer" className="w-full">
+                                        <Button variant="outline" className="w-full rounded-2xl px-8 py-7 font-semibold border-white/20 bg-white/5 hover:bg-white/10 text-white text-base backdrop-blur-md">
+                                            <FileText className="mr-2 h-5 w-5 opacity-70" />Brochure
+                                        </Button>
+                                    </a>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -107,62 +126,72 @@ export default function AashrithaaPage() {
             {/* Stats Ticker */}
             <StatsTickerBanner />
 
-            {/* Feature Tags */}
-            <section className="py-10 px-6 bg-white" id="features">
-                <div className="max-w-5xl mx-auto flex flex-wrap justify-center gap-3">
-                    {allFeatures.map(f => (
-                        <span key={f} className="px-5 py-2.5 rounded-full font-semibold text-sm border border-[#FF5722]/25 text-[#FF5722] bg-[#FF5722]/[0.05]">{f}</span>
-                    ))}
-                </div>
-            </section>
-
             {/* ═══════════════════════════════════
-                ABOUT — large pull quote + image mosaic
+                THE EXPERIENCE — immersive feature set
             ═══════════════════════════════════ */}
-            <section className="py-20 px-6 md:px-12 bg-white">
-                <div className="max-w-6xl mx-auto">
-                    <div className="grid md:grid-cols-2 gap-16 items-center">
-                        {/* Image mosaic left */}
-                        <div className="grid grid-cols-2 grid-rows-2 gap-3 aspect-square">
-                            <div className="relative rounded-2xl overflow-hidden row-span-2">
-                                <Image src={img2} alt="Brindavan View 1" fill className="object-cover" />
-                            </div>
-                            <div className="relative rounded-2xl overflow-hidden">
-                                <Image src={img3} alt="Brindavan View 2" fill className="object-cover" />
-                            </div>
-                            <div className="relative rounded-2xl overflow-hidden"
-                                style={{ background: 'linear-gradient(135deg,#FF5722,#E64A19)' }}>
-                                <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
-                                    <span className="text-3xl font-extralight text-white">236</span>
-                                    <span className="text-[9px] font-black uppercase tracking-widest text-white/60 mt-1">Planned Plots</span>
-                                </div>
-                            </div>
-                        </div>
+            <section className="py-24 px-4 md:px-8 bg-[#FAFAFA]" id="features">
+                <div className="max-w-7xl mx-auto">
+                    <div className="grid lg:grid-cols-12 gap-16 lg:gap-8 items-center">
 
-                        {/* Pull quote right */}
-                        <div>
-                            <div className="text-7xl font-display text-[#FF5722]/15 leading-none mb-4">&ldquo;</div>
-                            <p className="text-2xl md:text-3xl font-display text-black leading-snug mb-6 -mt-8">
-                                Where life is all about celebrating cherished family moments amidst nature&apos;s splendour.
+                        {/* Text & Icon Grid (Spans 5 cols) */}
+                        <div className="lg:col-span-5 flex flex-col justify-center">
+                            <span className="text-[#FF5722] font-black uppercase tracking-[0.3em] text-[10px] mb-4">The Brindavan Experience</span>
+                            <div className="text-6xl md:text-7xl font-display text-[#FF5722]/15 leading-none mb-2 -ml-2">&ldquo;</div>
+                            <h2 className="text-3xl md:text-4xl font-display text-black leading-tight mb-8 relative z-10 -mt-8">
+                                Where life is all about celebrating cherished family moments amidst <span className="italic font-light text-[#FF7043]">nature&apos;s splendour.</span>
+                            </h2>
+                            <p className="text-black/50 font-light leading-relaxed mb-10 text-lg">
+                                Over 14 acres of meticulously planned landscapes, offering wide CC roads, underground utilities, and premium lifestyle amenities—all fully developed and ready for your dream home.
                             </p>
-                            <p className="text-black/50 font-light leading-relaxed mb-8">
-                                At Aashrithaa Brindavan, you&apos;ll discover more than just well-crafted residential plots.
-                                Here, you&apos;ll be embraced by nature&apos;s serene beauty in an idyllic haven that&apos;s designed
-                                to keep you connected to all that you love in life.
-                            </p>
-                            <div className="grid grid-cols-2 gap-3">
-                                {[{ v: '14', u: 'Acres', d: 'Total Land' }, { v: '916–2155', u: 'Sq. Ft.', d: 'Plot Range' }].map(({ v, u, d }) => (
-                                    <div key={d} className="p-5 rounded-2xl border border-black/8 bg-black/[0.02]">
-                                        <div className="text-3xl font-light text-black">{v}</div>
-                                        <div className="text-[10px] font-black uppercase tracking-widest text-[#FF5722] mt-0.5">{u}</div>
-                                        <div className="text-xs text-black/40 mt-0.5">{d}</div>
+
+                            {/* Premium Icon Grid */}
+                            <div className="grid grid-cols-2 gap-y-8 gap-x-4">
+                                {keyHighlights.slice(0, 4).map(({ Icon, label }) => (
+                                    <div key={label} className="flex items-start gap-3 group">
+                                        <div className="w-10 h-10 rounded-full bg-white border border-black/5 shadow-sm flex items-center justify-center text-[#FF5722] group-hover:bg-[#FF5722] group-hover:text-white transition-colors flex-shrink-0">
+                                            <Icon className="h-4 w-4" />
+                                        </div>
+                                        <div className="flex-1 pt-0.5">
+                                            <div className="text-sm font-bold text-black leading-tight">{label}</div>
+                                            <div className="text-[9px] text-black/40 uppercase tracking-widest mt-1">Premium Feature</div>
+                                        </div>
                                     </div>
                                 ))}
                             </div>
                         </div>
+
+                        {/* Image Mosaic (Spans 7 cols) */}
+                        <div className="lg:col-span-7 relative w-full aspect-square lg:aspect-auto lg:h-[600px]">
+                            {/* Decorative background blob */}
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-gradient-to-tr from-[#FF5722]/5 to-transparent rounded-full blur-3xl z-0" />
+
+                            <div className="grid grid-cols-12 grid-rows-12 gap-3 md:gap-4 absolute inset-0 z-10">
+                                {/* Main Image */}
+                                <div className="col-span-8 row-span-12 relative rounded-[2rem] overflow-hidden shadow-2xl shadow-black/10 group">
+                                    <Image src={img2} alt="Brindavan View 1" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                                    <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
+                                </div>
+                                {/* Secondary top right */}
+                                <div className="col-span-4 row-span-7 relative rounded-[2rem] overflow-hidden shadow-lg group translate-y-6 md:translate-y-8">
+                                    <Image src={img3} alt="Brindavan View 2" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                                </div>
+                                {/* Stat block bottom right */}
+                                <div className="col-span-4 row-span-5 relative rounded-[2rem] overflow-hidden shadow-lg translate-y-6 md:translate-y-8"
+                                    style={{ background: 'linear-gradient(135deg,#FF5722,#E64A19)' }}>
+                                    <div className="absolute inset-0 flex flex-col items-center justify-center p-3 md:p-6 text-center">
+                                        <span className="text-3xl md:text-5xl font-light text-white mb-2">100<span className="text-xl md:text-2xl">%</span></span>
+                                        <span className="text-[8px] md:text-[9px] font-black uppercase tracking-widest text-white/70">Clear Title</span>
+                                    </div>
+                                    {/* Shimmer */}
+                                    <div className="absolute top-0 -inset-full h-full w-1/2 z-0 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white/20 animate-shimmer" />
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </section>
+
 
             {/* ═══════════════════════════════════
                 MASTER PLAN — left vertical image + right sticky panel
@@ -358,49 +387,7 @@ export default function AashrithaaPage() {
 
 
             {/* CTA */}
-            <section className="py-20 px-6 md:px-12 bg-white">
-                <div className="max-w-6xl mx-auto">
-                    <div className="rounded-3xl overflow-hidden grid md:grid-cols-2"
-                        style={{ boxShadow: '0 24px 80px rgba(255,87,34,0.15)' }}>
-                        {/* Left image */}
-                        <div className="relative min-h-[280px] md:min-h-0">
-                            <Image src={img1} alt="Aashrithaa Brindavan" fill className="object-cover" />
-                            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#FF5722]/30" />
-                        </div>
-                        {/* Right content */}
-                        <div className="p-10 md:p-14 flex flex-col justify-center"
-                            style={{ background: 'linear-gradient(135deg,#FF5722,#E64A19)' }}>
-                            <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] mb-8 border border-white/25 bg-white/10 text-white self-start">
-                                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />Limited Plots
-                            </div>
-                            <h2 className="font-display text-white mb-2" style={{ fontSize: 'clamp(2rem,4vw,3rem)', lineHeight: 1 }}>
-                                Your Dream Awaits
-                            </h2>
-                            <h2 className="font-display text-white/60 italic font-light mb-6" style={{ fontSize: 'clamp(2rem,4vw,3rem)', lineHeight: 1.1 }}>
-                                in Brindavan
-                            </h2>
-                            <p className="text-white/70 font-light mb-8 text-sm leading-relaxed">
-                                Fully developed. Clear title. Ready for registration. Book your plot today and be part of an extraordinary community.
-                            </p>
-                            <div className="flex flex-col sm:flex-row gap-3">
-                                <a href="tel:+919845012345">
-                                    <Button className="rounded-full px-8 py-5 font-semibold bg-white text-[#FF5722] hover:bg-white/90 w-full sm:w-auto"
-                                        style={{ boxShadow: '0 8px 20px rgba(0,0,0,0.15)' }}>
-                                        <Phone className="mr-2 h-4 w-4" />Call Now
-                                    </Button>
-                                </a>
-                                <a href="https://wa.me/919845012345" target="_blank" rel="noopener noreferrer">
-                                    <Button variant="outline"
-                                        className="rounded-full px-8 py-5 font-semibold border-white/40 text-white hover:bg-white/10 w-full sm:w-auto">
-                                        WhatsApp Us
-                                    </Button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
+            <PropertyCTA propertyName="Aashrithaa Brindavan" image={img1} variant="glass" brochureUrl={brochureUrl} />
 
             <div className="py-8 text-center bg-white border-t border-black/8">
                 <Link href="/properties" className="inline-flex items-center font-semibold text-[#FF5722] hover:text-[#E64A19] transition-colors text-sm">

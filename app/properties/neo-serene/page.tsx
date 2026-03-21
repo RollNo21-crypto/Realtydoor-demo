@@ -13,6 +13,7 @@ import {
     PlayCircle,
 } from 'lucide-react';
 import { StatsTickerBanner } from '@/components/stats-ticker-banner';
+import { PropertyCTA } from '@/components/property-cta';
 
 const heroImage = 'https://realtydoor.com/wp-content/uploads/2025/09/banner-1-1-scaled.png';
 const secondImage = 'https://realtydoor.com/wp-content/uploads/2025/09/banner-1-2-scaled.png';
@@ -37,97 +38,106 @@ export default function NeoSerenePage() {
             <FloatingNav />
             <PropertySectionTabs />
 
-            {/* ═══════════════════════
-                HERO — minimal, leads into video
-            ═══════════════════════ */}
-            <section className="pt-24 pb-0 px-6 md:px-12 bg-white" id="overview">
-                <div className="max-w-5xl mx-auto text-center mb-10">
-                    <div className="flex items-center justify-center gap-3 mb-5">
-                        <MapPin className="h-4 w-4 text-[#FF5722]" />
-                        <span className="text-xs font-black uppercase tracking-[0.3em] text-black/40">Near Hoskote · Bengaluru</span>
-                    </div>
-                    <h1 className="font-display text-black leading-[0.95] mb-5" style={{ fontSize: 'clamp(3rem,8vw,6rem)' }}>
-                        Neo Serene
-                    </h1>
-                    <p className="text-[#FF7043] font-display italic font-light mb-6" style={{ fontSize: 'clamp(1.4rem,3vw,2rem)' }}>
-                        Hoskote&apos;s most tranquil plotted development
-                    </p>
+            {/* ══════════════════════════════════════════════════
+                HERO — Custom Premium Bento Layout
+            ══════════════════════════════════════════════════ */}
+            <section className="relative pt-32 pb-16 px-4 md:px-8 overflow-hidden" id="overview">
+                {/* Full-width background image with deep glass overlay */}
+                <div className="absolute inset-0 w-full h-full z-0">
+                    <Image src={heroImage} alt="Neo Serene Background" fill className="object-cover" priority />
+                    <div className="absolute inset-0 bg-black/30 backdrop-blur-md" />
+                </div>
 
-                    {/* Inline stat chips */}
-                    <div className="flex flex-wrap items-center justify-center gap-3 mb-4">
-                        {[
-                            { v: '11 Acres', label: 'Total Land' },
-                            { v: '154 Plots', label: 'Total Units' },
-                            { v: '1200–1500 Sq.Ft.', label: 'Plot Sizes' },
-                            { v: '20 min', label: 'To Airport' },
-                        ].map(({ v, label }) => (
-                            <div key={label} className="flex items-center gap-2 px-4 py-2 rounded-full border border-black/10 bg-black/[0.02]">
-                                <span className="text-sm font-bold text-black">{v}</span>
-                                <span className="text-xs text-black/35">{label}</span>
+                <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-4">
+
+                    {/* Main Title Box (Left, spans 7 cols) */}
+                    <div className="lg:col-span-7 bg-white rounded-[2rem] p-8 md:p-14 flex flex-col justify-center border border-black/5 shadow-sm relative overflow-hidden group min-h-[500px]">
+                        {/* subtle decorative blur */}
+                        <div className="absolute top-0 right-0 -mt-32 -mr-32 w-96 h-96 bg-[#FF5722]/10 rounded-full blur-3xl group-hover:bg-[#FF5722]/20 transition-colors duration-1000" />
+
+                        <div className="flex flex-wrap items-center gap-3 mb-8 relative z-10">
+                            <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest bg-black/[0.03] border border-black/[0.05] text-black/60">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#FF5722] animate-pulse" />
+                                Ready for Registration
+                            </span>
+                            <div className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-black/40 bg-black/[0.03] border border-black/[0.05] px-4 py-1.5 rounded-full">
+                                <MapPin className="h-3 w-3 text-[#FF5722]" /> Hoskote · Bengaluru
                             </div>
-                        ))}
-                        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#FF5722] text-white text-xs font-black uppercase tracking-widest">
-                            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />Ready for Registration
-                        </span>
-                    </div>
-                </div>
+                        </div>
 
-                {/* ═══ VIDEO — main focal point ═══ */}
-                <div className="max-w-5xl mx-auto">
-                    <div
-                        className="relative w-full rounded-3xl overflow-hidden border border-black/8 cursor-pointer group"
-                        style={{ aspectRatio: '16/9', boxShadow: '0 32px 80px rgba(0,0,0,0.15)' }}
-                        onClick={() => setVideoStarted(true)}
-                    >
-                        {videoStarted ? (
-                            <iframe
-                                src="https://www.youtube.com/embed/DLnk_1_HuAc?autoplay=1&rel=0"
-                                title="Neo Serene Video Tour"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen
-                                className="absolute inset-0 w-full h-full"
-                            />
-                        ) : (
-                            <>
-                                <img
-                                    src="https://img.youtube.com/vi/DLnk_1_HuAc/maxresdefault.jpg"
-                                    alt="Neo Serene Video Tour"
-                                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                        <h1 className="font-display text-black leading-[0.95] mb-6 relative z-10" style={{ fontSize: 'clamp(3.5rem,7vw,6.5rem)' }}>
+                            Neo Serene
+                        </h1>
+                        <p className="text-xl md:text-2xl text-black/50 font-light mb-12 leading-relaxed max-w-lg relative z-10">
+                            Hoskote&apos;s most tranquil development, offering a <span className="text-[#FF5722] font-normal italic">pure escape</span> from the city while keeping you perfectly connected.
+                        </p>
+
+                        <div className="flex flex-wrap items-center gap-3 relative z-10 mt-auto">
+                            <a href="tel:+919845012345" className="w-full sm:w-auto">
+                                <Button className="w-full sm:w-auto rounded-full px-8 py-6 font-semibold shadow-xl shadow-[#FF5722]/20 hover:shadow-[#FF5722]/40 transition-all text-white text-base"
+                                    style={{ background: 'linear-gradient(135deg,#FF5722,#E64A19)' }}>
+                                    <Phone className="mr-2 h-5 w-5" />Book a Site Visit
+                                </Button>
+                            </a>
+                            <a href="https://realtydoor.com/wp-content/uploads/2025/09/Serene-Brochure_compressed.pdf" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                                <Button variant="outline" className="w-full sm:w-auto rounded-full px-8 py-6 font-semibold border-black/10 hover:bg-black/5 text-black text-base">
+                                    <FileText className="mr-2 h-5 w-5 opacity-50" />Download Brochure
+                                </Button>
+                            </a>
+                        </div>
+                    </div>
+
+                    {/* Right Side (Spans 5 cols) - Vertical Stack of Box 1 (Video) and Box 2 (Stats grid) */}
+                    <div className="lg:col-span-5 flex flex-col gap-4">
+
+                        {/* Video Box */}
+                        <div
+                            className="bg-black rounded-[2rem] overflow-hidden relative cursor-pointer group flex-1 min-h-[300px] lg:min-h-[340px] shadow-sm border border-black/5"
+                            onClick={() => setVideoStarted(true)}
+                        >
+                            {videoStarted ? (
+                                <iframe
+                                    src="https://www.youtube.com/embed/DLnk_1_HuAc?autoplay=1&rel=0"
+                                    title="Neo Serene Video Tour"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowFullScreen
+                                    className="absolute inset-0 w-full h-full"
                                 />
-                                {/* Gradient overlay */}
-                                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors" />
-                                {/* Play button */}
-                                <div className="absolute inset-0 flex flex-col items-center justify-center gap-4">
-                                    <div className="w-20 h-20 md:w-24 md:h-24 rounded-full flex items-center justify-center border-2 border-white/70 bg-white/10 backdrop-blur-sm group-hover:bg-[#FF5722] group-hover:border-[#FF5722] transition-all duration-300"
-                                        style={{ boxShadow: '0 8px 32px rgba(0,0,0,0.3)' }}>
-                                        <PlayCircle className="h-10 w-10 md:h-12 md:w-12 text-white" />
-                                    </div>
-                                    <span className="text-white font-semibold text-sm uppercase tracking-widest">
-                                        Watch Property Tour
-                                    </span>
-                                </div>
-                                {/* Corner badge */}
-                                <div className="absolute bottom-5 left-5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest text-white border border-white/30 bg-black/30 backdrop-blur-sm">
-                                    Neo Serene · Official Video
-                                </div>
-                            </>
-                        )}
-                    </div>
-                </div>
+                            ) : (
+                                <>
+                                    <Image src="https://img.youtube.com/vi/DLnk_1_HuAc/maxresdefault.jpg" alt="Video Placeholder" fill className="object-cover opacity-60 group-hover:opacity-75 transition-all duration-700 group-hover:scale-105" />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-80" />
 
-                {/* CTA row below video */}
-                <div className="max-w-5xl mx-auto mt-8 flex flex-wrap items-center justify-center gap-4 pb-14">
-                    <a href="tel:+919845012345">
-                        <Button className="rounded-full px-9 py-5 font-semibold text-white"
-                            style={{ background: 'linear-gradient(135deg,#FF5722,#E64A19)', boxShadow: '0 8px 30px rgba(255,87,34,0.35)' }}>
-                            <Phone className="mr-2 h-4 w-4" />Call Now to Book
-                        </Button>
-                    </a>
-                    <a href="https://realtydoor.com/wp-content/uploads/2025/09/Serene-Brochure_compressed.pdf"
-                        target="_blank" rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-6 py-3.5 rounded-full border border-[#FF5722]/30 text-[#FF5722] text-sm font-semibold hover:bg-[#FF5722]/6 transition-colors">
-                        <FileText className="h-4 w-4" />Download Brochure
-                    </a>
+                                    <div className="absolute inset-0 flex flex-col items-center justify-center">
+                                        <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-md text-white flex items-center justify-center transform group-hover:scale-110 group-hover:bg-[#FF5722] transition-all duration-400 border border-white/30 shadow-2xl">
+                                            <PlayCircle className="h-8 w-8 ml-1" />
+                                        </div>
+                                    </div>
+
+                                    <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between text-white">
+                                        <span className="text-sm font-semibold tracking-wide">Cinematic Tour</span>
+                                        <span className="text-[10px] font-black uppercase tracking-widest bg-white/20 px-3 py-1.5 rounded-full backdrop-blur-md border border-white/20">1:24</span>
+                                    </div>
+                                </>
+                            )}
+                        </div>
+
+                        {/* Stats Bento */}
+                        <div className="grid grid-cols-2 gap-4 h-auto lg:h-[144px]">
+                            <div className="bg-[#1A2744] text-white rounded-[2rem] p-6 lg:p-8 flex flex-col justify-center relative overflow-hidden group shadow-sm">
+                                <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-white/10 transition-colors" />
+                                <div className="absolute inset-x-0 bottom-0 h-1.5 bg-gradient-to-r from-[#FF5722] to-[#E64A19] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
+                                <span className="text-4xl lg:text-5xl font-light mb-1 relative z-10">11<span className="text-[#FF5722]">.0</span></span>
+                                <span className="text-[10px] font-black uppercase tracking-widest text-white/50 relative z-10">Acres of Land</span>
+                            </div>
+                            <div className="bg-white border border-black/5 shadow-sm rounded-[2rem] p-6 lg:p-8 flex flex-col justify-center relative overflow-hidden group">
+                                <div className="absolute inset-x-0 bottom-0 h-1.5 bg-gradient-to-r from-black/20 to-black/10 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
+                                <span className="text-4xl lg:text-5xl font-light mb-1 text-black relative z-10">154</span>
+                                <span className="text-[10px] font-black uppercase tracking-widest text-black/40 relative z-10">Exclusive Plots</span>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </section>
 
@@ -384,37 +394,7 @@ export default function NeoSerenePage() {
 
 
             {/* CTA */}
-            <section className="py-24 px-6 bg-white border-t border-black/6">
-                <div className="max-w-3xl mx-auto text-center border border-[#FF5722]/15 rounded-3xl py-20 px-8 relative overflow-hidden"
-                    style={{ boxShadow: '0 8px 60px rgba(255,87,34,0.08)' }}>
-                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                        <div className="w-96 h-96 rounded-full opacity-[0.07]"
-                            style={{ background: 'radial-gradient(circle,#FF5722 0%,transparent 70%)' }} />
-                    </div>
-                    <div className="relative">
-                        <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] mb-8 border border-[#FF5722]/35 bg-[#FF5722]/8 text-[#FF5722]">
-                            <span className="w-1.5 h-1.5 rounded-full bg-[#FF5722] animate-pulse" />Limited Plots Available
-                        </div>
-                        <h2 className="font-display text-black mb-2" style={{ fontSize: 'clamp(2.5rem,6vw,4.5rem)', lineHeight: 1 }}>Secure Your Plot</h2>
-                        <h2 className="font-display text-[#FF7043] italic font-light mb-8" style={{ fontSize: 'clamp(2.5rem,6vw,4.5rem)', lineHeight: 1.1 }}>in Neo Serene</h2>
-                        <p className="text-black/40 font-light mb-10 max-w-md mx-auto">Fully developed. Clear title. Ready for immediate registration.</p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a href="tel:+919845012345">
-                                <Button className="rounded-full px-10 py-6 text-base font-semibold text-white w-full sm:w-auto"
-                                    style={{ background: 'linear-gradient(135deg,#FF5722,#E64A19)', boxShadow: '0 8px 30px rgba(255,87,34,0.4)' }}>
-                                    <Phone className="mr-2 h-5 w-5" />Call Now
-                                </Button>
-                            </a>
-                            <a href="https://wa.me/919845012345" target="_blank" rel="noopener noreferrer">
-                                <Button variant="outline" className="rounded-full px-10 py-6 text-base font-semibold border-[#FF5722]/35 text-[#FF5722] hover:bg-[#FF5722]/8 w-full sm:w-auto">
-                                    WhatsApp Us
-                                </Button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
+            <PropertyCTA propertyName="Neo Serene" image={heroImage} variant="overlay" brochureUrl="https://realtydoor.com/wp-content/uploads/2025/09/Serene-Brochure_compressed.pdf" />
 
             <div className="py-8 text-center bg-white border-t border-black/8">
                 <Link href="/properties" className="inline-flex items-center font-semibold text-[#FF5722] hover:text-[#E64A19] transition-colors text-sm">

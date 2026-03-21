@@ -12,6 +12,7 @@ import {
     Footprints, Trees, ShieldCheck, PlayCircle, Landmark,
 } from 'lucide-react';
 import { StatsTickerBanner } from '@/components/stats-ticker-banner';
+import { PropertyCTA } from '@/components/property-cta';
 
 const img1 = 'https://realtydoor.com/wp-content/uploads/2024/05/devine-1.webp';
 const img2 = 'https://realtydoor.com/wp-content/uploads/2024/05/devine-2.webp';
