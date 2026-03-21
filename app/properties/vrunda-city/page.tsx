@@ -29,6 +29,7 @@ import {
     Droplets,
     Lock,
 } from 'lucide-react';
+import { StatsTickerBanner } from '@/components/stats-ticker-banner';
 
 // Brand palette: #FF5722 (orange), #FF7043 (orange-light), #E64A19 (orange-dark), #000 (black), #fff (white)
 
@@ -169,9 +170,10 @@ export default function VrundaCityPage() {
                 </div>
             </section>
 
-            {/* ═══════════════════════════════
-                ABOUT
-            ═══════════════════════════════ */}
+            {/* Stats Ticker */}
+            <StatsTickerBanner />
+
+            {/* ABOUT */}
             <section className="py-28 bg-white" id="features">
                 <div className="max-w-6xl mx-auto px-8">
                     <div className="grid md:grid-cols-2 gap-20 items-center">
@@ -463,9 +465,8 @@ export default function VrundaCityPage() {
                 </div>
             </section>
 
-            {/* ═══════════════════════════════
-                CTA — full-bleed dark
-            ═══════════════════════════════ */}
+
+            {/* CTA */}
             <section className="relative overflow-hidden" style={{ minHeight: '75vh' }}>
                 <Image
                     src="https://realtydoor.com/wp-content/uploads/2025/12/banner-3-scaled.webp"
@@ -516,6 +517,7 @@ export default function VrundaCityPage() {
                     </div>
                 </div>
             </section>
+
 
             {/* back link */}
             <div className="py-10 text-center bg-white border-t border-black/10">

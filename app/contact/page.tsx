@@ -5,6 +5,9 @@ import { Footer } from '@/components/footer';
 import { Mail, Phone, MapPin, Clock, Send, Sparkles, MessageCircle, Headphones } from 'lucide-react';
 import Image from 'next/image';
 import { GeneralContactForm } from '@/components/general-contact-form';
+import { StatsTickerBanner } from '@/components/stats-ticker-banner';
+import { BannerPlaceholder } from '@/components/promo-banner';
+import { LifestyleBanner } from '@/components/lifestyle-banner';
 
 export const metadata: Metadata = {
     title: 'Contact RealtyDoor | Real Estate Experts in Bengaluru',
@@ -115,6 +118,9 @@ export default function ContactPage() {
                 </div>
             </section>
 
+            {/* Stats Ticker */}
+            <StatsTickerBanner />
+
             {/* Contact Form Section */}
             <section id="contact-form" className="bg-background py-24">
                 <div className="mx-auto max-w-7xl px-6">
@@ -176,6 +182,19 @@ export default function ContactPage() {
             </section>
 
 
+
+            {/* Lifestyle Banner */}
+            <LifestyleBanner />
+
+            {/* Promo Banner */}
+            <BannerPlaceholder
+                tag="Priority Access"
+                headline="Book a Site Visit This Weekend"
+                subtext="Our team arranges guided site visits to all our premium plots in Bengaluru and Andhra Pradesh — with transport, refreshments, and expert commentary included."
+                ctaLabel="Arrange a Site Visit"
+                ctaHref="#contact-form"
+                theme="dark"
+            />
 
             <Footer />
         </>

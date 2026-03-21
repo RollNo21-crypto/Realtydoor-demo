@@ -12,6 +12,7 @@ import {
     Trees, ShieldCheck, PlayCircle, Landmark, Waves,
     Clapperboard, Baby, Dumbbell, Car,
 } from 'lucide-react';
+import { StatsTickerBanner } from '@/components/stats-ticker-banner';
 
 const img1 = 'https://realtydoor.com/wp-content/uploads/2024/05/j-town-1.webp';
 const img2 = 'https://realtydoor.com/wp-content/uploads/2024/05/j-town-2.webp';
@@ -56,17 +57,6 @@ export default function NewtownJPage() {
                     <div className="absolute inset-0"
                         style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0) 40%, rgba(255,255,255,0.12) 80%, rgba(255,255,255,0.55) 100%)' }} />
 
-                    {/* Top badges */}
-                    <div className="absolute top-8 left-6 right-6 pt-14 flex items-center justify-between">
-                        <div className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.3em] text-white/65 backdrop-blur-sm bg-black/15 px-4 py-2 rounded-full border border-white/15">
-                            <MapPin className="h-3 w-3 text-[#FF7043]" />
-                            <span>Punganur · Andhra Pradesh</span>
-                        </div>
-                        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest bg-[#FF5722] text-white shadow-lg">
-                            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                            PKM-UDA Approved
-                        </span>
-                    </div>
 
                     {/* Two small secondary images pinned bottom-right — peeking behind the card */}
                     <div className="hidden lg:flex absolute bottom-0 right-6 gap-2 items-end pb-4 z-10">
@@ -189,9 +179,10 @@ export default function NewtownJPage() {
                 </div>
             </section>
 
-            {/* ═══════════════════════════════════════
-                MASTER PLAN — left tall vertical · right sticky info
-            ═══════════════════════════════════════ */}
+            {/* Stats Ticker */}
+            <StatsTickerBanner />
+
+            {/* MASTER PLAN */}
             <section className="py-20 px-6 md:px-12 bg-white border-t border-black/6" id="gallery">
                 <div className="max-w-7xl mx-auto">
                     <div className="mb-12">
@@ -414,9 +405,8 @@ export default function NewtownJPage() {
                 </div>
             </section>
 
-            {/* ═══════════════════════════════════════
-                CTA — split: image left, orange panel right
-            ═══════════════════════════════════════ */}
+
+            {/* CTA */}
             <section className="py-20 px-6 md:px-12 bg-white border-t border-black/6">
                 <div className="max-w-6xl mx-auto">
                     <div className="grid md:grid-cols-2 gap-0 rounded-3xl overflow-hidden"
@@ -463,6 +453,7 @@ export default function NewtownJPage() {
                     </div>
                 </div>
             </section>
+
 
             <div className="py-8 text-center bg-white border-t border-black/8">
                 <Link href="/properties" className="inline-flex items-center font-semibold text-[#FF5722] hover:text-[#E64A19] transition-colors text-sm">

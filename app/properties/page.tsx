@@ -13,6 +13,9 @@ import {
     Sparkles, X, SlidersHorizontal, Search, Check, Ruler, Tag
 } from 'lucide-react';
 import { mockProperties, formatIndianPrice } from '@/lib/mock-data';
+import { StatsTickerBanner } from '@/components/stats-ticker-banner';
+import { LifestyleBanner } from '@/components/lifestyle-banner';
+import { BannerPlaceholder } from '@/components/promo-banner';
 
 interface FilterState {
     location: string;
@@ -409,6 +412,9 @@ function PropertiesPageContent() {
                 </div>
             </section>
 
+            {/* Stats Ticker */}
+            <StatsTickerBanner />
+
             {/* Category Pills */}
             <section className="py-6 md:py-12 bg-muted/50 border-y border-border">
                 <div className="max-w-7xl mx-auto px-4 md:px-8">
@@ -700,6 +706,19 @@ function PropertiesPageContent() {
                     </div>
                 </>
             )}
+
+            {/* Lifestyle Banner */}
+            <LifestyleBanner />
+
+            {/* Promo Banner */}
+            <BannerPlaceholder
+                tag="Exclusive Offer"
+                headline="Zero Brokerage on Your Dream Plot"
+                subtext="Book a site visit today and get full legal assistance, EMI planning, and priority access to new launches — completely free."
+                ctaLabel="Schedule a Site Visit"
+                ctaHref="/contact"
+                theme="dark"
+            />
 
             {/* CTA Section */}
             <section className="py-20 md:py-32 bg-muted">

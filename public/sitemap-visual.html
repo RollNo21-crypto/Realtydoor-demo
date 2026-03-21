@@ -76,7 +76,7 @@
             margin-top: 4px;
         }
 
-        /* ── Root node (centre top) ── */
+        /* ── Root node ── */
         .root-wrap {
             display: flex;
             flex-direction: column;
@@ -128,7 +128,6 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
         }
 
-        /* Card header strip */
         .card-head {
             display: flex;
             align-items: center;
@@ -160,7 +159,6 @@
             flex-shrink: 0;
         }
 
-        /* Card body */
         .card-body {
             padding: 12px 16px;
         }
@@ -196,7 +194,19 @@
             color: #374151;
         }
 
-        /* ── Colour themes per card ── */
+        /* ── Badge for named pages ── */
+        .badge-named {
+            font-size: 0.58rem;
+            font-weight: 700;
+            padding: 1px 6px;
+            border-radius: 4px;
+            background: #1a1a24;
+            border: 1px solid #2d2d3a;
+            color: #6b7280;
+            flex-shrink: 0;
+        }
+
+        /* ── Colour themes ── */
         .t-gold .card-head {
             background: linear-gradient(90deg, #1c1608, #13131a);
             border-color: #c9a84c44;
@@ -353,7 +363,7 @@
             background: #ec4899;
         }
 
-        /* ── Wide card spans 2 cols on large screens ── */
+        /* ── Wide card spans 2 cols ── */
         .span2 {
             grid-column: span 2;
         }
@@ -385,23 +395,23 @@
     <!-- Stats -->
     <div class="stats">
         <div class="stat">
-            <div class="stat-num" style="color:#f5d98b">14</div>
+            <div class="stat-num" style="color:#f5d98b">13</div>
             <div class="stat-lbl">Main Sections</div>
         </div>
         <div class="stat">
-            <div class="stat-num" style="color:#93c5fd">8</div>
-            <div class="stat-lbl">Plot Detail Pages</div>
+            <div class="stat-num" style="color:#93c5fd">5</div>
+            <div class="stat-lbl">Named Plot Pages</div>
         </div>
         <div class="stat">
-            <div class="stat-num" style="color:#bef264">5</div>
-            <div class="stat-lbl">Chatbots / Widgets</div>
-        </div>
-        <div class="stat">
-            <div class="stat-num" style="color:#d8b4fe">6</div>
+            <div class="stat-num" style="color:#bef264">6</div>
             <div class="stat-lbl">Service Pages</div>
         </div>
         <div class="stat">
-            <div class="stat-num" style="color:#86efac">35+</div>
+            <div class="stat-num" style="color:#d8b4fe">8+</div>
+            <div class="stat-lbl">Mock Listings</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num" style="color:#86efac">40+</div>
             <div class="stat-lbl">Total Features</div>
         </div>
     </div>
@@ -441,7 +451,8 @@
                 </div>
                 <div class="page-row">
                     <div class="page-dot"></div>
-                    <div class="page-name">Hot Deals</div>
+                    <div class="page-name">EMI & Deals Panel</div>
+                    <div class="page-slug">emi-deals-panel.tsx</div>
                 </div>
                 <div class="page-row">
                     <div class="page-dot"></div>
@@ -450,53 +461,66 @@
             </div>
         </div>
 
-        <!-- Plots & Land -->
+        <!-- Plots & Land — Listing -->
         <div class="card t-blue span2">
             <div class="card-head">
                 <div class="card-icon">🏞️</div>
-                <div class="card-title">Plots &amp; Land</div>
+                <div class="card-title">Plots &amp; Land — Listing</div>
                 <div class="card-url">/properties</div>
             </div>
             <div class="card-body" style="display:grid;grid-template-columns:1fr 1fr;gap:0 16px;">
                 <div class="page-row">
                     <div class="page-dot"></div>
-                    <div class="page-name">Greenfield Residency</div>
-                    <div class="page-slug">Hoskote</div>
+                    <div class="page-name">Filter Bar (Type / Price / City)</div>
                 </div>
                 <div class="page-row">
                     <div class="page-dot"></div>
-                    <div class="page-name">Prestige Enclave Plots</div>
-                    <div class="page-slug">Whitefield</div>
+                    <div class="page-name">Plot Grid Cards</div>
                 </div>
                 <div class="page-row">
                     <div class="page-dot"></div>
-                    <div class="page-name">Serene Villa Plots</div>
-                    <div class="page-slug">Devanahalli</div>
+                    <div class="page-name">Featured Badge</div>
                 </div>
                 <div class="page-row">
                     <div class="page-dot"></div>
-                    <div class="page-name">Horizon Plots</div>
-                    <div class="page-slug">Mysore Road</div>
+                    <div class="page-name">Dynamic [id] Detail Pages</div>
+                    <div class="page-slug">/properties/[id]</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Named Plot Pages -->
+        <div class="card t-blue span2">
+            <div class="card-head">
+                <div class="card-icon">📍</div>
+                <div class="card-title">Named Plot Detail Pages</div>
+                <div class="card-url">/properties/[slug]</div>
+            </div>
+            <div class="card-body" style="display:grid;grid-template-columns:1fr 1fr;gap:0 16px;">
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Newtownj Township</div>
+                    <div class="page-slug">/properties/newtownj</div>
                 </div>
                 <div class="page-row">
                     <div class="page-dot"></div>
-                    <div class="page-name">Greens Township</div>
-                    <div class="page-slug">Kanakapura Rd</div>
+                    <div class="page-name">Vrunda City</div>
+                    <div class="page-slug">/properties/vrunda-city</div>
                 </div>
                 <div class="page-row">
                     <div class="page-dot"></div>
-                    <div class="page-name">Pharma City Plots</div>
-                    <div class="page-slug">Hyderabad</div>
+                    <div class="page-name">Aashrithaa Brindavan</div>
+                    <div class="page-slug">/properties/aashrithaa-brindavan</div>
                 </div>
                 <div class="page-row">
                     <div class="page-dot"></div>
-                    <div class="page-name">Commercial Plot</div>
-                    <div class="page-slug">Anekal</div>
+                    <div class="page-name">Aashrithaa Divine</div>
+                    <div class="page-slug">/properties/aashrithaa-divine</div>
                 </div>
                 <div class="page-row">
                     <div class="page-dot"></div>
-                    <div class="page-name">NewtownJ Township</div>
-                    <div class="page-slug">Punganur</div>
+                    <div class="page-name">Neo Serene</div>
+                    <div class="page-slug">/properties/neo-serene</div>
                 </div>
             </div>
         </div>
@@ -539,7 +563,7 @@
                 </div>
                 <div class="page-row">
                     <div class="page-dot"></div>
-                    <div class="page-name">Legal</div>
+                    <div class="page-name">Legal Assistance</div>
                     <div class="page-slug">/legal</div>
                 </div>
                 <div class="page-row">
@@ -584,6 +608,10 @@
                 <div class="page-row">
                     <div class="page-dot"></div>
                     <div class="page-name">Vision &amp; Mission</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Awards &amp; Recognition</div>
                 </div>
             </div>
         </div>
@@ -675,16 +703,36 @@
                 </div>
                 <div class="page-row">
                     <div class="page-dot"></div>
-                    <div class="page-name">Join Us Form</div>
-                </div>
-                <div class="page-row">
-                    <div class="page-dot"></div>
                     <div class="page-name">Work Culture</div>
                 </div>
             </div>
         </div>
 
-        <!-- WhatsApp Chatbot & Widget -->
+        <!-- Join Us -->
+        <div class="card t-pink">
+            <div class="card-head">
+                <div class="card-icon">🤝</div>
+                <div class="card-title">Join Us / Sell With Us</div>
+                <div class="card-url">/join-us</div>
+            </div>
+            <div class="card-body">
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Agent / Partner Application</div>
+                    <div class="page-slug">page.tsx</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Application Form Fields</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Sell With Us CTA</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WhatsApp Chatbot -->
         <div class="card t-lime">
             <div class="card-head">
                 <div class="card-icon">💬</div>
@@ -708,8 +756,7 @@
                 </div>
                 <div class="page-row">
                     <div class="page-dot"></div>
-                    <div class="page-name">Auto Agent Routing</div>
-                    <div class="page-slug">whatsapp-config.ts</div>
+                    <div class="page-name">Buildesk CRM Integration</div>
                 </div>
             </div>
         </div>
@@ -729,7 +776,8 @@
                 </div>
                 <div class="page-row">
                     <div class="page-dot"></div>
-                    <div class="page-name">Buildesk CRM Integration</div>
+                    <div class="page-name">Buildesk CRM POST</div>
+                    <div class="page-slug">/api/leads</div>
                 </div>
                 <div class="page-row">
                     <div class="page-dot"></div>
@@ -738,35 +786,10 @@
             </div>
         </div>
 
-        <!-- Join Us Modal -->
-        <div class="card t-pink">
-            <div class="card-head">
-                <div class="card-icon">🤝</div>
-                <div class="card-title">Join Us Modal</div>
-                <div class="card-url">Nav CTA → Modal</div>
-            </div>
-            <div class="card-body">
-                <div class="page-row">
-                    <div class="page-dot"></div>
-                    <div class="page-name">Agent / Partner Application</div>
-                    <div class="page-slug">join-us-modal.tsx</div>
-                </div>
-                <div class="page-row">
-                    <div class="page-dot"></div>
-                    <div class="page-name">Join Us Form Fields</div>
-                    <div class="page-slug">join-us-form.tsx</div>
-                </div>
-                <div class="page-row">
-                    <div class="page-dot"></div>
-                    <div class="page-name">Sell With Us CTA</div>
-                </div>
-            </div>
-        </div>
-
         <!-- Floating Nav & Global CTAs -->
         <div class="card t-indigo">
             <div class="card-head">
-                <div class="card-icon">🧭</div>
+                <div class="card-icon">�</div>
                 <div class="card-title">Floating Nav &amp; Global CTAs</div>
                 <div class="card-url">All Pages</div>
             </div>
@@ -786,44 +809,79 @@
                     <div class="page-name">Mobile Nav Sheet</div>
                     <div class="page-slug">navigation.tsx</div>
                 </div>
-                <div class="page-row">
-                    <div class="page-dot"></div>
-                    <div class="page-name">Property Section Tabs</div>
-                    <div class="page-slug">property-section-tabs.tsx</div>
-                </div>
             </div>
         </div>
 
         <!-- Tools & Calculators -->
         <div class="card t-cyan">
             <div class="card-head">
-                <div class="card-icon">🧮</div>
+                <div class="card-icon">�</div>
                 <div class="card-title">Tools &amp; Calculators</div>
-                <div class="card-url">Embedded Widgets</div>
+                <div class="card-url">Embedded</div>
             </div>
             <div class="card-body">
                 <div class="page-row">
                     <div class="page-dot"></div>
-                    <div class="page-name">Loan / EMI Calculator</div>
+                    <div class="page-name">EMI &amp; Deals Panel (Homepage)</div>
+                    <div class="page-slug">emi-deals-panel.tsx</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Standalone EMI Calculator</div>
                     <div class="page-slug">loan-calculator.tsx</div>
                 </div>
                 <div class="page-row">
                     <div class="page-dot"></div>
-                    <div class="page-name">Property Search Form</div>
-                    <div class="page-slug">property-search-form.tsx</div>
+                    <div class="page-name">Lender Rate Comparison Chips</div>
                 </div>
                 <div class="page-row">
                     <div class="page-dot"></div>
-                    <div class="page-name">Property Categories Filter</div>
-                    <div class="page-slug">property-categories.tsx</div>
+                    <div class="page-name">Principal / Interest Donut Chart</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Hot Deals Carousel (Tab)</div>
                 </div>
             </div>
         </div>
 
-    </div><!-- /grid -->
+        <!-- API Routes -->
+        <div class="card t-amber">
+            <div class="card-head">
+                <div class="card-icon">⚙️</div>
+                <div class="card-title">API Routes</div>
+                <div class="card-url">/api</div>
+            </div>
+            <div class="card-body">
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Lead Submission</div>
+                    <div class="page-slug">/api/leads</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Contact Form Submit</div>
+                    <div class="page-slug">/api/contact</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Join Us Application</div>
+                    <div class="page-slug">/api/join-us</div>
+                </div>
+                <div class="page-row">
+                    <div class="page-dot"></div>
+                    <div class="page-name">Properties Data</div>
+                    <div class="page-slug">/api/properties</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     <footer>
-        Realtydoor · Visual Sitemap · Feb 2026 · For internal team use only
+        Realtydoor Visual Sitemap &nbsp;·&nbsp; Auto-generated from codebase — Feb 2026<br />
+        Routes: /&nbsp; /properties&nbsp; /properties/[id]&nbsp; /projects&nbsp; /services/*&nbsp; /about&nbsp;
+        /blog&nbsp; /faqs&nbsp; /contact&nbsp; /careers&nbsp; /join-us
     </footer>
 
 </body>

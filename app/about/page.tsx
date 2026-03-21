@@ -4,6 +4,9 @@ import { FloatingNav } from '@/components/floating-nav';
 import { Footer } from '@/components/footer';
 import { Target, Users, Award, TrendingUp, Shield, Heart, Building2, CheckCircle2, Sparkles, Calendar, MapPin, Trophy } from 'lucide-react';
 import Image from 'next/image';
+import { StatsTickerBanner } from '@/components/stats-ticker-banner';
+import { BannerPlaceholder } from '@/components/promo-banner';
+import { LifestyleBanner } from '@/components/lifestyle-banner';
 
 export const metadata: Metadata = {
     title: 'About RealtyDoor | Trusted Real Estate Experts in Bengaluru Since 2015',
@@ -112,6 +115,9 @@ export default function AboutPage() {
                 </div>
             </section>
 
+            {/* Stats Ticker */}
+            <StatsTickerBanner />
+
             {/* Mission & Vision Section */}
             <section id="our-story" className="bg-background py-24">
                 <div className="mx-auto max-w-7xl px-6">
@@ -219,6 +225,16 @@ export default function AboutPage() {
                 </div>
             </section>
 
+            {/* Promo Banner */}
+            <BannerPlaceholder
+                tag="Our Portfolio"
+                headline="Discover Plots That Build Legacies"
+                subtext="Browse our curated collection of RERA-verified residential plots across Bengaluru and Andhra Pradesh — each one hand-picked for legal clarity and long-term value."
+                ctaLabel="View All Properties"
+                ctaHref="/properties"
+                theme="dark"
+            />
+
             {/* Team Section */}
             <section id="team" className="bg-background py-24">
                 <div className="mx-auto max-w-7xl px-6">
@@ -296,6 +312,9 @@ export default function AboutPage() {
                     </div>
                 </div>
             </section>
+
+            {/* Lifestyle Banner */}
+            <LifestyleBanner />
 
             <Footer />
         </>

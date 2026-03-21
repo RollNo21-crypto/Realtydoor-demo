@@ -12,6 +12,7 @@ import {
     LayoutGrid, Leaf, Landmark, Droplets, Lock, Star, FileText,
     PlayCircle,
 } from 'lucide-react';
+import { StatsTickerBanner } from '@/components/stats-ticker-banner';
 
 const heroImage = 'https://realtydoor.com/wp-content/uploads/2025/09/banner-1-1-scaled.png';
 const secondImage = 'https://realtydoor.com/wp-content/uploads/2025/09/banner-1-2-scaled.png';
@@ -130,9 +131,10 @@ export default function NeoSerenePage() {
                 </div>
             </section>
 
-            {/* ═══════════════════════
-                ABOUT — left image · right text
-            ═══════════════════════ */}
+            {/* Stats Ticker */}
+            <StatsTickerBanner />
+
+            {/* ABOUT */}
             <section className="py-20 px-6 md:px-12 bg-white border-t border-black/6" id="features">
                 <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
                     <div className="relative aspect-[4/5] rounded-3xl overflow-hidden">
@@ -380,9 +382,8 @@ export default function NeoSerenePage() {
                 </div>
             </section>
 
-            {/* ═══════════════════════
-                CTA
-            ═══════════════════════ */}
+
+            {/* CTA */}
             <section className="py-24 px-6 bg-white border-t border-black/6">
                 <div className="max-w-3xl mx-auto text-center border border-[#FF5722]/15 rounded-3xl py-20 px-8 relative overflow-hidden"
                     style={{ boxShadow: '0 8px 60px rgba(255,87,34,0.08)' }}>
@@ -413,6 +414,7 @@ export default function NeoSerenePage() {
                     </div>
                 </div>
             </section>
+
 
             <div className="py-8 text-center bg-white border-t border-black/8">
                 <Link href="/properties" className="inline-flex items-center font-semibold text-[#FF5722] hover:text-[#E64A19] transition-colors text-sm">

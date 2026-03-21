@@ -5,6 +5,9 @@ import { FloatingNav } from '@/components/floating-nav';
 import { Footer } from '@/components/footer';
 import { Button } from '@/components/ui/button';
 import { Shield, TrendingUp, Users, Award, CheckCircle, Target } from 'lucide-react';
+import { StatsTickerBanner } from '@/components/stats-ticker-banner';
+import { LifestyleBanner } from '@/components/lifestyle-banner';
+import { BannerPlaceholder } from '@/components/promo-banner';
 
 export const metadata: Metadata = {
     title: 'Real Estate Services | Property Verification, Advisory & Management | RealtyDoor',
@@ -86,6 +89,9 @@ export default function ServicesPage() {
                 </div>
             </section>
 
+            {/* Stats Ticker */}
+            <StatsTickerBanner />
+
             {/* Services Grid */}
             <section className="py-20 bg-background">
                 <div className="mx-auto max-w-7xl px-6">
@@ -160,6 +166,19 @@ export default function ServicesPage() {
                     </div>
                 </div>
             </section>
+
+            {/* Lifestyle Banner */}
+            <LifestyleBanner />
+
+            {/* Promo Banner */}
+            <BannerPlaceholder
+                tag="Expert Advisory"
+                headline="Free Consultation for New Buyers"
+                subtext="Book a free 30-minute session with our senior advisors. Get a personalised investment roadmap with zero obligation."
+                ctaLabel="Book Free Session"
+                ctaHref="/contact"
+                theme="dark"
+            />
 
             {/* CTA Section */}
             <section className="py-24 bg-gradient-to-br from-primary/10 to-orange-500/10 relative overflow-hidden">

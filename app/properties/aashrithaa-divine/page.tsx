@@ -11,6 +11,7 @@ import {
     Plane, Building2, Route, Hospital, GraduationCap, ShoppingBag,
     Footprints, Trees, ShieldCheck, PlayCircle, Landmark,
 } from 'lucide-react';
+import { StatsTickerBanner } from '@/components/stats-ticker-banner';
 
 const img1 = 'https://realtydoor.com/wp-content/uploads/2024/05/devine-1.webp';
 const img2 = 'https://realtydoor.com/wp-content/uploads/2024/05/devine-2.webp';
@@ -43,17 +44,6 @@ export default function AashrithaaPage() {
                 <div className="absolute inset-0"
                     style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.08) 35%, rgba(0,0,0,0.55) 75%, rgba(0,0,0,0.82) 100%)' }} />
 
-                {/* TOP ROW — badge left, location right */}
-                <div className="absolute top-8 left-8 right-8 flex items-center justify-between">
-                    <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-black uppercase tracking-widest bg-[#FF5722] text-white shadow-lg">
-                        <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                        Ready for Registration
-                    </span>
-                    <div className="hidden md:flex items-center gap-2 text-white/70 backdrop-blur-sm bg-black/20 rounded-full px-4 py-2 border border-white/15">
-                        <MapPin className="h-3.5 w-3.5 text-[#FF5722]" />
-                        <span className="text-xs font-semibold uppercase tracking-widest">Jigani · Bengaluru</span>
-                    </div>
-                </div>
 
                 {/* BOTTOM LEFT — headline + description + CTAs */}
                 <div className="absolute bottom-0 left-0 right-0 px-8 md:px-14 pb-8">
@@ -102,9 +92,10 @@ export default function AashrithaaPage() {
                 </div>
             </section>
 
-            {/* ═══════════════════════════════════════
-                VIDEO TOUR — prominent center-stage section
-            ═══════════════════════════════════════ */}
+            {/* Stats Ticker */}
+            <StatsTickerBanner />
+
+            {/* VIDEO TOUR */}
             <section className="py-16 px-6 md:px-12 bg-white border-t border-black/6" id="features">
                 <div className="max-w-5xl mx-auto">
                     <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-8">
@@ -413,9 +404,8 @@ export default function AashrithaaPage() {
                 </div>
             </section>
 
-            {/* ═══════════════════════════════════════
-                CTA — orange full-bleed banner with background image
-            ═══════════════════════════════════════ */}
+
+            {/* FINAL CTA */}
             <section className="py-20 px-6 md:px-12 bg-white border-t border-black/6">
                 <div className="max-w-6xl mx-auto">
                     <div className="relative rounded-3xl overflow-hidden min-h-[320px] flex items-center"
@@ -455,6 +445,7 @@ export default function AashrithaaPage() {
                     </div>
                 </div>
             </section>
+
 
             <div className="py-8 text-center bg-white border-t border-black/8">
                 <Link href="/properties" className="inline-flex items-center font-semibold text-[#FF5722] hover:text-[#E64A19] transition-colors text-sm">

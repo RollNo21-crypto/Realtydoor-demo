@@ -12,6 +12,9 @@ import { TestimonialsBenefitsBento } from '@/components/testimonials-benefits-be
 import { EmiDealsPanel } from '@/components/emi-deals-panel';
 import { getFeaturedProperties } from '@/lib/mock-data';
 import { ArrowRight, Shield, Eye, Sparkles, Award, Users, TrendingUp, CheckCircle } from 'lucide-react';
+import { StatsTickerBanner } from '@/components/stats-ticker-banner';
+import { BannerPlaceholder } from '@/components/promo-banner';
+import { LifestyleBanner } from '@/components/lifestyle-banner';
 
 export const metadata: Metadata = {
     title: 'RealtyDoor | Premium Residential Plots in Bengaluru | RERA Verified',
@@ -150,6 +153,9 @@ export default async function HomePage() {
                 </div>
             </section>
 
+            {/* Stats Ticker */}
+            <StatsTickerBanner />
+
             {/* Trust Indicators */}
 
             {/* <section className="border-b border-border bg-background py-16">
@@ -225,8 +231,21 @@ export default async function HomePage() {
                 </div>
             </section>
 
+            {/* Promo Banner */}
+            <BannerPlaceholder
+                tag="Limited Offer"
+                headline="Get ₹50,000 OFF"
+                subtext="Along with Lowest interest and Exclusive benefits on home loans today!"
+                ctaLabel="Learn More"
+                ctaHref="/contact"
+                theme="dark"
+            />
+
             {/* Property Categories */}
             <PropertyCategories />
+
+            {/* Lifestyle / Why Us Banner */}
+            <LifestyleBanner />
 
             {/* Testimonials & Benefits Bento Grid */}
             <TestimonialsBenefitsBento />

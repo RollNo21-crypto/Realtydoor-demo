@@ -4,6 +4,9 @@ import { Footer } from '@/components/footer';
 import { Calendar, User, ArrowRight, Clock } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { StatsTickerBanner } from '@/components/stats-ticker-banner';
+import { BannerPlaceholder } from '@/components/promo-banner';
+import { LifestyleBanner } from '@/components/lifestyle-banner';
 
 export const metadata: Metadata = {
     title: 'Real Estate Blog & Market Insights | RealtyDoor',
@@ -106,6 +109,9 @@ export default function BlogPage() {
                     </div>
                 </div>
             </section>
+
+            {/* Stats Ticker */}
+            <StatsTickerBanner />
 
             {/* Blog Posts Bento Grid */}
             <section className="py-16 md:py-24 bg-background">
@@ -231,6 +237,19 @@ export default function BlogPage() {
                     </div>
                 </div>
             </section>
+
+            {/* Promo Banner */}
+            <BannerPlaceholder
+                tag="Market Intelligence"
+                headline="Stay Ahead of the Market"
+                subtext="Subscribe to our weekly insights and be the first to know about new RERA-approved launches, price trends, and investment hotspots in Bengaluru."
+                ctaLabel="Get Weekly Insights"
+                ctaHref="/contact"
+                theme="dark"
+            />
+
+            {/* Lifestyle Banner */}
+            <LifestyleBanner />
 
             <Footer />
         </>

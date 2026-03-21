@@ -12,6 +12,7 @@ import {
     Maximize, MapPin, Home, Ruler, CheckCircle2, Star,
     Phone, MessageCircle, ExternalLink, ArrowLeft, Eye
 } from 'lucide-react';
+import { StatsTickerBanner } from '@/components/stats-ticker-banner';
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
@@ -285,6 +286,10 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
                     </div>
                 </section>
             </main>
+
+            <StatsTickerBanner />
+
+
 
             <Footer />
         </>

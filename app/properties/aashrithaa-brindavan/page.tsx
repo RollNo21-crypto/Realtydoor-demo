@@ -11,6 +11,7 @@ import {
     Plane, Building2, Route, Hospital, GraduationCap, ShoppingBag,
     LayoutGrid, Leaf, Landmark, Droplets, Lock, FileText, ArrowRight,
 } from 'lucide-react';
+import { StatsTickerBanner } from '@/components/stats-ticker-banner';
 
 const img1 = 'https://realtydoor.com/wp-content/uploads/2024/05/aashrithaa-brindhavan1-1.jpg';
 const img2 = 'https://realtydoor.com/wp-content/uploads/2024/05/aashrithaa-brindhavan-2.jpg';
@@ -54,13 +55,6 @@ export default function AashrithaaPage() {
                     <Image src={img1} alt="Aashrithaa Brindavan" fill className="object-cover" priority />
                     <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-white" />
 
-                    {/* Top-left badge */}
-                    <div className="absolute top-8 left-8 flex items-center gap-3">
-                        <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-black uppercase tracking-[0.2em] bg-[#FF5722] text-white shadow-lg">
-                            <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
-                            Fully Developed
-                        </span>
-                    </div>
                 </div>
 
                 {/* Floating info card — overlaps image bottom / sits on white */}
@@ -110,9 +104,10 @@ export default function AashrithaaPage() {
                 </div>
             </section>
 
-            {/* ═══════════════════════════════════
-                FEATURE TAGS ROW
-            ═══════════════════════════════════ */}
+            {/* Stats Ticker */}
+            <StatsTickerBanner />
+
+            {/* Feature Tags */}
             <section className="py-10 px-6 bg-white" id="features">
                 <div className="max-w-5xl mx-auto flex flex-wrap justify-center gap-3">
                     {allFeatures.map(f => (
@@ -361,9 +356,8 @@ export default function AashrithaaPage() {
                 </div>
             </section>
 
-            {/* ═══════════════════════════════════
-                CTA — image + text side by side
-            ═══════════════════════════════════ */}
+
+            {/* CTA */}
             <section className="py-20 px-6 md:px-12 bg-white">
                 <div className="max-w-6xl mx-auto">
                     <div className="rounded-3xl overflow-hidden grid md:grid-cols-2"
@@ -406,6 +400,7 @@ export default function AashrithaaPage() {
                     </div>
                 </div>
             </section>
+
 
             <div className="py-8 text-center bg-white border-t border-black/8">
                 <Link href="/properties" className="inline-flex items-center font-semibold text-[#FF5722] hover:text-[#E64A19] transition-colors text-sm">
