@@ -133,7 +133,7 @@ export function BannerPlaceholder({
                                 <circle cx="8.5" cy="8.5" r="1.5" />
                                 <polyline points="21 15 16 10 5 21" />
                             </svg>
-                            <span className="text-[10px] font-semibold uppercase tracking-widest text-current">Image / Illustration</span>
+                            <span className="text-[10px] font-semibold uppercase tracking-widest text-current text-center px-4 leading-relaxed">Use visual for financing, buyer planning, or consultation support</span>
                         </div>
                     )}
                 </div>

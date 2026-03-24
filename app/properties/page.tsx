@@ -16,6 +16,7 @@ import { mockProperties, formatIndianPrice } from '@/lib/mock-data';
 import { StatsTickerBanner } from '@/components/stats-ticker-banner';
 import { LifestyleBanner } from '@/components/lifestyle-banner';
 import { BannerPlaceholder } from '@/components/promo-banner';
+import { PropertyCTA } from '@/components/property-cta';
 
 interface FilterState {
     location: string;
@@ -721,28 +722,11 @@ function PropertiesPageContent() {
             />
 
             {/* CTA Section */}
-            <section className="py-20 md:py-32 bg-muted">
-                <div className="max-w-4xl mx-auto px-4 md:px-8 text-center">
-                    <h2 className="font-display text-4xl md:text-5xl lg:text-6xl mb-6 md:mb-8">
-                        Find Your Perfect Plot
-                    </h2>
-                    <p className="text-lg md:text-xl text-muted-foreground mb-8 md:mb-12 max-w-2xl mx-auto">
-                        Our expert advisors are ready to help you discover the ideal plot at the best price — with zero brokerage.
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Link href="/contact">
-                            <Button className="bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary text-white px-8 md:px-10 py-4 md:py-6 text-base md:text-lg rounded-full hover:scale-105 transition-transform">
-                                Talk to an Advisor
-                            </Button>
-                        </Link>
-                        <Link href="/contact">
-                            <Button variant="outline" className="px-8 md:px-10 py-4 md:py-6 text-base md:text-lg rounded-full hover:scale-105 transition-transform">
-                                Schedule Site Visit
-                            </Button>
-                        </Link>
-                    </div>
-                </div>
-            </section>
+            <PropertyCTA
+                propertyName="RealityDoor"
+                image="https://realtydoor.com/wp-content/uploads/2025/12/banner-3-scaled.webp"
+                variant="glass"
+            />
 
             <Footer />
         </div>

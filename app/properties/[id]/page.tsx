@@ -13,6 +13,7 @@ import {
     Phone, MessageCircle, ExternalLink, ArrowLeft, Eye
 } from 'lucide-react';
 import { StatsTickerBanner } from '@/components/stats-ticker-banner';
+import { PropertyCTA } from '@/components/property-cta';
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
@@ -287,9 +288,8 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
                 </section>
             </main>
 
-            <StatsTickerBanner />
-
-
+            {/* CTA */}
+            <PropertyCTA propertyName={property.title} image={property.images[0]?.url || 'https://images.unsplash.com/photo-1500382017468-9049fed747ef'} variant="split" />
 
             <Footer />
         </>

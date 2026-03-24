@@ -3,7 +3,7 @@
 import * as React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Heart, Bed, Bath, Maximize } from 'lucide-react';
+import { Heart, Maximize, Ruler, SquareDashed } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -38,6 +38,13 @@ interface PropertyCardProps {
     featured?: boolean;
     isFavorite?: boolean;
     onToggleFavorite?: (propertyId: string) => void;
+    statusTag1?: string;
+    descriptorLine?: string;
+    priceLabel?: string;
+    priceSuffix?: string;
+    plotType?: string;
+    sqYards?: number;
+    dimensions?: string;
 }
 
 export function PropertyCard({
@@ -56,6 +63,13 @@ export function PropertyCard({
     featured = false,
     isFavorite = false,
     onToggleFavorite,
+    statusTag1,
+    descriptorLine,
+    priceLabel,
+    priceSuffix,
+    plotType,
+    sqYards,
+    dimensions,
 }: PropertyCardProps) {
     const [imageError, setImageError] = React.useState(false);
     const [imageLoaded, setImageLoaded] = React.useState(false);
@@ -126,9 +140,9 @@ export function PropertyCard({
 
                     {/* Badges */}
                     <div className="absolute left-3 top-3 flex gap-2 z-20">
-                        {featured && (
+                        {(statusTag1 || featured) && (
                             <Badge className="bg-gradient-to-r from-orange-500 to-orange-600 text-white border-0 shadow-lg font-semibold px-3 py-1">
-                                Featured
+                                {statusTag1 || 'Featured'}
                             </Badge>
                         )}
                         {status === 'AVAILABLE' && (
@@ -164,34 +178,48 @@ export function PropertyCard({
                         <p className="text-sm text-muted-foreground font-medium">
                             {city}, {state}
                         </p>
+                        {descriptorLine && (
+                            <p className="text-[13px] text-muted-foreground mt-2 line-clamp-2 leading-relaxed">
+                                {descriptorLine}
+                            </p>
+                        )}
                     </div>
 
-                    <div className="mb-4 flex items-center gap-4 text-sm text-muted-foreground border-t border-b border-border/50 py-3">
-                        <div className="flex items-center gap-1.5">
-                            <Bed className="h-4 w-4 text-primary/70" />
-                            <span className="font-medium">{bedrooms}</span>
-                        </div>
-                        <div className="h-4 w-px bg-border" />
-                        <div className="flex items-center gap-1.5">
-                            <Bath className="h-4 w-4 text-primary/70" />
-                            <span className="font-medium">{bathrooms}</span>
-                        </div>
-                        <div className="h-4 w-px bg-border" />
+                    <div className="mb-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground border-t border-b border-border/50 py-3">
                         <div className="flex items-center gap-1.5">
                             <Maximize className="h-4 w-4 text-primary/70" />
-                            <span className="font-medium">{formatNumber(sqft)}</span>
+                            <span className="font-medium">{formatNumber(sqft)} <span className="text-[11px] font-normal uppercase tracking-wider opacity-80">Sq.ft</span></span>
                         </div>
+                        {sqYards && (
+                            <>
+                                <div className="h-4 w-px bg-border hidden sm:block" />
+                                <div className="flex items-center gap-1.5">
+                                    <SquareDashed className="h-4 w-4 text-primary/70" />
+                                    <span className="font-medium">{formatNumber(sqYards)} <span className="text-[11px] font-normal uppercase tracking-wider opacity-80">Sq.Yd</span></span>
+                                </div>
+                            </>
+                        )}
+                        {dimensions && (
+                            <>
+                                <div className="h-4 w-px bg-border hidden sm:block" />
+                                <div className="flex items-center gap-1.5">
+                                    <Ruler className="h-4 w-4 text-primary/70" />
+                                    <span className="font-medium">{dimensions}</span>
+                                </div>
+                            </>
+                        )}
                     </div>
 
                     <div className="flex items-end justify-between">
                         <div>
-                            <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1">Price</p>
-                            <p className="font-display text-2xl font-bold text-primary">
+                            <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1">{priceLabel || 'Price'}</p>
+                            <p className="font-display text-2xl font-bold text-primary flex items-baseline gap-1">
                                 {formatPrice(Number(price))}
+                                {priceSuffix && <span className="text-sm font-medium text-muted-foreground">{priceSuffix}</span>}
                             </p>
                         </div>
-                        <Badge variant="outline" className="capitalize font-medium border-primary/30 text-primary px-3 py-1">
-                            {propertyType.toLowerCase()}
+                        <Badge variant="outline" className="capitalize font-medium border-primary/30 text-primary px-3 py-1 bg-primary/5">
+                            {plotType || propertyType.replace(/_/g, ' ').toLowerCase()}
                         </Badge>
                     </div>
                 </CardContent>

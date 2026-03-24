@@ -7,13 +7,12 @@
 
 export function StatsTickerBanner() {
     const items = [
-        '10,000+ Happy Families',
-        'RERA Verified Plots',
-        'Zero Brokerage',
-        'Clear Title Guarantee',
-        'Bank Loan Ready',
-        '15+ Years of Trust',
-        '100% Legal Support',
+        'Verified Developers',
+        'RERA-Compliant Projects',
+        'Legal Documentation Help',
+        'Bank Loan Assistance',
+        'High-Growth Bengaluru Locations',
+        'Buyer-First Advisory Support',
     ];
 
     return (

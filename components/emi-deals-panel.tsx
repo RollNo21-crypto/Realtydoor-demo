@@ -136,7 +136,7 @@ export function EmiDealsPanel() {
             {/* ─ Mobile EMI ─ */}
             {activeTab === 'emi' && (
                 <div className="p-6 space-y-8">
-                    <h3 className="font-display text-2xl font-bold text-black">Finance It</h3>
+                    <h3 className="font-display text-2xl font-bold text-black">Plan Your Plot Budget</h3>
 
                     <div className="space-y-7">
                         <div className="space-y-1">
@@ -322,7 +322,7 @@ export function EmiDealsPanel() {
                 </div>
 
                 <h3 className="font-display text-3xl font-bold text-black">
-                    {activeTab === 'emi' ? 'Finance It' : 'Explore Plots'}
+                    {activeTab === 'emi' ? 'Plan Your Plot Budget' : 'Explore Plots'}
                 </h3>
 
                 {/* EMI sliders */}

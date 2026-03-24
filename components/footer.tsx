@@ -22,7 +22,7 @@ export function Footer() {
                             />
                         </Link>
                         <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
-                            RealtyDoor discovery platform for ultra-high-end real estate.
+                            RealtyDoor is a Bengaluru-based real estate discovery and advisory platform for premium residential plots, plotted developments, and verified property opportunities across high-growth corridors.
                         </p>
                         <div className="flex gap-3">
                             <a
@@ -60,7 +60,7 @@ export function Footer() {
 
                     {/* Contact Info */}
                     <div>
-                        <h5 className="mb-4 text-sm font-bold uppercase tracking-wider">Contact</h5>
+                        <h5 className="mb-4 text-sm font-bold uppercase tracking-wider">Contact RealityDoor</h5>
                         <div className="space-y-3 text-sm">
                             <div className="flex items-start gap-2">
                                 <Phone className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
@@ -89,7 +89,7 @@ export function Footer() {
 
                     {/* Office & Hours */}
                     <div>
-                        <h5 className="mb-4 text-sm font-bold uppercase tracking-wider">Office</h5>
+                        <h5 className="mb-4 text-sm font-bold uppercase tracking-wider">Bengaluru Office</h5>
                         <div className="space-y-3 text-sm">
                             <div className="flex items-start gap-2">
                                 <MapPin className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
@@ -111,36 +111,36 @@ export function Footer() {
 
                     {/* Quick Links */}
                     <div>
-                        <h5 className="mb-4 text-sm font-bold uppercase tracking-wider">Quick Links</h5>
+                        <h5 className="mb-4 text-sm font-bold uppercase tracking-wider">Explore</h5>
                         <ul className="space-y-2 text-sm">
                             <li>
+                                <Link href="/properties?location=hoskote" className="text-muted-foreground hover:text-primary transition-colors">
+                                    Plots in Hoskote
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/properties?location=bagalur" className="text-muted-foreground hover:text-primary transition-colors">
+                                    Plots near Bagalur
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/properties?location=kanakapura" className="text-muted-foreground hover:text-primary transition-colors">
+                                    Plots on Kanakapura Road
+                                </Link>
+                            </li>
+                            <li>
                                 <Link href="/properties" className="text-muted-foreground hover:text-primary transition-colors">
-                                    Projects
+                                    RERA-Verified Projects
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/services" className="text-muted-foreground hover:text-primary transition-colors">
-                                    Services
+                                <Link href="/faqs" className="text-muted-foreground hover:text-primary transition-colors">
+                                    Plot Buyer Guide
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/about" className="text-muted-foreground hover:text-primary transition-colors">
-                                    About Us
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">
-                                    Contact
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/blog" className="text-muted-foreground hover:text-primary transition-colors">
-                                    Blog
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/careers" className="text-muted-foreground hover:text-primary transition-colors">
-                                    Careers
+                                <Link href="/services/legal" className="text-muted-foreground hover:text-primary transition-colors">
+                                    Legal Checklist for Plot Purchase
                                 </Link>
                             </li>
                         </ul>
@@ -167,20 +167,10 @@ export function Footer() {
 
                     {/* RERA Disclaimer */}
                     <div className="flex flex-col">
-                        <h5 className="mb-4 text-sm font-bold uppercase tracking-wider">RERA Disclaimer</h5>
+                        <h5 className="mb-4 text-sm font-bold uppercase tracking-wider">RERA & Legal Disclaimer</h5>
                         <div className="rounded-lg bg-muted/30 p-5 border border-border flex-1 flex flex-col justify-center">
                             <p className="text-xs leading-relaxed text-muted-foreground mb-3">
-                                All properties listed on this platform are subject to Real Estate (Regulation and Development) Act, 2016 (RERA) compliance.
-                                Buyers are advised to verify all property details, RERA registration numbers, and builder credentials independently before making any purchase decisions.
-                            </p>
-                            <p className="text-xs leading-relaxed text-muted-foreground mb-3">
-                                <strong className="text-foreground">RERA Registration:</strong> MahaRERA Registration No. P51700000001 (Example) |
-                                Available at: <a href="https://maharera.mahaonline.gov.in" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">maharera.mahaonline.gov.in</a>
-                            </p>
-                            <p className="text-xs leading-relaxed text-muted-foreground">
-                                <strong className="text-foreground">Disclaimer:</strong> The information provided on this website is for general informational purposes only.
-                                While we strive to ensure accuracy, we make no representations or warranties of any kind, express or implied,
-                                about the completeness, accuracy, reliability, or availability of the information, products, or services.
+                                All listed properties are subject to applicable approvals, documentation review, and project-specific compliance requirements. Buyers are advised to independently verify project details, registration numbers, legal documents, and builder credentials before making any purchase decision. Project registration details, where applicable, should be reviewed on the relevant official RERA portal and through the developer’s documentation. The information presented on this website is for general informational purposes only and does not constitute legal or financial advice. Buyers should conduct independent due diligence before finalizing any transaction.
                             </p>
                         </div>
                     </div>

@@ -10,6 +10,7 @@ import { PropertySearchForm } from '@/components/property-search-form';
 import { PropertyCategories } from '@/components/property-categories';
 import { TestimonialsBenefitsBento } from '@/components/testimonials-benefits-bento';
 import { EmiDealsPanel } from '@/components/emi-deals-panel';
+import { HomeFaqSection } from '@/components/home-faq-section';
 import { getFeaturedProperties } from '@/lib/mock-data';
 import { ArrowRight, Shield, Eye, Sparkles, Award, Users, TrendingUp, CheckCircle } from 'lucide-react';
 import { StatsTickerBanner } from '@/components/stats-ticker-banner';
@@ -104,47 +105,42 @@ export default async function HomePage() {
                 <div className="hero-gradient absolute inset-0" />
                 <div className="gradient-overlay absolute inset-0" />
 
-                <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-32">
+                <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-28 pb-12 flex flex-col justify-center h-full min-h-screen">
                     {/* Hero Content - Centered */}
-                    <div className="mx-auto max-w-5xl text-center mb-16 animate-float">
-                        <span className="mb-8 inline-block rounded-full border border-white/30 bg-white/20 px-6 py-2 text-sm font-bold uppercase tracking-widest text-white backdrop-blur-sm animate-slide-up">
-                            Trusted by 10,000+ Families • RERA Verified
-                        </span>
-                        <h1 className="font-display text-6xl leading-[1.1] text-white md:text-8xl animate-slide-up stagger-1">
-                            Own the <span className="italic font-normal gradient-text font-serif">Earth</span>
-                            <br />
-                            Beneath Your Legacy
+                    <div className="mx-auto max-w-4xl text-center mb-8 animate-float">
+                        <h1 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-white animate-slide-up stagger-1">
+                            Verified Residential Plots in Bengaluru’s <br className="hidden md:block" /> <span className="gradient-text italic">High-Growth Corridors</span>
                         </h1>
-                        <p className="mt-8 text-xl text-white/80 max-w-2xl mx-auto animate-slide-up stagger-2">
-                            The definitive collection of Bengaluru’s most strategic RERA-verified residential plots. Secure your family's future on India's most prestigious corridors.
+                        <p className="mt-6 text-sm md:text-base text-white/80 max-w-2xl mx-auto animate-slide-up stagger-2 leading-relaxed font-light">
+                            Explore premium residential plots in Hoskote, Bagalur, Kanakapura Road, and other fast-growing Bengaluru locations with verified developers, legal support, and home-loan assistance.
                         </p>
                     </div>
 
                     {/* Property Search Form */}
-                    <div className="mb-16">
+                    <div className="mb-8">
                         <PropertySearchForm />
                     </div>
 
                     {/* Stats */}
-                    <div className="border-t border-white/10 pt-12">
-                        <div className="overflow-x-auto scrollbar-hide -mx-6 px-6">
-                            <div className="flex gap-8 md:gap-12 min-w-max md:min-w-0 md:grid md:grid-cols-3 animate-scroll-mobile md:animate-none">
-                                <div className="text-center animate-slide-up stagger-1 snap-center flex-shrink-0 w-[280px] md:w-auto">
-                                    <div className="font-display text-5xl text-white md:text-6xl gradient-text mb-3">100%</div>
-                                    <div className="text-sm uppercase tracking-widest text-slate-300">
-                                        Verified Builders
+                    <div className="border-t border-white/10 pt-6">
+                        <div className="w-full">
+                            <div className="grid grid-cols-3 gap-2 sm:gap-4 md:gap-8 items-center justify-center max-w-4xl mx-auto divide-x divide-white/10">
+                                <div className="text-center animate-slide-up stagger-1 px-2">
+                                    <div className="font-display text-2xl sm:text-3xl md:text-5xl text-white gradient-text mb-1 relative md:inline-block">100%</div>
+                                    <div className="text-[9px] sm:text-[10px] md:text-xs uppercase tracking-widest text-slate-300">
+                                        Verified Developer Listings
                                     </div>
                                 </div>
-                                <div className="text-center animate-slide-up stagger-2 snap-center flex-shrink-0 w-[280px] md:w-auto">
-                                    <div className="font-display text-5xl text-white md:text-6xl gradient-text mb-3">RERA</div>
-                                    <div className="text-sm uppercase tracking-widest text-slate-300">
-                                        Approved
+                                <div className="text-center animate-slide-up stagger-2 px-2">
+                                    <div className="font-display text-2xl sm:text-3xl md:text-5xl text-white gradient-text mb-1 relative md:inline-block">RERA</div>
+                                    <div className="text-[9px] sm:text-[10px] md:text-xs uppercase tracking-widest text-slate-300">
+                                        Registered Projects
                                     </div>
                                 </div>
-                                <div className="text-center animate-slide-up stagger-3 snap-center flex-shrink-0 w-[280px] md:w-auto">
-                                    <div className="font-display text-5xl text-white md:text-6xl gradient-text mb-3">Top 1%</div>
-                                    <div className="text-sm uppercase tracking-widest text-slate-300">
-                                        Properties Only
+                                <div className="text-center animate-slide-up stagger-3 px-2">
+                                    <div className="font-display text-2xl sm:text-3xl md:text-5xl text-white gradient-text mb-1 relative md:inline-block">Clear-Title</div>
+                                    <div className="text-[9px] sm:text-[10px] md:text-xs uppercase tracking-widest text-slate-300">
+                                        & Documentation Support
                                     </div>
                                 </div>
                             </div>
@@ -191,18 +187,21 @@ export default async function HomePage() {
                 <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -mr-64 -mt-64" />
 
                 <div className="relative mx-auto max-w-7xl px-6">
-                    <div className="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
-                        <div>
-                            <span className="inline-flex items-center gap-2 text-primary font-bold uppercase tracking-widest text-sm mb-4">
-                                <Sparkles className="h-4 w-4" /> Selected Masterpieces
+                    <div className="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-8">
+                        <div className="max-w-3xl">
+                            <span className="inline-flex items-center gap-2 text-primary font-bold uppercase tracking-widest text-xs mb-4">
+                                <Sparkles className="h-3.5 w-3.5" /> FEATURED OPPORTUNITIES
                             </span>
-                            <h2 className="font-display text-4xl md:text-6xl max-w-2xl">
-                                Featured <span className="italic font-normal gradient-text">Investment</span> Opportunities
+                            <h2 className="font-display text-4xl md:text-5xl leading-[1.15] mb-6">
+                                Verified Residential Plots in Bengaluru’s <span className="italic font-normal gradient-text">Most Promising</span> Corridors
                             </h2>
+                            <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-xl font-light">
+                                Discover handpicked plotted developments in Hoskote, Bagalur, Kanakapura Road, and other strategic locations selected for connectivity, builder credibility, and long-term potential.
+                            </p>
                         </div>
-                        <Link href="/properties">
-                            <Button variant="outline" className="rounded-full px-8 py-6 group hover:bg-primary hover:text-white transition-all duration-300">
-                                View Full Portfolio
+                        <Link href="/properties" className="flex-shrink-0">
+                            <Button variant="outline" className="rounded-full px-8 py-6 group hover:bg-primary hover:text-white transition-all duration-300 w-full md:w-auto">
+                                View All Plot Listings
                                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                             </Button>
                         </Link>
@@ -233,10 +232,10 @@ export default async function HomePage() {
 
             {/* Promo Banner */}
             <BannerPlaceholder
-                tag="Limited Offer"
-                headline="Get ₹50,000 OFF"
-                subtext="Along with Lowest interest and Exclusive benefits on home loans today!"
-                ctaLabel="Learn More"
+                tag="BUYER SUPPORT"
+                headline="Get Expert Help with Plot Financing and Purchase Planning"
+                subtext="Estimate your budget, compare EMI options, understand registration costs, and get guidance on plot financing before you buy."
+                ctaLabel="Plan Your Budget"
                 ctaHref="/contact"
                 theme="dark"
             />
@@ -268,6 +267,9 @@ export default async function HomePage() {
                 </div>
             </section>
 
+            {/* Homepage FAQs */}
+            <HomeFaqSection />
+
             {/* CTA */}
             <section className="bg-background py-24 relative overflow-hidden">
                 <div className="mx-auto max-w-7xl px-6">
@@ -276,20 +278,20 @@ export default async function HomePage() {
 
                         <div className="flex-1 relative z-10">
                             <h2 className="font-display text-5xl text-white md:text-7xl mb-8 leading-tight">
-                                Prepare for Your
-                                <br />
-                                Next <span className="gradient-text italic">Masterpiece</span>
+                                Start Your Search for{' '}
+                                <span className="gradient-text italic">Verified Residential Plots</span>
+                                <br />in Bengaluru
                             </h2>
                             <p className="mb-12 text-xl text-slate-400 max-w-lg leading-relaxed">
-                                Join our exclusive network of premium builders and discerning buyers today.
+                                Connect with RealtyDoor to explore premium plotted developments, compare top growth locations, and buy with greater clarity and confidence.
                             </p>
                             <div className="flex flex-col gap-4 sm:flex-row">
                                 <Button size="lg" className="bg-gold hover:bg-gold/90 hover-glow transition-all duration-300">
-                                    Get Started
+                                    Explore Plots
                                 </Button>
                                 <Button size="lg" variant="outline" className="border-white/20 text-black
                                 hover:bg-white/10  hover-scale">
-                                    Download Brochure
+                                    Download Buyer Guide
                                 </Button>
                             </div>
                         </div>

@@ -208,6 +208,10 @@
   }
 }
 
+.animate-ticker-scroll {
+  animation: ticker-scroll 40s linear infinite;
+}
+
 @keyframes scroll-mobile {
 
   0%,

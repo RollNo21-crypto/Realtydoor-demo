@@ -1,108 +1,242 @@
 /**
- * LifestyleBanner — compact placeholder twin-card strip
- * -------------------------------------------------------
- * Two side-by-side placeholder ad slots.
- * The graphic designer supplies the actual creative later.
- * Until then, grey placeholder rectangles with an image icon are shown.
+ * ServiceShowcase
+ * ----------------
+ * A responsive 3-tier service banner that adapts its layout by device:
+ *   - Mobile:  Single stacked tall cards in a snap-scroll container (swipe to browse)
+ *   - Tablet:  2×3 grid of medium cards
+ *   - Desktop: Auto-scrolling ticker of wide-format service cards
+ *
+ * All cards link to real /services/* routes in the app.
  */
 
+'use client';
+
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { ArrowUpRight, Landmark, Scale, TrendingUp, Wrench, Building2, FileCheck, ChevronRight } from 'lucide-react';
 import React from 'react';
 
-interface CardConfig {
-    tag?: string;
+interface Service {
+    id: string;
+    eyebrow: string;
     headline: string;
-    subtext?: string;
-    ctaLabel?: string;
-    ctaHref?: string;
-    /** Actual image / illustration element from designer */
-    imageSlot?: React.ReactNode;
-    dark?: boolean;
+    body: string;
+    cta: string;
+    href: string;
+    icon: React.ReactNode;
+    accentFrom: string;
+    accentTo: string;
+    badge?: string;
 }
 
-interface LifestyleBannerProps {
-    cards?: [CardConfig, CardConfig];
-    className?: string;
-}
-
-const defaultCards: [CardConfig, CardConfig] = [
+const services: Service[] = [
     {
-        tag: 'Home Loans',
-        headline: 'Get the Best Home Loan Rates',
-        subtext: 'Quick approvals through leading banks.',
-        ctaLabel: 'Get Home Loan',
-        ctaHref: '/contact',
-        dark: true,
+        id: 'loan',
+        eyebrow: 'PLOT FINANCING SUPPORT',
+        headline: 'Home Loan Guidance for Plot Buyers',
+        body: 'Lender options, EMI planning, eligibility checks, and documentation support for Bengaluru plot purchases.',
+        cta: 'Check Loan Options',
+        href: '/services/loan-assistance',
+        icon: <Landmark className="h-6 w-6" />,
+        accentFrom: 'from-[#1A2744]',
+        accentTo: 'to-[#243356]',
+        badge: 'Most Requested',
     },
     {
-        tag: 'Legal Support',
-        headline: 'Expert Legal & Documentation Help',
-        subtext: 'Keep your purchase secure and transparent.',
-        ctaLabel: 'Get in Touch',
-        ctaHref: '/contact',
-        dark: true,
+        id: 'legal',
+        eyebrow: 'LEGAL VERIFICATION',
+        headline: 'Legal & Documentation Support',
+        body: 'Title document review, RERA compliance checks, encumbrance certificates, and registration guidance.',
+        cta: 'Speak to an Expert',
+        href: '/services/legal',
+        icon: <Scale className="h-6 w-6" />,
+        accentFrom: 'from-[#1A2744]',
+        accentTo: 'to-[#1e3060]',
+    },
+    {
+        id: 'resale',
+        eyebrow: 'PORTFOLIO ADVISORY',
+        headline: 'Resale & Exit Strategy Support',
+        body: 'Data-driven appreciation insights and professional assistance when you decide to exit or re-sell your plot.',
+        cta: 'Explore Resale',
+        href: '/services/resale',
+        icon: <TrendingUp className="h-6 w-6" />,
+        accentFrom: 'from-[#1A2744]',
+        accentTo: 'to-[#243356]',
+    },
+    {
+        id: 'valuation',
+        eyebrow: 'MARKET INSIGHTS',
+        headline: 'Plot Valuation & Market Analysis',
+        body: 'Get an accurate fair-market assessment of your plot or shortlisted property before you buy or sell.',
+        cta: 'Get Valuation',
+        href: '/services/valuation',
+        icon: <FileCheck className="h-6 w-6" />,
+        accentFrom: 'from-[#1A2744]',
+        accentTo: 'to-[#1e3060]',
+        badge: 'New',
+    },
+    {
+        id: 'construction',
+        eyebrow: 'DESIGN ADVISORY',
+        headline: 'Construction & Vastu Planning',
+        body: 'Vastu consultations, architect referrals, and construction planning support for your future home build.',
+        cta: 'Start Planning',
+        href: '/services/construction',
+        icon: <Wrench className="h-6 w-6" />,
+        accentFrom: 'from-[#1A2744]',
+        accentTo: 'to-[#243356]',
+    },
+    {
+        id: 'management',
+        eyebrow: 'COMPLIANCE SERVICES',
+        headline: 'Property Management & Compliance',
+        body: 'Khata transfers, property tax assistance, and title maintenance for a legally healthy land asset.',
+        cta: 'Get Legal Help',
+        href: '/services/property-management',
+        icon: <Building2 className="h-6 w-6" />,
+        accentFrom: 'from-[#1A2744]',
+        accentTo: 'to-[#1e3060]',
     },
 ];
 
-function PlaceholderCard({ card }: { card: CardConfig }) {
-    const bg = card.dark ? 'bg-[#1A2744]' : 'bg-white border border-zinc-200';
-    const headline = card.dark ? 'text-white' : 'text-zinc-900';
-    const sub = card.dark ? 'text-white/55' : 'text-zinc-500';
-    const tag = card.dark ? 'bg-white/10 text-white/60' : 'bg-zinc-100 text-zinc-500';
-    const btn = card.dark ? 'bg-white text-[#1A2744]' : 'bg-[#1A2744] text-white';
-    const imgBg = card.dark ? 'bg-white/8' : 'bg-zinc-100 border border-dashed border-zinc-300';
+/* ── Single Card component (reused across all breakpoints) ── */
+interface CardProps {
+    service: Service;
+    size?: 'sm' | 'md' | 'lg';
+}
+
+function ServiceCard({ service, size = 'md' }: CardProps) {
+    const heights: Record<string, string> = { sm: 'h-[220px]', md: 'h-[280px]', lg: 'h-[340px]' };
+    const iconSizes: Record<string, string> = { sm: 'h-10 w-10', md: 'h-12 w-12', lg: 'h-14 w-14' };
 
     return (
-        <div className={`flex-1 flex flex-col sm:flex-row items-stretch rounded-2xl overflow-hidden ${bg}`}
-            style={{ minHeight: 150 }}>
-            {/* Content */}
-            <div className="flex-1 flex flex-col justify-center px-7 py-6 gap-2">
-                <span className={`self-start text-[10px] font-bold uppercase tracking-[0.2em] px-2.5 py-1 rounded-full ${tag}`}>
-                    {card.tag ?? 'Sponsored'}
-                </span>
-                <p className={`font-bold text-base md:text-lg leading-snug ${headline}`}>
-                    {card.headline}
-                </p>
-                {card.subtext && (
-                    <p className={`text-sm leading-relaxed max-w-[220px] ${sub}`}>
-                        {card.subtext}
+        <Link href={service.href} className="group block flex-shrink-0">
+            <div className={`relative ${heights[size]} w-full rounded-[2rem] overflow-hidden bg-gradient-to-br ${service.accentFrom} ${service.accentTo} cursor-pointer transition-all duration-500 hover:scale-[1.02] hover:shadow-2xl`}>
+                {/* Subtle noise texture overlay */}
+                <div className="absolute inset-0 opacity-20"
+                    style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E")` }} />
+
+                {/* Top row */}
+                <div className="relative z-10 flex items-start justify-between p-6">
+                    <div className={`${iconSizes[size]} rounded-2xl bg-white/10 border border-white/15 flex items-center justify-center text-white backdrop-blur-sm`}>
+                        {service.icon}
+                    </div>
+                    <div className="flex items-center gap-2">
+                        {service.badge && (
+                            <span className="text-[10px] font-bold uppercase tracking-widest bg-orange-500/90 text-white px-3 py-1 rounded-full">
+                                {service.badge}
+                            </span>
+                        )}
+                        <div className="h-8 w-8 rounded-full bg-white/10 border border-white/15 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 group-hover:bg-orange-500">
+                            <ArrowUpRight className="h-4 w-4 text-white" />
+                        </div>
+                    </div>
+                </div>
+
+                {/* Bottom content */}
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                    <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/50 mb-2">
+                        {service.eyebrow}
                     </p>
-                )}
-                <div className="mt-3">
-                    <Link href={card.ctaHref ?? '/contact'}>
-                        <button className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all ${btn} hover:opacity-90`}>
-                            {card.ctaLabel ?? 'Learn More'}
-                            <ArrowRight className="h-3.5 w-3.5" />
-                        </button>
-                    </Link>
+                    <h3 className={`font-display font-bold text-white leading-tight mb-2 group-hover:text-orange-300 transition-colors ${size === 'lg' ? 'text-2xl' : 'text-lg'}`}>
+                        {service.headline}
+                    </h3>
+                    {size !== 'sm' && (
+                        <p className="text-sm text-white/55 leading-relaxed line-clamp-2 mb-4">
+                            {service.body}
+                        </p>
+                    )}
+                    <div className="inline-flex items-center gap-1.5 text-xs font-bold text-white/70 group-hover:text-orange-300 transition-colors">
+                        {service.cta}
+                        <ChevronRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                    </div>
                 </div>
             </div>
-
-            {/* Image slot */}
-            <div className={`relative flex-shrink-0 w-full sm:w-[220px] ${imgBg}`} style={{ minHeight: 150 }}>
-                {card.imageSlot ?? (
-                    <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 opacity-25">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-current">
-                            <rect x="3" y="3" width="18" height="18" rx="2" />
-                            <circle cx="8.5" cy="8.5" r="1.5" />
-                            <polyline points="21 15 16 10 5 21" />
-                        </svg>
-                        <span className="text-[9px] font-bold uppercase tracking-widest text-current">Image Slot</span>
-                    </div>
-                )}
-            </div>
-        </div>
+        </Link>
     );
 }
 
-export function LifestyleBanner({ cards = defaultCards, className = '' }: LifestyleBannerProps) {
+export function LifestyleBanner({ className = '' }: { className?: string }) {
+    const scrollRef = React.useRef<HTMLDivElement>(null);
+    const [isPaused, setIsPaused] = React.useState(false);
+
+    // Desktop: infinite marquee with JS RAF for smooth performance
+    React.useEffect(() => {
+        const el = scrollRef.current;
+        if (!el) return;
+        let animId: number;
+        let pos = 0;
+
+        function tick() {
+            if (!isPaused && el) {
+                pos += 0.5;
+                // Reset when halfway (since we duplicated cards)
+                if (pos >= el.scrollWidth / 2) pos = 0;
+                el.scrollLeft = pos;
+            }
+            animId = requestAnimationFrame(tick);
+        }
+        animId = requestAnimationFrame(tick);
+        return () => cancelAnimationFrame(animId);
+    }, [isPaused]);
+
     return (
-        <section className={`py-4 px-4 md:px-8 bg-[#F3F4F6] ${className}`}>
-            <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-4">
-                {cards.map((card, i) => (
-                    <PlaceholderCard key={i} card={card} />
+        <section className={`py-12 bg-[#F0F1F5] overflow-hidden ${className}`}>
+            {/* Section header */}
+            <div className="mx-auto max-w-7xl px-6 mb-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+                <div>
+                    <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-orange-500 mb-2">Our Services</p>
+                    <h2 className="font-display text-2xl md:text-3xl text-slate-900">
+                        Everything You Need to Buy, Own, and Grow Your Plot
+                    </h2>
+                </div>
+                <Link href="/services" className="flex-shrink-0 inline-flex items-center gap-2 text-sm font-bold text-slate-700 hover:text-orange-500 transition-colors group/all">
+                    View All Services <ArrowUpRight className="h-4 w-4 transition-transform group-hover/all:translate-x-0.5 group-hover/all:-translate-y-0.5" />
+                </Link>
+            </div>
+
+            {/* ── MOBILE: Horizontal snap-scroll, tall cards ── */}
+            <div className="md:hidden px-6">
+                <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-2">
+                    {services.map((s) => (
+                        <div key={s.id} className="snap-center flex-shrink-0 w-[85vw]">
+                            <ServiceCard service={s} size="lg" />
+                        </div>
+                    ))}
+                </div>
+                {/* Scroll hint dots */}
+                <div className="flex justify-center gap-1.5 mt-4">
+                    {services.map((s) => (
+                        <div key={s.id} className="h-1.5 w-1.5 rounded-full bg-slate-300" />
+                    ))}
+                </div>
+            </div>
+
+            {/* ── TABLET: 2×3 grid of medium cards ── */}
+            <div className="hidden md:grid lg:hidden grid-cols-2 gap-4 px-6 mx-auto max-w-3xl">
+                {services.map((s) => (
+                    <ServiceCard key={s.id} service={s} size="md" />
                 ))}
+            </div>
+
+            {/* ── DESKTOP: Infinite marquee ── */}
+            <div
+                className="hidden lg:block"
+                onMouseEnter={() => setIsPaused(true)}
+                onMouseLeave={() => setIsPaused(false)}
+            >
+                <div
+                    ref={scrollRef}
+                    className="flex gap-5 overflow-hidden px-8"
+                    style={{ scrollBehavior: 'auto' }}
+                >
+                    {/* Duplicate for seamless loop */}
+                    {[...services, ...services].map((s, i) => (
+                        <div key={i} className="flex-shrink-0 w-[360px]">
+                            <ServiceCard service={s} size="md" />
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
     );

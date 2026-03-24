@@ -17,12 +17,12 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
     {
         id: '1',
-        name: 'Sarah Johnson',
-        role: 'CEO',
-        company: 'Tech Innovations Inc.',
+        name: 'A Verified Plot Buyer',
+        role: 'Homebuyer',
+        company: 'Bengaluru',
         image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400',
         rating: 5,
-        quote: 'The team at RealtyDoor made finding our dream office space effortless. Their attention to detail and market knowledge is unparalleled.',
+        quote: 'RealtyDoor helped us shortlist verified plots in the right location without the usual confusion. Their team explained approvals, pricing, and documentation clearly, which made the buying process far more confident.',
     },
     {
         id: '2',
@@ -51,10 +51,10 @@ export function TestimonialsBenefitsBento() {
                 {/* Section Header */}
                 <div className="mb-16 text-center">
                     <h2 className="font-display text-4xl md:text-5xl mb-6">
-                        Why Choose RealtyDoor
+                        Why Buyers and Investors Choose RealtyDoor
                     </h2>
                     <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
-                        Trusted by thousands of satisfied clients worldwide with unparalleled service and verified quality
+                        RealtyDoor helps you discover, verify, compare, and confidently invest in residential plots across Bengaluru's fastest-growing corridors.
                     </p>
                 </div>
 
@@ -121,55 +121,55 @@ export function TestimonialsBenefitsBento() {
                         </div>
                     </div>
 
-                    {/* Premium Quality */}
+                    {/* Card 1 — Verified Listings */}
                     <div className="rounded-2xl bg-background p-8 shadow-sm hover-lift group border-2 border-transparent hover:border-orange-500/20 transition-all duration-300">
                         <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-orange-500/10 to-orange-600/5 transition-all duration-300 group-hover:from-orange-500/20 group-hover:to-orange-600/10">
                             <Award className="h-7 w-7 text-orange-500 animate-pulse-glow" />
                         </div>
                         <h3 className="font-display text-xl mb-3 group-hover:text-orange-500 transition-colors">
-                            Premium Quality
+                            Verified Listings
                         </h3>
                         <p className="text-sm leading-relaxed text-muted-foreground">
-                            Only top 1% of properties that meet our rigorous standards for architecture, location, and craftsmanship.
+                            Every project is screened for builder credibility, project status, and buyer relevance before it is listed.
                         </p>
                     </div>
 
-                    {/* Verified Listings */}
+                    {/* Card 2 — RERA Clarity */}
                     <div className="rounded-2xl bg-background p-8 shadow-sm hover-lift group border-2 border-transparent hover:border-orange-500/20 transition-all duration-300">
                         <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-orange-500/10 to-orange-600/5 transition-all duration-300 group-hover:from-orange-500/20 group-hover:to-orange-600/10">
                             <Shield className="h-7 w-7 text-orange-500 animate-pulse-glow" />
                         </div>
                         <h3 className="font-display text-xl mb-3 group-hover:text-orange-500 transition-colors">
-                            Verified Listings
+                            RERA and Documentation Clarity
                         </h3>
                         <p className="text-sm leading-relaxed text-muted-foreground">
-                            Every property undergoes thorough verification including legal checks, builder credentials, and quality audits.
+                            We help buyers understand registration status, approvals, and critical property documents before purchase.
                         </p>
                     </div>
 
-                    {/* Expert Guidance */}
+                    {/* Card 3 — Location-First Guidance */}
                     <div className="rounded-2xl bg-background p-8 shadow-sm hover-lift group border-2 border-transparent hover:border-orange-500/20 transition-all duration-300">
                         <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-orange-500/10 to-orange-600/5 transition-all duration-300 group-hover:from-orange-500/20 group-hover:to-orange-600/10">
                             <Users className="h-7 w-7 text-orange-500 animate-pulse-glow" />
                         </div>
                         <h3 className="font-display text-xl mb-3 group-hover:text-orange-500 transition-colors">
-                            Expert Guidance
+                            Location-First Investment Guidance
                         </h3>
                         <p className="text-sm leading-relaxed text-muted-foreground">
-                            Dedicated advisors with deep market knowledge guide you through every step of your property journey.
+                            Compare Hoskote, Bagalur, Kanakapura Road, and other corridors based on growth potential, access, and buyer suitability.
                         </p>
                     </div>
 
-                    {/* Smart Investment */}
+                    {/* Card 4 — End-to-End Support */}
                     <div className="rounded-2xl bg-background p-8 shadow-sm hover-lift group border-2 border-transparent hover:border-orange-500/20 transition-all duration-300">
                         <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-orange-500/10 to-orange-600/5 transition-all duration-300 group-hover:from-orange-500/20 group-hover:to-orange-600/10">
                             <TrendingUp className="h-7 w-7 text-orange-500 animate-pulse-glow" />
                         </div>
                         <h3 className="font-display text-xl mb-3 group-hover:text-orange-500 transition-colors">
-                            Smart Investment
+                            End-to-End Buyer Support
                         </h3>
                         <p className="text-sm leading-relaxed text-muted-foreground">
-                            Access market insights, ROI analytics, and appreciation forecasts to make informed investment decisions.
+                            From shortlisting and site visits to financing and documentation, we support your complete purchase journey.
                         </p>
                     </div>
                 </div>

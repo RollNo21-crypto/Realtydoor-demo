@@ -37,6 +37,35 @@ const faqJsonLd = {
 export default function FAQsPage() {
     const faqCategories = [
         {
+            category: "Buying Plots in Bengaluru",
+            faqs: [
+                {
+                    question: "What should I check before buying a residential plot in Bengaluru?",
+                    answer: "Check the project's legal documents, title clarity, registration details, approval status, builder credibility, and location suitability before making a purchase decision."
+                },
+                {
+                    question: "Are all plots on RealityDoor RERA registered?",
+                    answer: "Project registration status depends on the development and applicable regulations. Buyers should always verify project-specific details and supporting documentation before purchase."
+                },
+                {
+                    question: "Which areas are best for plot investment in Bengaluru?",
+                    answer: "Popular plotted-development corridors include Hoskote, Bagalur, Kanakapura Road, and other growth-led micro-markets based on budget, infrastructure, and buyer goals."
+                },
+                {
+                    question: "Can I get a home loan for a residential plot?",
+                    answer: "Yes, plot financing may be available through eligible lenders based on project profile, buyer eligibility, and required documentation."
+                },
+                {
+                    question: "How do I compare locations like Hoskote, Bagalur, and Kanakapura Road?",
+                    answer: "Compare them based on connectivity, growth outlook, pricing, future infrastructure, end-use potential, and investment horizon."
+                },
+                {
+                    question: "Does RealityDoor help with legal and documentation support?",
+                    answer: "Yes, RealityDoor supports buyers with guidance on approvals, documentation review, and key checkpoints to consider before finalizing a plot."
+                }
+            ]
+        },
+        {
             category: "Buying Properties",
             faqs: [
                 {

@@ -406,46 +406,8 @@ export default function AashrithaaPage() {
             </section>
 
 
-            {/* FINAL CTA */}
-            <section className="py-20 px-6 md:px-12 bg-white border-t border-black/6">
-                <div className="max-w-6xl mx-auto">
-                    <div className="relative rounded-3xl overflow-hidden min-h-[320px] flex items-center"
-                        style={{ background: 'linear-gradient(135deg,#FF5722 0%,#E64A19 50%,#BF360C 100%)', boxShadow: '0 24px 70px rgba(255,87,34,0.3)' }}>
-                        {/* Background watermark */}
-                        <div className="absolute inset-0 opacity-5 flex items-center justify-center">
-                            <span className="font-display text-white select-none" style={{ fontSize: '25vw', lineHeight: 1 }}>A</span>
-                        </div>
-                        <div className="relative z-10 px-10 md:px-16 py-12 flex flex-col md:flex-row md:items-center md:justify-between gap-8 w-full">
-                            <div>
-                                <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] mb-6 border border-white/30 bg-white/10 text-white self-start">
-                                    <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />Limited Availability
-                                </div>
-                                <h2 className="font-display text-white leading-[0.95]" style={{ fontSize: 'clamp(2.2rem,5vw,3.5rem)' }}>
-                                    Your Happiness<br />
-                                    <span className="italic font-light text-white/70">begins here.</span>
-                                </h2>
-                                <p className="text-white/60 font-light mt-4 max-w-md text-sm leading-relaxed">
-                                    Fully developed plots in Jigani&nbsp;·&nbsp;Clear title&nbsp;·&nbsp;Ready for immediate registration.
-                                </p>
-                            </div>
-                            <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
-                                <a href="tel:+919845012345">
-                                    <Button className="rounded-full px-9 py-6 font-semibold bg-white text-[#FF5722] hover:bg-white/90 w-full sm:w-auto"
-                                        style={{ boxShadow: '0 8px 20px rgba(0,0,0,0.2)' }}>
-                                        <Phone className="mr-2 h-4 w-4" />Call Now
-                                    </Button>
-                                </a>
-                                <a href="https://wa.me/919845012345" target="_blank" rel="noopener noreferrer">
-                                    <Button variant="outline"
-                                        className="rounded-full px-9 py-6 font-semibold border-white/40 text-white hover:bg-white/10 w-full sm:w-auto">
-                                        WhatsApp Us
-                                    </Button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            {/* CTA */}
+            <PropertyCTA propertyName="Aashrithaa Divine" image={img1} variant="glass" brochureUrl={brochureUrl} />
 
 
             <div className="py-8 text-center bg-white border-t border-black/8">
