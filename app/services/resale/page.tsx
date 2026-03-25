@@ -3,6 +3,7 @@ import Script from 'next/script';
 import { FloatingNav } from '@/components/floating-nav';
 import { Footer } from '@/components/footer';
 import { ServiceCTAForm } from '@/components/service-cta-form';
+import { BannerPlaceholder } from '@/components/promo-banner';
 import { FloatingCTA } from '@/components/floating-cta';
 import { Home, TrendingUp, Camera, Users, FileText, Handshake, CheckCircle2, ArrowRight, Sparkles } from 'lucide-react';
 import Image from 'next/image';
@@ -258,6 +259,18 @@ export default function ResaleServicesPage() {
                     </div>
                 </div>
             </section>
+
+            {/* Promo Banner */}
+            <div className="py-8 bg-background">
+                <BannerPlaceholder
+                    tag="Expert Consultation"
+                    headline="Need Help with Your Property Journey?"
+                    subtext="Our real estate experts are here to guide you through every step. Schedule a free consultation today."
+                    ctaLabel="Contact an Expert"
+                    ctaHref="/contact"
+                    theme="dark"
+                />
+            </div>
 
             {/* CTA Section */}
             <div id="cta-form">

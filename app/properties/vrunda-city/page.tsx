@@ -31,6 +31,7 @@ import {
 } from 'lucide-react';
 import { StatsTickerBanner } from '@/components/stats-ticker-banner';
 import { PropertyCTA } from '@/components/property-cta';
+import { BannerPlaceholder } from '@/components/promo-banner';
 
 // Brand palette: #FF5722 (orange), #FF7043 (orange-light), #E64A19 (orange-dark), #000 (black), #fff (white)
 
@@ -468,6 +469,18 @@ export default function VrundaCityPage() {
 
 
             {/* CTA */}
+            {/* Promo Banner */}
+            <div className="py-8 bg-background">
+                <BannerPlaceholder
+                    tag="Strategic Investment"
+                    headline="Secure Your Financial Future"
+                    subtext="Discover high-growth corridor investments handpicked by our expert analysts to maximize your returns."
+                    ctaLabel="Speak to an Analyst"
+                    ctaHref="/contact"
+                    theme="dark"
+                />
+            </div>
+
             <PropertyCTA propertyName="Vrunda City" image="https://realtydoor.com/wp-content/uploads/2025/12/banner-3-scaled.webp" variant="split" />
 
             {/* back link */}

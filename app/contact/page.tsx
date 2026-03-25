@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { GeneralContactForm } from '@/components/general-contact-form';
 import { StatsTickerBanner } from '@/components/stats-ticker-banner';
 import { BannerPlaceholder } from '@/components/promo-banner';
-import { LifestyleBanner } from '@/components/lifestyle-banner';
+
 
 export const metadata: Metadata = {
     title: 'Contact RealtyDoor | Real Estate Experts in Bengaluru',
@@ -183,8 +183,7 @@ export default function ContactPage() {
 
 
 
-            {/* Lifestyle Banner */}
-            <LifestyleBanner />
+
 
             {/* Promo Banner */}
             <BannerPlaceholder

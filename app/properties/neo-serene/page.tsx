@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { StatsTickerBanner } from '@/components/stats-ticker-banner';
 import { PropertyCTA } from '@/components/property-cta';
+import { BannerPlaceholder } from '@/components/promo-banner';
 
 const heroImage = 'https://realtydoor.com/wp-content/uploads/2025/09/banner-1-1-scaled.png';
 const secondImage = 'https://realtydoor.com/wp-content/uploads/2025/09/banner-1-2-scaled.png';
@@ -394,6 +395,18 @@ export default function NeoSerenePage() {
 
 
             {/* CTA */}
+            {/* Promo Banner */}
+            <div className="py-8 bg-background">
+                <BannerPlaceholder
+                    tag="Strategic Investment"
+                    headline="Secure Your Financial Future"
+                    subtext="Discover high-growth corridor investments handpicked by our expert analysts to maximize your returns."
+                    ctaLabel="Speak to an Analyst"
+                    ctaHref="/contact"
+                    theme="dark"
+                />
+            </div>
+
             <PropertyCTA propertyName="Neo Serene" image={heroImage} variant="overlay" brochureUrl="https://realtydoor.com/wp-content/uploads/2025/09/Serene-Brochure_compressed.pdf" />
 
             <div className="py-8 text-center bg-white border-t border-black/8">

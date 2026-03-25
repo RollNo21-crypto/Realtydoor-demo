@@ -6,8 +6,8 @@ import { Footer } from '@/components/footer';
 import { Button } from '@/components/ui/button';
 import { Shield, TrendingUp, Users, Award, CheckCircle, Target } from 'lucide-react';
 import { StatsTickerBanner } from '@/components/stats-ticker-banner';
-import { LifestyleBanner } from '@/components/lifestyle-banner';
 import { BannerPlaceholder } from '@/components/promo-banner';
+
 
 export const metadata: Metadata = {
     title: 'Real Estate Services | Property Verification, Advisory & Management | RealtyDoor',
@@ -167,8 +167,7 @@ export default function ServicesPage() {
                 </div>
             </section>
 
-            {/* Lifestyle Banner */}
-            <LifestyleBanner />
+
 
             {/* Promo Banner */}
             <BannerPlaceholder

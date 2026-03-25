@@ -4,6 +4,7 @@ import { FloatingNav } from '@/components/floating-nav';
 import { Footer } from '@/components/footer';
 import { Briefcase, TrendingUp, Heart, Users, Award, Sparkles, MapPin, Clock, DollarSign, Mail } from 'lucide-react';
 import Image from 'next/image';
+import { BannerPlaceholder } from '@/components/promo-banner';
 
 export const metadata: Metadata = {
     title: 'Careers at RealtyDoor | Real Estate Jobs in India',
@@ -253,22 +254,15 @@ export default function CareersPage() {
                     </div>
 
                     {/* Application Instructions */}
-                    <div className="mt-12 rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 p-8 md:p-12 text-center">
-                        <Briefcase className="h-12 w-12 text-primary mx-auto mb-4" />
-                        <h3 className="font-display text-2xl mb-4">Interested in Joining Us?</h3>
-                        <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                            To apply for any of the above positions, please send your resume and cover letter to:
-                        </p>
-                        <a
-                            href="mailto:careers@realtydoor.com?subject=Job Application"
-                            className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-primary to-primary/90 text-white font-semibold rounded-full hover:shadow-[0_0_30px_rgba(255,87,34,0.5)] transition-all duration-300 hover:scale-105"
-                        >
-                            <Mail className="h-5 w-5" />
-                            careers@realtydoor.com
-                        </a>
-                        <p className="text-sm text-muted-foreground mt-6">
-                            Please mention the position title in your email subject line
-                        </p>
+                    <div className="mt-12 -mx-4 md:-mx-8">
+                        <BannerPlaceholder
+                            tag="Hiring"
+                            headline="Interested in Joining Us?"
+                            subtext="To apply for any of the above positions, please send your resume and cover letter. Please mention the position title in your email subject line."
+                            ctaLabel="Email Resume"
+                            ctaHref="mailto:careers@realtydoor.com?subject=Job Application"
+                            theme="brand"
+                        />
                     </div>
                 </div>
             </section>

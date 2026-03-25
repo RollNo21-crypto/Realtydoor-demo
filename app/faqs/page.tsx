@@ -5,6 +5,7 @@ import { Footer } from '@/components/footer';
 import { Search, Sparkles, HelpCircle, ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 import { FAQAccordion } from '@/components/faq-accordion';
+import { BannerPlaceholder } from '@/components/promo-banner';
 
 export const metadata: Metadata = {
     title: 'Real Estate FAQs | Buying, Selling & Loans | RealtyDoor',
@@ -201,7 +202,7 @@ export default function FAQsPage() {
                     </h1>
 
                     <p className="text-xl text-slate-300 leading-relaxed mb-8">
-                        Find answers to common questions about our services
+                        Find answers to common questions about properties and investments
                     </p>
 
                     {/* Search Bar */}
@@ -238,29 +239,16 @@ export default function FAQsPage() {
             </section>
 
             {/* Still Have Questions CTA */}
-            <section className="bg-muted py-24">
-                <div className="mx-auto max-w-4xl px-6 text-center">
-                    <div className="rounded-3xl bg-gradient-to-br from-primary/10 to-primary/5 border border-primary/20 p-12">
-                        <HelpCircle className="h-16 w-16 text-primary mx-auto mb-6" />
-                        <h2 className="font-display text-4xl mb-4">Still Have Questions?</h2>
-                        <p className="text-lg text-muted-foreground mb-8">
-                            Our team is here to help. Get in touch and we'll answer all your queries.
-                        </p>
-                        <div className="flex flex-wrap gap-4 justify-center">
-                            <a href="/contact">
-                                <button className="px-8 py-4 bg-gradient-to-r from-primary to-primary/90 text-white font-semibold rounded-full hover:shadow-[0_0_30px_rgba(255,87,34,0.5)] transition-all duration-300 hover:scale-105">
-                                    Contact Us
-                                </button>
-                            </a>
-                            <a href="https://wa.me/919136954648">
-                                <button className="px-8 py-4 bg-white dark:bg-background text-foreground font-semibold rounded-full border border-border hover:bg-muted transition-all duration-300">
-                                    WhatsApp Support
-                                </button>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <BannerPlaceholder
+                tag="Help & Support"
+                headline="Still Have Questions?"
+                subtext="Our team is here to help. Get in touch and we'll answer all your queries."
+                ctaLabel="Contact Us"
+                ctaHref="/contact"
+                secondaryCtaLabel="WhatsApp Support"
+                secondaryCtaHref="https://wa.me/919136954648"
+                theme="dark"
+            />
 
             <Footer />
         </>

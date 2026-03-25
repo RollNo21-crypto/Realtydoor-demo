@@ -14,7 +14,6 @@ import {
 } from 'lucide-react';
 import { mockProperties, formatIndianPrice } from '@/lib/mock-data';
 import { StatsTickerBanner } from '@/components/stats-ticker-banner';
-import { LifestyleBanner } from '@/components/lifestyle-banner';
 import { BannerPlaceholder } from '@/components/promo-banner';
 import { PropertyCTA } from '@/components/property-cta';
 
@@ -708,20 +707,19 @@ function PropertiesPageContent() {
                 </>
             )}
 
-            {/* Lifestyle Banner */}
-            <LifestyleBanner />
-
-            {/* Promo Banner */}
-            <BannerPlaceholder
-                tag="Exclusive Offer"
-                headline="Zero Brokerage on Your Dream Plot"
-                subtext="Book a site visit today and get full legal assistance, EMI planning, and priority access to new launches — completely free."
-                ctaLabel="Schedule a Site Visit"
-                ctaHref="/contact"
-                theme="dark"
-            />
-
             {/* CTA Section */}
+            {/* Promo Banner */}
+            <div className="py-8 bg-background">
+                <BannerPlaceholder
+                    tag="Strategic Investment"
+                    headline="Secure Your Financial Future"
+                    subtext="Discover high-growth corridor investments handpicked by our expert analysts to maximize your returns."
+                    ctaLabel="Speak to an Analyst"
+                    ctaHref="/contact"
+                    theme="dark"
+                />
+            </div>
+
             <PropertyCTA
                 propertyName="RealityDoor"
                 image="https://realtydoor.com/wp-content/uploads/2025/12/banner-3-scaled.webp"

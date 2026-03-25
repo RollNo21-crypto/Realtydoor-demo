@@ -40,7 +40,7 @@ export function HomeFaqSection() {
     };
 
     return (
-        <section className="relative bg-[#0B1120] py-16 md:py-24 overflow-hidden border-t border-white/5">
+        <section className="relative bg-muted py-16 md:py-24 overflow-hidden border-t border-border">
             {/* Background Accents */}
             <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full -translate-y-1/2 pointer-events-none" />
             <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-blue-500/5 blur-[100px] rounded-full translate-y-1/2 pointer-events-none" />
@@ -48,7 +48,7 @@ export function HomeFaqSection() {
             <div className="relative z-10 mx-auto max-w-4xl px-6">
                 {/* Header Area */}
                 <div className="text-center mb-10 md:mb-14">
-                    <h2 className="font-display text-4xl md:text-5xl text-white leading-[1.2]">
+                    <h2 className="font-display text-4xl md:text-5xl text-foreground leading-[1.2]">
                         Frequently Asked Questions About <span className="gradient-text italic">Buying Plots in Bengaluru</span>
                     </h2>
                 </div>
@@ -59,27 +59,27 @@ export function HomeFaqSection() {
                         <div
                             key={index}
                             className={`group rounded-xl border transition-all duration-500 ${openIndex === index
-                                ? 'bg-white/10 border-white/20 shadow-[0_15px_40px_rgba(0,0,0,0.3)]'
-                                : 'bg-white/5 border-white/5 hover:border-white/10'
+                                ? 'bg-background border-border shadow-md'
+                                : 'bg-background/50 border-border hover:border-black/10'
                                 }`}
                         >
                             <button
                                 onClick={() => toggleFAQ(index)}
                                 className="w-full px-6 md:px-8 py-5 flex items-center justify-between text-left transition-all duration-300"
                             >
-                                <span className={`font-display text-lg md:text-xl tracking-tight transition-colors duration-500 ${openIndex === index ? 'text-white' : 'text-white/60 group-hover:text-white'}`}>
+                                <span className={`font-display text-lg md:text-xl tracking-tight transition-colors duration-500 ${openIndex === index ? 'text-foreground' : 'text-muted-foreground group-hover:text-foreground'}`}>
                                     {faq.question}
                                 </span>
-                                <div className={`flex-shrink-0 ml-4 w-9 h-9 rounded-full border flex items-center justify-center transition-all duration-500 ${openIndex === index ? 'bg-primary border-primary rotate-180 shadow-[0_0_15px_rgba(255,87,34,0.4)]' : 'bg-white/5 border-white/10 group-hover:border-white/20'}`}>
-                                    <ChevronDown className={`h-4 w-4 text-white transition-opacity ${openIndex === index ? 'opacity-100' : 'opacity-40'}`} />
+                                <div className={`flex-shrink-0 ml-4 w-9 h-9 rounded-full border flex items-center justify-center transition-all duration-500 ${openIndex === index ? 'bg-primary border-primary rotate-180 shadow-[0_4px_10px_rgba(255,87,34,0.3)]' : 'bg-muted border-border group-hover:border-black/20'}`}>
+                                    <ChevronDown className={`h-4 w-4 transition-colors duration-300 ${openIndex === index ? 'text-white' : 'text-muted-foreground'}`} />
                                 </div>
                             </button>
 
                             <div
                                 className={`overflow-hidden transition-all duration-500 ease-in-out ${openIndex === index ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'}`}
                             >
-                                <div className="px-6 md:px-8 pb-6 pt-1 text-slate-400 text-base md:text-lg font-light leading-relaxed">
-                                    <div className="h-px w-full bg-white/5 mb-5" />
+                                <div className="px-6 md:px-8 pb-6 pt-1 text-muted-foreground text-base md:text-lg font-light leading-relaxed">
+                                    <div className="h-px w-full bg-border mb-5" />
                                     {faq.answer}
                                 </div>
                             </div>
@@ -88,9 +88,9 @@ export function HomeFaqSection() {
                 </div>
 
                 {/* Final Scroll-to-Action */}
-                <div className="mt-12 md:mt-16 pt-10 border-t border-white/5 text-center">
+                <div className="mt-12 md:mt-16 pt-10 border-t border-border text-center">
                     <Link href="/faqs">
-                        <Button variant="outline" className="rounded-full px-8 py-4 h-auto font-display text-base md:text-lg font-semibold border-white/40 bg-white/5 text-white flex items-center gap-2 mx-auto transition-transform hover:scale-105 active:scale-95">
+                        <Button variant="outline" className="rounded-full px-8 py-4 h-auto font-display text-base md:text-lg font-semibold border-border bg-background text-foreground flex items-center gap-2 mx-auto transition-transform hover:scale-105 active:scale-95">
                             Still have questions? View all FAQs <ArrowRight className="ml-2 h-5 w-5 text-primary" />
                         </Button>
                     </Link>

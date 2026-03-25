@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { StatsTickerBanner } from '@/components/stats-ticker-banner';
 import { BannerPlaceholder } from '@/components/promo-banner';
-import { LifestyleBanner } from '@/components/lifestyle-banner';
+
 
 export const metadata: Metadata = {
     title: 'Real Estate Blog & Market Insights | RealtyDoor',
@@ -248,8 +248,7 @@ export default function BlogPage() {
                 theme="dark"
             />
 
-            {/* Lifestyle Banner */}
-            <LifestyleBanner />
+
 
             <Footer />
         </>

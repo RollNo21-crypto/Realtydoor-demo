@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { StatsTickerBanner } from '@/components/stats-ticker-banner';
 import { PropertyCTA } from '@/components/property-cta';
+import { BannerPlaceholder } from '@/components/promo-banner';
 
 const img1 = 'https://realtydoor.com/wp-content/uploads/2024/05/aashrithaa-brindhavan1-1.jpg';
 const img2 = 'https://realtydoor.com/wp-content/uploads/2024/05/aashrithaa-brindhavan-2.jpg';
@@ -387,6 +388,18 @@ export default function AashrithaaPage() {
 
 
             {/* CTA */}
+            {/* Promo Banner */}
+            <div className="py-8 bg-background">
+                <BannerPlaceholder
+                    tag="Strategic Investment"
+                    headline="Secure Your Financial Future"
+                    subtext="Discover high-growth corridor investments handpicked by our expert analysts to maximize your returns."
+                    ctaLabel="Speak to an Analyst"
+                    ctaHref="/contact"
+                    theme="dark"
+                />
+            </div>
+
             <PropertyCTA propertyName="Aashrithaa Brindavan" image={img1} variant="glass" brochureUrl={brochureUrl} />
 
             <div className="py-8 text-center bg-white border-t border-black/8">

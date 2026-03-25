@@ -6,7 +6,7 @@ import { Target, Users, Award, TrendingUp, Shield, Heart, Building2, CheckCircle
 import Image from 'next/image';
 import { StatsTickerBanner } from '@/components/stats-ticker-banner';
 import { BannerPlaceholder } from '@/components/promo-banner';
-import { LifestyleBanner } from '@/components/lifestyle-banner';
+
 
 export const metadata: Metadata = {
     title: 'About RealtyDoor | Trusted Real Estate Experts in Bengaluru Since 2015',
@@ -313,8 +313,7 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* Lifestyle Banner */}
-            <LifestyleBanner />
+
 
             <Footer />
         </>

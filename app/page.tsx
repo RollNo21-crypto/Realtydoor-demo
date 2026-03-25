@@ -15,7 +15,7 @@ import { getFeaturedProperties } from '@/lib/mock-data';
 import { ArrowRight, Shield, Eye, Sparkles, Award, Users, TrendingUp, CheckCircle } from 'lucide-react';
 import { StatsTickerBanner } from '@/components/stats-ticker-banner';
 import { BannerPlaceholder } from '@/components/promo-banner';
-import { LifestyleBanner } from '@/components/lifestyle-banner';
+
 
 export const metadata: Metadata = {
     title: 'RealtyDoor | Premium Residential Plots in Bengaluru | RERA Verified',
@@ -243,8 +243,7 @@ export default async function HomePage() {
             {/* Property Categories */}
             <PropertyCategories />
 
-            {/* Lifestyle / Why Us Banner */}
-            <LifestyleBanner />
+
 
             {/* Testimonials & Benefits Bento Grid */}
             <TestimonialsBenefitsBento />
@@ -271,37 +270,21 @@ export default async function HomePage() {
             <HomeFaqSection />
 
             {/* CTA — Compact */}
-            <section className="bg-background py-10 relative overflow-hidden">
-                <div className="mx-auto max-w-7xl px-6">
-                    <div className="relative overflow-hidden rounded-2xl bg-zinc-950 px-8 py-10 md:px-14 md:py-12 border border-white/10">
-                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_left,_var(--tw-gradient-stops))] from-[#FF5722]/10 via-transparent to-transparent pointer-events-none" />
-                        <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-                            <div className="max-w-xl">
-                                <h2 className="font-display text-xl md:text-3xl text-white leading-tight mb-2">
-                                    Start Your Search for{' '}
-                                    <span className="gradient-text italic">Verified Residential Plots</span>
-                                    {' '}in Bengaluru
-                                </h2>
-                                <p className="text-sm text-slate-400 leading-relaxed">
-                                    Connect with RealtyDoor to explore premium plotted developments, compare top growth locations, and buy with greater clarity and confidence.
-                                </p>
-                            </div>
-                            <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
-                                <Link href="/properties">
-                                    <Button className="bg-[#FF5722] hover:bg-[#E64A19] text-white rounded-full px-7 h-10 font-semibold w-full sm:w-auto">
-                                        Explore Plots
-                                    </Button>
-                                </Link>
-                                <Link href="/contact">
-                                    <Button variant="ghost" className="text-white/50 rounded-full px-6 h-10 font-semibold w-full sm:w-auto hover:bg-transparent hover:text-white/70">
-                                        Download Buyer Guide
-                                    </Button>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <BannerPlaceholder
+                headline={
+                    <>
+                        Start Your Search for{' '}
+                        <span className="gradient-text italic">Verified Residential Plots</span>
+                        {' '}in Bengaluru
+                    </>
+                }
+                subtext="Connect with RealtyDoor to explore premium plotted developments, compare top growth locations, and buy with greater clarity and confidence."
+                ctaLabel="Explore Plots"
+                ctaHref="/properties"
+                secondaryCtaLabel="Download Buyer Guide"
+                secondaryCtaHref="/contact"
+                theme="dark"
+            />
 
             <Footer />
         </>

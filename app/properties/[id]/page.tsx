@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { StatsTickerBanner } from '@/components/stats-ticker-banner';
 import { PropertyCTA } from '@/components/property-cta';
+import { BannerPlaceholder } from '@/components/promo-banner';
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
     const { id } = await params;
@@ -289,6 +290,18 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
             </main>
 
             {/* CTA */}
+            {/* Promo Banner */}
+            <div className="py-8 bg-background">
+                <BannerPlaceholder
+                    tag="Strategic Investment"
+                    headline="Secure Your Financial Future"
+                    subtext="Discover high-growth corridor investments handpicked by our expert analysts to maximize your returns."
+                    ctaLabel="Speak to an Analyst"
+                    ctaHref="/contact"
+                    theme="dark"
+                />
+            </div>
+
             <PropertyCTA propertyName={property.title} image={property.images[0]?.url || 'https://images.unsplash.com/photo-1500382017468-9049fed747ef'} variant="split" />
 
             <Footer />

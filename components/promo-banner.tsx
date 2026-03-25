@@ -1,143 +1,124 @@
 /**
  * BannerPlaceholder
  * ------------------
- * A compact, horizontal ad-slot placeholder — designed so the graphic designer
- * can drop in the final creative (image, illustration, copy) later.
- *
- * Layout mirrors real estate portals (99acres / PropTiger style):
- *   [ LEFT: headline + subtext + CTA ]  |  [ RIGHT: image / illustration slot ]
- *
- * Props let the developer wire up the text & href now;
- * `imageSlot` accepts an <img> / <Image> / illustration element when ready.
- * Until then, a grey placeholder rectangle is rendered.
+ * A compact, horizontal banner component designed for CTAs across the site.
+ * Supports primary and optional secondary action buttons.
  */
 
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import React from 'react';
+import { Button } from '@/components/ui/button';
 
 export interface BannerPlaceholderProps {
-    /** Small label above the headline — e.g. "Limited Offer" */
+    /** Optional small label above the headline */
     tag?: string;
-    /** Bold main headline */
-    headline: string;
-    /** One-line supporting text */
+    /** Main headline. Supports raw strings or ReactNodes (e.g. for gradient text styling) */
+    headline: React.ReactNode;
+    /** Optional supporting subtext */
     subtext?: string;
-    /** CTA button label */
+    /** Primary CTA button label */
     ctaLabel?: string;
-    /** CTA destination */
+    /** Primary CTA destination */
     ctaHref?: string;
+    /** Optional Secondary CTA button label */
+    secondaryCtaLabel?: string;
+    /** Optional Secondary CTA destination */
+    secondaryCtaHref?: string;
     /**
-     * Image / illustration element supplied by the designer.
-     * When undefined, a grey placeholder rectangle is shown instead.
-     */
-    imageSlot?: React.ReactNode;
-    /**
-     * Overall colour theme of the card.
-     * 'dark'  → navy/dark blue  (default — matches reference screenshots)
-     * 'brand' → RealtyDoor orange
-     * 'light' → white card on light background
+     * Overall colour theme of the banner.
+     * 'dark'   → Default dark theme with orange accents
+     * 'brand'  → Solid orange gradient theme
+     * 'light'  → White card theme
      */
     theme?: 'dark' | 'brand' | 'light';
-    /** Extra class on the outermost <section> wrapper */
+    /** Extra class on the outermost section wrapper */
     className?: string;
+    /** Legacy prop to ignore so old imports don't break */
+    imageSlot?: React.ReactNode;
 }
 
-const themes = {
-    dark: {
-        section: 'bg-[#F3F4F6]',
-        card: 'bg-[#1A2744]',
-        tag: 'bg-white/10 text-white/70',
-        headline: 'text-white',
-        subtext: 'text-white/55',
-        btn: 'bg-white text-[#1A2744] hover:bg-white/90',
-        placeholder: 'bg-white/10',
-    },
-    brand: {
-        section: 'bg-[#F3F4F6]',
-        card: 'bg-gradient-to-r from-[#FF5722] to-[#E64A19]',
-        tag: 'bg-white/15 text-white/80',
-        headline: 'text-white',
-        subtext: 'text-white/60',
-        btn: 'bg-white text-[#FF5722] hover:bg-white/90',
-        placeholder: 'bg-white/15',
-    },
-    light: {
-        section: 'bg-[#F3F4F6]',
-        card: 'bg-white border border-zinc-200',
-        tag: 'bg-[#1A2744]/8 text-[#1A2744]/60',
-        headline: 'text-zinc-900',
-        subtext: 'text-zinc-500',
-        btn: 'bg-[#1A2744] text-white hover:bg-[#1A2744]/90',
-        placeholder: 'bg-zinc-100 border border-dashed border-zinc-300',
-    },
-};
-
 export function BannerPlaceholder({
-    tag = 'Sponsored',
+    tag,
     headline,
     subtext,
     ctaLabel = 'Learn More',
     ctaHref = '/contact',
-    imageSlot,
+    secondaryCtaLabel,
+    secondaryCtaHref,
     theme = 'dark',
     className = '',
+    imageSlot, // Ignored in the new minimalist design
 }: BannerPlaceholderProps) {
-    const t = themes[theme];
+    const isBrand = theme === 'brand';
+    const isLight = theme === 'light';
+
+    const backgroundClass = isBrand
+        ? "bg-[#FF5722] border-white/20"
+        : isLight
+            ? "bg-white border-zinc-200"
+            : "bg-zinc-950 border-white/10";
+
+    const radialGradient = isBrand
+        ? "from-white/20 via-transparent to-transparent"
+        : isLight
+            ? "from-[#FF5722]/5 via-transparent to-transparent"
+            : "from-[#FF5722]/10 via-transparent to-transparent";
+
+    const textClass = isLight ? "text-zinc-900" : "text-white";
+    const subtextClass = isLight ? "text-slate-500" : isBrand ? "text-white/90" : "text-slate-400";
+
+    const primaryButtonClass = isBrand
+        ? "bg-white text-[#FF5722] hover:bg-white/90"
+        : "bg-[#FF5722] hover:bg-[#E64A19] text-white";
+
+    const secondaryButtonClass = isBrand
+        ? "text-white/80 hover:bg-white/10 hover:text-white"
+        : isLight
+            ? "text-slate-500 hover:bg-slate-100 hover:text-slate-900"
+            : "text-white/50 hover:bg-white/5 hover:text-white/70";
 
     return (
-        <section className={`${t.section} py-4 px-4 md:px-8 ${className}`}>
-            <div className={`${t.card} rounded-2xl overflow-hidden flex flex-col sm:flex-row items-stretch max-w-7xl mx-auto`}
-                style={{ minHeight: 160 }}>
-
-                {/* ── LEFT: text content ── */}
-                <div className="flex-1 flex flex-col justify-center px-7 py-6 gap-2">
-                    {/* Tag */}
-                    <span className={`self-start text-[10px] font-bold uppercase tracking-[0.2em] px-2.5 py-1 rounded-full ${t.tag}`}>
-                        {tag}
-                    </span>
-
-                    {/* Headline */}
-                    <p className={`font-bold text-lg md:text-xl leading-snug ${t.headline}`}>
-                        {headline}
-                    </p>
-
-                    {/* Subtext */}
-                    {subtext && (
-                        <p className={`text-sm leading-relaxed max-w-xs ${t.subtext}`}>
-                            {subtext}
-                        </p>
-                    )}
-
-                    {/* CTA */}
-                    <div className="mt-3">
-                        <Link href={ctaHref}>
-                            <button
-                                className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 ${t.btn}`}
-                            >
-                                {ctaLabel}
-                                <ArrowRight className="h-3.5 w-3.5" />
-                            </button>
-                        </Link>
-                    </div>
-                </div>
-
-                {/* ── RIGHT: image / placeholder slot ── */}
-                <div className={`relative flex-shrink-0 w-full sm:w-[320px] md:w-[380px] ${!imageSlot ? t.placeholder : ''}`}
-                    style={{ minHeight: imageSlot ? undefined : 160 }}>
-                    {imageSlot ?? (
-                        /* Placeholder box — graphic designer swaps this */
-                        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 opacity-30">
-                            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="text-current">
-                                <rect x="3" y="3" width="18" height="18" rx="2" />
-                                <circle cx="8.5" cy="8.5" r="1.5" />
-                                <polyline points="21 15 16 10 5 21" />
-                            </svg>
-                            <span className="text-[10px] font-semibold uppercase tracking-widest text-current text-center px-4 leading-relaxed">Use visual for financing, buyer planning, or consultation support</span>
+        <section className={`bg-background py-10 relative overflow-hidden ${className}`}>
+            <div className="mx-auto max-w-7xl px-6">
+                <div className={`relative overflow-hidden rounded-2xl px-8 py-10 md:px-14 md:py-12 border ${backgroundClass}`}>
+                    <div className={`absolute inset-0 bg-[radial-gradient(ellipse_at_left,_var(--tw-gradient-stops))] ${radialGradient} pointer-events-none`} />
+                    <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                        <div className="max-w-xl">
+                            {tag && (
+                                <span className={`inline-block font-bold uppercase tracking-widest text-xs mb-3 ${isBrand ? 'text-white/90' : 'text-[#FF5722]'}`}>
+                                    {tag}
+                                </span>
+                            )}
+                            <h2 className={`font-display text-xl md:text-3xl leading-tight mb-2 ${textClass}`}>
+                                {headline}
+                            </h2>
+                            {subtext && (
+                                <p className={`text-sm leading-relaxed ${subtextClass}`}>
+                                    {subtext}
+                                </p>
+                            )}
                         </div>
-                    )}
+                        <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0 mt-4 md:mt-0">
+                            {ctaLabel && ctaHref && (
+                                <Link href={ctaHref}>
+                                    <Button className={`${primaryButtonClass} rounded-full px-7 h-10 font-semibold w-full sm:w-auto transition-all`}>
+                                        {ctaLabel}
+                                    </Button>
+                                </Link>
+                            )}
+                            {secondaryCtaLabel && secondaryCtaHref && (
+                                <Link href={secondaryCtaHref}>
+                                    <Button variant="ghost" className={`${secondaryButtonClass} rounded-full px-6 h-10 font-semibold w-full sm:w-auto transition-all`}>
+                                        {secondaryCtaLabel}
+                                    </Button>
+                                </Link>
+                            )}
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     );
 }
+
