@@ -3,6 +3,7 @@ import { Playfair_Display, Inter } from 'next/font/google';
 import './globals.css';
 // import { Toaster } from 'sonner';
 import { WhatsAppWidget } from '@/components/whatsapp-widget';
+import { CSPostHogProvider } from './providers';
 
 const playfair = Playfair_Display({
     subsets: ['latin'],
@@ -71,9 +72,11 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <body className={`${playfair.variable} ${inter.variable} antialiased`}>
-                {children}
-                {/* <Toaster position="top-right" richColors /> */}
-                <WhatsAppWidget />
+                <CSPostHogProvider>
+                    {children}
+                    {/* <Toaster position="top-right" richColors /> */}
+                    <WhatsAppWidget />
+                </CSPostHogProvider>
             </body>
         </html>
     );
