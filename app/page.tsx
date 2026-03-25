@@ -107,7 +107,7 @@ export default async function HomePage() {
 
                 <div className="relative z-10 mx-auto w-full max-w-7xl px-6 pt-28 pb-12 flex flex-col justify-center h-full min-h-screen">
                     {/* Hero Content - Centered */}
-                    <div className="mx-auto max-w-4xl text-center mb-8 animate-float">
+                    <div className="mx-auto max-w-4xl text-center mb-8">
                         <h1 className="font-display text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-white animate-slide-up stagger-1">
                             Verified Residential Plots in Bengaluru’s <br className="hidden md:block" /> <span className="gradient-text italic">High-Growth Corridors</span>
                         </h1>
@@ -270,39 +270,34 @@ export default async function HomePage() {
             {/* Homepage FAQs */}
             <HomeFaqSection />
 
-            {/* CTA */}
-            <section className="bg-background py-24 relative overflow-hidden">
+            {/* CTA — Compact */}
+            <section className="bg-background py-10 relative overflow-hidden">
                 <div className="mx-auto max-w-7xl px-6">
-                    <div className="relative flex flex-col items-center gap-16 overflow-hidden rounded-[3rem] bg-zinc-950 p-12 text-center md:flex-row md:p-24 md:text-left border border-white/10 group">
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
-                        <div className="flex-1 relative z-10">
-                            <h2 className="font-display text-5xl text-white md:text-7xl mb-8 leading-tight">
-                                Start Your Search for{' '}
-                                <span className="gradient-text italic">Verified Residential Plots</span>
-                                <br />in Bengaluru
-                            </h2>
-                            <p className="mb-12 text-xl text-slate-400 max-w-lg leading-relaxed">
-                                Connect with RealtyDoor to explore premium plotted developments, compare top growth locations, and buy with greater clarity and confidence.
-                            </p>
-                            <div className="flex flex-col gap-4 sm:flex-row">
-                                <Button size="lg" className="bg-gold hover:bg-gold/90 hover-glow transition-all duration-300">
-                                    Explore Plots
-                                </Button>
-                                <Button size="lg" variant="outline" className="border-white/20 text-black
-                                hover:bg-white/10  hover-scale">
-                                    Download Buyer Guide
-                                </Button>
+                    <div className="relative overflow-hidden rounded-2xl bg-zinc-950 px-8 py-10 md:px-14 md:py-12 border border-white/10">
+                        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_left,_var(--tw-gradient-stops))] from-[#FF5722]/10 via-transparent to-transparent pointer-events-none" />
+                        <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                            <div className="max-w-xl">
+                                <h2 className="font-display text-xl md:text-3xl text-white leading-tight mb-2">
+                                    Start Your Search for{' '}
+                                    <span className="gradient-text italic">Verified Residential Plots</span>
+                                    {' '}in Bengaluru
+                                </h2>
+                                <p className="text-sm text-slate-400 leading-relaxed">
+                                    Connect with RealtyDoor to explore premium plotted developments, compare top growth locations, and buy with greater clarity and confidence.
+                                </p>
                             </div>
-                        </div>
-                        <div className="hidden flex-1 md:block relative z-10">
-                            <Image
-                                src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600"
-                                alt="Luxury home"
-                                width={500}
-                                height={600}
-                                className="rounded-lg shadow-2xl hover-scale transition-transform duration-500"
-                            />
+                            <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+                                <Link href="/properties">
+                                    <Button className="bg-[#FF5722] hover:bg-[#E64A19] text-white rounded-full px-7 h-10 font-semibold w-full sm:w-auto">
+                                        Explore Plots
+                                    </Button>
+                                </Link>
+                                <Link href="/contact">
+                                    <Button variant="ghost" className="text-white/50 rounded-full px-6 h-10 font-semibold w-full sm:w-auto hover:bg-transparent hover:text-white/70">
+                                        Download Buyer Guide
+                                    </Button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>
