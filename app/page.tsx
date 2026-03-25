@@ -248,6 +248,15 @@ export default async function HomePage() {
             {/* Testimonials & Benefits Bento Grid */}
             <TestimonialsBenefitsBento />
 
+            {/* Services Promo Banner */}
+            <BannerPlaceholder
+                tag="END-TO-END SERVICES"
+                headline="Everything You Need to Buy, Own, and Grow Your Plot"
+                subtext="From legal verification and home loan assistance to construction and property management, we provide complete support for your property journey."
+                ctaLabel="Explore All Services"
+                ctaHref="/services"
+                theme="dark"
+            />
 
             {/* Investment Tools & Exclusive Deals */}
             <section className="bg-background py-24 relative overflow-hidden">

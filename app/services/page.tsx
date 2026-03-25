@@ -1,12 +1,14 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { Metadata } from 'next';
 import Script from 'next/script';
 import { FloatingNav } from '@/components/floating-nav';
 import { Footer } from '@/components/footer';
 import { Button } from '@/components/ui/button';
-import { Shield, TrendingUp, Users, Award, CheckCircle, Target } from 'lucide-react';
+import { Shield, TrendingUp, Users, Award, CheckCircle, Target, ArrowRight } from 'lucide-react';
 import { StatsTickerBanner } from '@/components/stats-ticker-banner';
 import { BannerPlaceholder } from '@/components/promo-banner';
+import { ServiceCTAForm } from '@/components/service-cta-form';
 
 
 export const metadata: Metadata = {
@@ -42,162 +44,164 @@ const servicesJsonLd = {
 };
 
 export default function ServicesPage() {
-    const services = [
-        {
-            icon: Shield,
-            title: 'Property Verification',
-            description: 'Complete legal and technical verification of all properties with RERA compliance checks.',
-            features: ['Title Verification', 'Legal Documentation', 'RERA Compliance', 'Site Inspection']
-        },
-        {
-            icon: TrendingUp,
-            title: 'Investment Advisory',
-            description: 'Expert guidance on property investments with market analysis and ROI projections.',
-            features: ['Market Analysis', 'ROI Projections', 'Portfolio Management', 'Risk Assessment']
-        },
-        {
-            icon: Users,
-            title: 'End-to-End Support',
-            description: 'Comprehensive assistance from property search to final handover and beyond.',
-            features: ['Property Search', 'Site Visits', 'Negotiation', 'Documentation Support']
-        },
-        {
-            icon: Award,
-            title: 'Premium Listings',
-            description: 'Exclusive access to verified premium properties from top builders across India.',
-            features: ['RealtyDoor Properties', 'Exclusive Deals', 'Pre-Launch Access', 'VIP Treatment']
-        }
-    ];
-
     return (
-        <>
+        <div className="min-h-screen bg-background flex flex-col">
             <Script id="services-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }} />
             <FloatingNav />
 
-            {/* Hero Section */}
-            <section className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 pt-32 pb-20">
-                <div className="absolute inset-0 bg-grid-white/[0.02]" />
-                <div className="relative mx-auto max-w-7xl px-6">
-                    <div className="text-center">
-                        <h1 className="font-display text-5xl md:text-7xl text-white mb-6">
-                            Expert <span className="italic font-normal gradient-text">Consultancy</span>
-                        </h1>
-                        <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-                            Comprehensive end-to-end real estate solutions designed to protect your interests and optimize your property portfolio.
-                        </p>
-                    </div>
+            {/* Hero Section - Matching Homepage/Inner Services Design */}
+            <section className="relative flex min-h-[70vh] items-center justify-center overflow-hidden pt-20">
+                <Image
+                    src="https://realtydoor.com/wp-content/uploads/2025/12/banner-3-scaled.webp"
+                    alt="RealtyDoor Services"
+                    fill
+                    className="absolute inset-0 object-cover"
+                    priority
+                />
+
+                <div className="hero-gradient absolute inset-0" />
+                <div className="gradient-overlay absolute inset-0" />
+
+                <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-20 flex flex-col items-center justify-center text-center">
+
+                    <h1 className="font-display text-5xl md:text-7xl lg:text-8xl text-white mb-6 drop-shadow-lg leading-tight animate-slide-up stagger-2">
+                        Expert <span className="italic font-normal gradient-text">Consultancy</span>
+                    </h1>
+
+                    <p className="text-xl md:text-2xl text-white/90 max-w-3xl drop-shadow mb-10 leading-relaxed font-light animate-slide-up stagger-3">
+                        Comprehensive end-to-end real estate solutions designed to protect your interests and optimize your property portfolio.
+                    </p>
+
+
                 </div>
             </section>
 
             {/* Stats Ticker */}
-            <StatsTickerBanner />
+            <div className="relative z-30 -mt-10">
+                <StatsTickerBanner />
+            </div>
 
-            {/* Services Grid */}
-            <section className="py-20 bg-background">
-                <div className="mx-auto max-w-7xl px-6">
+            {/* Services Grid - Modern Bento Box Style */}
+            <section id="services-grid" className="py-24 bg-background relative">
+                <div className="pointer-events-none absolute top-40 right-0 w-[500px] h-[500px] bg-primary/5 blur-[120px] rounded-full" />
+
+                <div className="mx-auto max-w-7xl px-6 relative z-10">
+                    <div className="mb-16 text-center">
+                        <span className="inline-block text-primary font-bold uppercase tracking-widest text-sm mb-4">Core Offerings</span>
+                        <h2 className="font-display text-4xl md:text-6xl mb-6">
+                            Tailored <span className="italic font-normal gradient-text">Real Estate</span> Solutions
+                        </h2>
+                        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                            We provide a complete ecosystem of services to secure your investments and maximize your returns.
+                        </p>
+                    </div>
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div className="glass-card p-8 hover-lift">
-                            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-orange-600 flex items-center justify-center mb-6 animate-pulse-glow">
-                                <Shield className="h-8 w-8 text-white" />
+                        {/* Service 1 */}
+                        <div className="group flex flex-col justify-between rounded-3xl bg-white border border-border p-8 md:p-10 shadow-sm hover:shadow-lg transition-all duration-500 hover:-translate-y-1">
+                            <div>
+                                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500">
+                                    <Shield className="h-8 w-8 text-primary" />
+                                </div>
+                                <h3 className="font-display text-3xl mb-4 text-foreground">Property Verification</h3>
+                                <p className="text-muted-foreground text-lg mb-8 leading-relaxed">Eliminate legal risks with our 40-point verification checklist. We ensure clear titles and absolute RERA compliance before you sign.</p>
+                                <div className="space-y-3 mb-10">
+                                    {['Title Verification', 'Legal Due Diligence', 'RERA Audit', 'Technical Site Inspection'].map((f, i) => (
+                                        <div key={i} className="flex items-center gap-3 bg-slate-50 p-3.5 rounded-xl border border-slate-100 group-hover:bg-primary/5 group-hover:border-primary/10 transition-colors">
+                                            <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
+                                            <span className="text-sm font-medium text-slate-700">{f}</span>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                            <h3 className="font-display text-3xl mb-4">Property Verification</h3>
-                            <p className="text-muted-foreground mb-6">Eliminate legal risks with our 40-point verification checklist. We ensure clear titles and absolute RERA compliance before you sign.</p>
-                            <ul className="space-y-3">
-                                {['Title Verification', 'Legal Due Diligence', 'RERA Audit', 'Technical Site Inspection'].map((f, i) => (
-                                    <li key={i} className="flex items-center gap-3">
-                                        <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
-                                        <span className="text-sm font-medium">{f}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                            <Link href="/services/legal" className="mt-8 inline-block text-primary font-bold hover:underline transition-all">Deep Dive into Legal &rarr;</Link>
+                            <Link href="/services/legal" className="mt-auto inline-flex items-center text-primary font-bold hover:gap-3 gap-2 transition-all">Deep Dive into Legal <ArrowRight className="h-5 w-5" /></Link>
                         </div>
 
-                        <div className="glass-card p-8 hover-lift">
-                            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-orange-600 flex items-center justify-center mb-6 animate-pulse-glow">
-                                <TrendingUp className="h-8 w-8 text-white" />
+                        {/* Service 2 */}
+                        <div className="group flex flex-col justify-between rounded-3xl bg-white border border-border p-8 md:p-10 shadow-sm hover:shadow-lg transition-all duration-500 hover:-translate-y-1">
+                            <div>
+                                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500">
+                                    <TrendingUp className="h-8 w-8 text-primary" />
+                                </div>
+                                <h3 className="font-display text-3xl mb-4 text-foreground">Investment Advisory</h3>
+                                <p className="text-muted-foreground text-lg mb-8 leading-relaxed">Maximize your wealth with data-driven property selection. We analyze appreciation corridors and ROI potential for high-yield returns.</p>
+                                <div className="space-y-3 mb-10">
+                                    {['Market Appreciation Analysis', 'ROI Projections', 'Portfolio Diversification', 'Risk Management'].map((f, i) => (
+                                        <div key={i} className="flex items-center gap-3 bg-slate-50 p-3.5 rounded-xl border border-slate-100 group-hover:bg-primary/5 group-hover:border-primary/10 transition-colors">
+                                            <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
+                                            <span className="text-sm font-medium text-slate-700">{f}</span>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                            <h3 className="font-display text-3xl mb-4">Investment Advisory</h3>
-                            <p className="text-muted-foreground mb-6">Maximize your wealth with data-driven property selection. We analyze appreciation corridors and ROI potential for high-yield returns.</p>
-                            <ul className="space-y-3">
-                                {['Market Appreciation Analysis', 'ROI Projections', 'Portfolio Diversification', 'Risk Management'].map((f, i) => (
-                                    <li key={i} className="flex items-center gap-3">
-                                        <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
-                                        <span className="text-sm font-medium">{f}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                            <Link href="/services/valuation" className="mt-8 inline-block text-primary font-bold hover:underline transition-all">Explore Valuation Services &rarr;</Link>
+                            <Link href="/services/valuation" className="mt-auto inline-flex items-center text-primary font-bold hover:gap-3 gap-2 transition-all">Explore Valuation Services <ArrowRight className="h-5 w-5" /></Link>
                         </div>
 
-                        <div className="glass-card p-8 hover-lift">
-                            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-orange-600 flex items-center justify-center mb-6 animate-pulse-glow">
-                                <Users className="h-8 w-8 text-white" />
+                        {/* Service 3 */}
+                        <div className="group flex flex-col justify-between rounded-3xl bg-white border border-border p-8 md:p-10 shadow-sm hover:shadow-lg transition-all duration-500 hover:-translate-y-1">
+                            <div>
+                                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500">
+                                    <Users className="h-8 w-8 text-primary" />
+                                </div>
+                                <h3 className="font-display text-3xl mb-4 text-foreground">End-to-End Support</h3>
+                                <p className="text-muted-foreground text-lg mb-8 leading-relaxed">Zero-stress property acquisition. From the first site visit to the final handover at the registrar office, we are by your side.</p>
+                                <div className="space-y-3 mb-10">
+                                    {['Guided Site Tours', 'Price Negotiation', 'Bank Loan Coordination', 'Registration Assistance'].map((f, i) => (
+                                        <div key={i} className="flex items-center gap-3 bg-slate-50 p-3.5 rounded-xl border border-slate-100 group-hover:bg-primary/5 group-hover:border-primary/10 transition-colors">
+                                            <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
+                                            <span className="text-sm font-medium text-slate-700">{f}</span>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                            <h3 className="font-display text-3xl mb-4">End-to-End Support</h3>
-                            <p className="text-muted-foreground mb-6">Zero-stress property acquisition. From the first site visit to the final handover at the registrar office, we are by your side.</p>
-                            <ul className="space-y-3">
-                                {['Guided Site Tours', 'Price Negotiation', 'Bank Loan Coordination', 'Registration Assistance'].map((f, i) => (
-                                    <li key={i} className="flex items-center gap-3">
-                                        <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
-                                        <span className="text-sm font-medium">{f}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                            <Link href="/services/loan-assistance" className="mt-8 inline-block text-primary font-bold hover:underline transition-all">Get Financial Support &rarr;</Link>
+                            <Link href="/services/loan-assistance" className="mt-auto inline-flex items-center text-primary font-bold hover:gap-3 gap-2 transition-all">Get Financial Support <ArrowRight className="h-5 w-5" /></Link>
                         </div>
 
-                        <div className="glass-card p-8 hover-lift">
-                            <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-orange-600 flex items-center justify-center mb-6 animate-pulse-glow">
-                                <Award className="h-8 w-8 text-white" />
+                        {/* Service 4 */}
+                        <div className="group flex flex-col justify-between rounded-3xl bg-white border border-border p-8 md:p-10 shadow-sm hover:shadow-lg transition-all duration-500 hover:-translate-y-1">
+                            <div>
+                                <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-500">
+                                    <Award className="h-8 w-8 text-primary" />
+                                </div>
+                                <h3 className="font-display text-3xl mb-4 text-foreground">Execution Excellence</h3>
+                                <p className="text-muted-foreground text-lg mb-8 leading-relaxed">Expert plot development and land management. We protect and enhance your land assets with precision and transparency.</p>
+                                <div className="space-y-3 mb-10">
+                                    {['Strategic Plot Development', 'Boundary Fencing & Security', 'Land Leveling & Maintenance', 'Layout Planning Support'].map((f, i) => (
+                                        <div key={i} className="flex items-center gap-3 bg-slate-50 p-3.5 rounded-xl border border-slate-100 group-hover:bg-primary/5 group-hover:border-primary/10 transition-colors">
+                                            <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
+                                            <span className="text-sm font-medium text-slate-700">{f}</span>
+                                        </div>
+                                    ))}
+                                </div>
                             </div>
-                            <h3 className="font-display text-3xl mb-4">Execution Excellence</h3>
-                            <p className="text-muted-foreground mb-6">Expert plot development and land management. We protect and enhance your land assets with precision.</p>
-                            <ul className="space-y-3">
-                                {['Strategic Plot Development', 'Boundary Fencing & Security', 'Land Leveling & Maintenance', 'Layout Planning Support'].map((f, i) => (
-                                    <li key={i} className="flex items-center gap-3">
-                                        <CheckCircle className="h-5 w-5 text-primary flex-shrink-0" />
-                                        <span className="text-sm font-medium">{f}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                            <Link href="/services/construction" className="mt-8 inline-block text-primary font-bold hover:underline transition-all">View Construction Details &rarr;</Link>
+                            <Link href="/services/construction" className="mt-auto inline-flex items-center text-primary font-bold hover:gap-3 gap-2 transition-all">View Construction Details <ArrowRight className="h-5 w-5" /></Link>
                         </div>
                     </div>
                 </div>
             </section>
 
+            {/* Promo Banner - Match Dark Theme */}
+            <div className="py-12 bg-background">
+                <BannerPlaceholder
+                    tag="Expert Advisory"
+                    headline="Free Consultation for New Buyers"
+                    subtext="Book a free 30-minute session with our senior advisors. Get a personalised investment roadmap with zero obligation."
+                    ctaLabel="Book Free Session"
+                    ctaHref="/contact"
+                    theme="dark"
+                />
+            </div>
 
-
-            {/* Promo Banner */}
-            <BannerPlaceholder
-                tag="Expert Advisory"
-                headline="Free Consultation for New Buyers"
-                subtext="Book a free 30-minute session with our senior advisors. Get a personalised investment roadmap with zero obligation."
-                ctaLabel="Book Free Session"
-                ctaHref="/contact"
-                theme="dark"
-            />
-
-            {/* CTA Section */}
-            <section className="py-24 bg-gradient-to-br from-primary/10 to-orange-500/10 relative overflow-hidden">
-                <div className="mx-auto max-w-4xl px-6 text-center relative z-10">
-                    <Target className="h-16 w-16 mx-auto mb-6 text-primary" />
-                    <h2 className="font-display text-4xl md:text-6xl mb-6">
-                        Optimize Your <span className="italic font-normal gradient-text">Residential Plot</span> Journey
-                    </h2>
-                    <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-                        Don't leave your plot investments to chance. Connect with our expert consultants for a data-backed strategy today.
-                    </p>
-                    <Link href="/contact">
-                        <Button size="lg" className="bg-primary hover:bg-primary/90 rounded-full px-12 py-8 text-lg font-bold shadow-[0_0_20px_rgba(255,87,34,0.3)] hover:shadow-[0_0_30px_rgba(255,87,34,0.5)] transition-all">
-                            Request Expert Consultation
-                        </Button>
-                    </Link>
-                </div>
-            </section>
+            {/* Replaced old CTA container with consistent ServiceCTAForm */}
+            <div className="bg-background" id="cta-form">
+                <ServiceCTAForm
+                    serviceName="Real Estate Services"
+                    title="Optimize Your Plot Journey"
+                    description="Don't leave your plot investments to chance. Connect with our experts today."
+                />
+            </div>
 
             <Footer />
-        </>
+        </div>
     );
 }
