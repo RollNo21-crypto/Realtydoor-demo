@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FloatingNav } from '@/components/floating-nav';
@@ -10,17 +10,30 @@ import {
     MapPin, Phone, CheckCircle2, ArrowLeft, FileText,
     Plane, Building2, Route, Hospital, GraduationCap, ShoppingBag,
     Footprints, Trees, ShieldCheck, PlayCircle, Landmark,
+    Maximize, X, ChevronLeft, ChevronRight
 } from 'lucide-react';
 import { StatsTickerBanner } from '@/components/stats-ticker-banner';
 import { PropertyCTA } from '@/components/property-cta';
 import { BannerPlaceholder } from '@/components/promo-banner';
 
-const img1 = 'https://realtydoor.com/wp-content/uploads/2024/05/devine-1.webp';
-const img2 = 'https://realtydoor.com/wp-content/uploads/2024/05/devine-2.webp';
-const img3 = 'https://realtydoor.com/wp-content/uploads/2024/05/devine-3.webp';
-const masterPlanImage = 'https://realtydoor.com/wp-content/uploads/2024/05/masterplan.webp';
-const brochureUrl = 'https://realtydoor.com/wp-content/uploads/2024/05/aashrithaa-divine-brochure.pdf';
+const img1 = '/aashrithaa-divine/image-1.jpeg';
+const img2 = '/aashrithaa-divine/image-2.jpeg';
+const img3 = '/aashrithaa-divine/image-3.jpeg';
+const masterPlanImage = '/aashrithaa-divine/map.avif';
+const brochureUrl = '/aashrithaa-divine/brochure.pdf';
 const videoId = 'yag8beq3qZU';
+
+const galleryImages = [
+    '/aashrithaa-divine/image-1.jpeg',
+    '/aashrithaa-divine/image-2.jpeg',
+    '/aashrithaa-divine/image-3.jpeg',
+    '/aashrithaa-divine/image-4.jpeg',
+    '/aashrithaa-divine/image-5.jpeg',
+    '/aashrithaa-divine/image-6.jpeg',
+    '/aashrithaa-divine/image-7.jpeg',
+    '/aashrithaa-divine/image-8.jpeg',
+    '/aashrithaa-divine/image-9.jpeg',
+];
 
 const infraItems = ['Impressive Entrance Arch', 'Asphalted Black Top Roads with Plantation', 'Underground Drainage with Treatment Plant', 'Box Type Storm Water Drain with Harvesting', 'Underground Power Supply Cables', 'Overhead Tank with Adequate Capacity', 'Street Lights'];
 const securityItems = ['Round the Clock Security', 'Compound Wall'];
@@ -30,20 +43,59 @@ const features = ['Fully Developed Infrastructure', 'Serene Living', 'Superb Con
 export default function AashrithaaPage() {
     const [videoStarted, setVideoStarted] = useState(false);
 
+    const [lightboxOpen, setLightboxOpen] = useState(false);
+    const [lightboxIndex, setLightboxIndex] = useState(0);
+    const allLightboxImages = [masterPlanImage, ...galleryImages];
+
+    // Use highest quality images for the hero (biggest file sizes = best shots)
+    const heroImages = [
+        '/aashrithaa-divine/image-5.jpeg',
+        '/aashrithaa-divine/image-6.jpeg',
+        '/aashrithaa-divine/image-7.jpeg',
+        '/aashrithaa-divine/image-8.jpeg',
+    ];
+    const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
+
+    useEffect(() => {
+        const timer = setInterval(() => setCurrentHeroIndex((prev) => (prev + 1) % heroImages.length), 4500);
+        return () => clearInterval(timer);
+    }, [heroImages.length]);
+
+    const openLightbox = (index: number) => {
+        setLightboxIndex(index);
+        setLightboxOpen(true);
+    };
+
+    const nextImage = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        setLightboxIndex((p) => (p + 1) % allLightboxImages.length);
+    };
+
+    const prevImage = (e: React.MouseEvent) => {
+        e.stopPropagation();
+        setLightboxIndex((p) => (p - 1 + allLightboxImages.length) % allLightboxImages.length);
+    };
+
     return (
         <div className="min-h-screen bg-white">
             <FloatingNav />
             <PropertySectionTabs />
 
-            {/* ═══════════════════════════════════════
+            {/* ═══════════════════════════════════
                 HERO — full viewport cinematic cover
-            ═══════════════════════════════════════ */}
-            <section className="relative w-full overflow-hidden" id="overview" style={{ height: '100vh', minHeight: 600 }}>
-                {/* FULL-SCREEN background image */}
-                <Image src={img1} alt="Aashrithaa Divine" fill className="object-cover" priority />
+            ═══════════════════════════════════ */}
+            <section className="relative w-full flex items-center justify-center overflow-hidden" id="overview" style={{ height: '100vh', minHeight: 600 }}>
+                {/* FULL-SCREEN background cinematic crossfade carousel */}
+                <div className="absolute inset-0 bg-black">
+                    {heroImages.map((src, i) => (
+                        <Image key={i} src={src} alt={`Aashrithaa Divine ${i + 1}`} fill
+                            className={`object-cover transition-opacity duration-[2500ms] ease-in-out ${i === currentHeroIndex ? 'opacity-100 scale-105' : 'opacity-0 scale-100'}`}
+                            priority={i === 0} />
+                    ))}
+                </div>
 
                 {/* Dark gradient: heavier at bottom for text legibility */}
-                <div className="absolute inset-0"
+                <div className="absolute inset-0 pointer-events-none"
                     style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.08) 35%, rgba(0,0,0,0.55) 75%, rgba(0,0,0,0.82) 100%)' }} />
 
 
@@ -173,10 +225,29 @@ export default function AashrithaaPage() {
                     <div className="flex flex-col lg:flex-row gap-10 items-start">
                         {/* LEFT — tall vertical plan */}
                         <div className="w-full lg:w-[55%]">
-                            <div className="relative w-full min-h-[700px] lg:min-h-[950px] rounded-3xl overflow-hidden border border-black/8 bg-white">
-                                <Image src={masterPlanImage} alt="Aashrithaa Divine Master Plan" fill className="object-contain object-top" />
+                            <div className="relative w-full rounded-3xl bg-white border border-black/8 overflow-hidden drop-shadow-xl cursor-pointer group" onClick={() => openLightbox(0)}>
+                                <Image src={masterPlanImage} alt="Aashrithaa Divine Master Plan" width={1200} height={1200} className="w-full h-auto object-contain object-top group-hover:scale-[1.02] transition-transform duration-700" />
                                 <div className="absolute top-4 left-4 px-3 py-1.5 rounded-xl text-xs font-bold uppercase tracking-widest text-white"
                                     style={{ background: 'linear-gradient(135deg,#FF5722,#E64A19)' }}>Master Plan</div>
+                                <div className="absolute inset-0 bg-transparent group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center pointer-events-none">
+                                    <div className="w-12 h-12 rounded-full bg-white/30 backdrop-blur-sm opacity-0 group-hover:opacity-100 flex items-center justify-center text-white border border-white/40 shadow-lg drop-shadow-md transition-opacity">
+                                        <Maximize className="h-5 w-5" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Supplementary Gallery Images (Left Side) */}
+                            <div className="grid grid-cols-2 gap-4 pt-4">
+                                {[1, 2].map((idx) => (
+                                    <div key={idx} className="relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer group shadow-sm" onClick={() => openLightbox(idx)}>
+                                        <Image src={allLightboxImages[idx]} alt={`Divine layout view ${idx}`} fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center pointer-events-none">
+                                            <div className="w-10 h-10 rounded-full bg-white/30 backdrop-blur-sm opacity-0 group-hover:opacity-100 flex items-center justify-center text-white border border-white/40 shadow-lg drop-shadow-md transition-opacity">
+                                                <Maximize className="h-4 w-4" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
                         </div>
 
@@ -237,6 +308,43 @@ export default function AashrithaaPage() {
                                 </div>
                             </a>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* ═══════════════════════════════════
+                GALLERY — photo grid
+            ═══════════════════════════════════ */}
+            <section className="py-20 px-6 md:px-12 bg-[#FAFAFA] border-t border-black/5" id="photo-gallery">
+                <div className="max-w-7xl mx-auto">
+                    <div className="mb-12 text-center flex flex-col items-center">
+                        <span className="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-[#FF5722] mb-3">
+                            <span className="w-8 h-px bg-[#FF5722]" />Life at Divine
+                        </span>
+                        <h2 className="font-display text-5xl text-black">A Glimpse of <span className="italic font-light text-[#FF7043]">Serenity</span></h2>
+                        <p className="text-black/40 text-sm font-light max-w-md mt-4 leading-relaxed">
+                            15 lush acres of curated green living — where every plot tells a story of peace, prosperity and natural beauty.
+                        </p>
+                    </div>
+
+                    <div className="columns-1 sm:columns-2 md:columns-3 xl:columns-4 gap-4 space-y-4">
+                        {galleryImages.map((src, idx) => (
+                            <div key={idx} className="relative overflow-hidden rounded-2xl break-inside-avoid group shadow-sm hover:shadow-xl transition-all duration-300 border border-black/5 bg-white cursor-pointer" onClick={() => openLightbox(idx + 1)}>
+                                <Image
+                                    src={src}
+                                    alt={`Divine Snapshot ${idx + 1}`}
+                                    width={600}
+                                    height={800}
+                                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 pointer-events-none">
+                                    <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                        <div className="text-white font-bold text-sm drop-shadow-md">Site Snapshot {idx + 1}</div>
+                                        <div className="text-white/80 text-xs mt-1 drop-shadow-md">Aashrithaa Divine</div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
@@ -428,6 +536,33 @@ export default function AashrithaaPage() {
                     <ArrowLeft className="mr-2 h-4 w-4" />Back to All Plots
                 </Link>
             </div>
+
+            {/* LIGHBOX OVERLAY */}
+            {lightboxOpen && (
+                <div className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-8" onClick={() => setLightboxOpen(false)}>
+                    {/* Close */}
+                    <button className="absolute top-6 right-6 p-3 lg:p-4 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors z-50 shadow-xl" onClick={(e) => { e.stopPropagation(); setLightboxOpen(false); }}>
+                        <X className="h-6 w-6" />
+                    </button>
+                    {/* Previous */}
+                    <button className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 p-3 lg:p-4 bg-white/10 hover:bg-white/20 z-50 rounded-full text-white transition-colors shadow-xl" onClick={prevImage}>
+                        <ChevronLeft className="h-6 w-6 lg:h-8 lg:w-8" />
+                    </button>
+                    {/* Next */}
+                    <button className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 p-3 lg:p-4 bg-white/10 hover:bg-white/20 z-50 rounded-full text-white transition-colors shadow-xl" onClick={nextImage}>
+                        <ChevronRight className="h-6 w-6 lg:h-8 lg:w-8" />
+                    </button>
+                    {/* Image Placeholder */}
+                    <div className="relative w-full max-w-7xl h-[85vh] flex items-center justify-center" onClick={(e) => e.stopPropagation()}>
+                        <div className="relative w-full h-full drop-shadow-2xl flex items-center justify-center px-12 md:px-20">
+                            <Image src={allLightboxImages[lightboxIndex]} alt={`Enlarged view ${lightboxIndex}`} fill className="object-contain" />
+                        </div>
+                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white/60 text-xs font-bold tracking-widest uppercase bg-white/10 border border-white/20 px-6 py-2.5 rounded-full backdrop-blur-lg shadow-2xl pointer-events-none">
+                            {lightboxIndex + 1} / {allLightboxImages.length}
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

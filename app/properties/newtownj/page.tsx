@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FloatingNav } from '@/components/floating-nav';
@@ -11,17 +11,35 @@ import {
     Plane, Building2, Route, Hospital, GraduationCap, ShoppingBag,
     Trees, ShieldCheck, PlayCircle, Landmark, Waves,
     Clapperboard, Baby, Dumbbell, Car,
+    Maximize, X, ChevronLeft, ChevronRight,
 } from 'lucide-react';
 import { StatsTickerBanner } from '@/components/stats-ticker-banner';
 import { PropertyCTA } from '@/components/property-cta';
 import { BannerPlaceholder } from '@/components/promo-banner';
 
-const img1 = 'https://realtydoor.com/wp-content/uploads/2024/05/j-town-1.webp';
-const img2 = 'https://realtydoor.com/wp-content/uploads/2024/05/j-town-2.webp';
-const img3 = 'https://realtydoor.com/wp-content/uploads/2024/05/j-town-3.webp';
-const masterPlanImage = 'https://realtydoor.com/wp-content/uploads/2024/05/master-plan.jpg';
-const brochureUrl = 'https://realtydoor.com/wp-content/uploads/2024/05/newtownJ_brochure-1.pdf';
+const masterPlanImage = '/newtownj/map.avif';
+const brochureUrl = '/newtownj/brochure.pdf';
 const VIDEO_ID = '_T1dY6liEcw';
+
+const galleryImages = [
+    '/newtownj/image-1.jpeg',
+    '/newtownj/image-2.jpeg',
+    '/newtownj/image-3.jpeg',
+    '/newtownj/image-4.jpeg',
+    '/newtownj/image-5.jpeg',
+    '/newtownj/image-6.jpeg',
+    '/newtownj/image-7.jpeg',
+    '/newtownj/image-8.jpeg',
+    '/newtownj/image-9.jpeg',
+    '/newtownj/image-10.jpeg',
+    '/newtownj/image-11.jpeg',
+    '/newtownj/image-12.jpeg',
+    '/newtownj/image-13.jpeg',
+    '/newtownj/image-14.jpeg',
+    '/newtownj/image-15.jpeg',
+    '/newtownj/image-16.jpeg',
+    '/newtownj/image-17.jpeg',
+];
 
 const amenities = [
     { Icon: Landmark, label: 'Clubhouse Extravaganza' },
@@ -40,93 +58,127 @@ const securityItems = ['Round the Clock Security', 'Compound Wall'];
 const leisureItems = ['Parks with Landscaped Gardens', "Children's Playground", 'Jogging Tracks and Footpaths', 'Avenue Plantation'];
 const features = ['Affordable Luxury', 'Clear Title', 'Tranquil Living', 'Practical Layout', 'Strategic Location', 'Fully Developed Infrastructure', 'Serene Living', 'Superb Connectivity', 'Best Investment Opportunity'];
 
+// Hero uses the best-quality (largest) images: 1–4
+const heroImages = [
+    '/newtownj/image-1.jpeg',
+    '/newtownj/image-2.jpeg',
+    '/newtownj/image-3.jpeg',
+    '/newtownj/image-4.jpeg',
+];
+
 export default function NewtownJPage() {
     const [videoStarted, setVideoStarted] = useState(false);
+
+    // Lightbox
+    const [lightboxOpen, setLightboxOpen] = useState(false);
+    const [lightboxIndex, setLightboxIndex] = useState(0);
+    const allLightboxImages = [masterPlanImage, ...galleryImages];
+
+    const openLightbox = (index: number) => { setLightboxIndex(index); setLightboxOpen(true); };
+    const nextImage = (e: React.MouseEvent) => { e.stopPropagation(); setLightboxIndex((p) => (p + 1) % allLightboxImages.length); };
+    const prevImage = (e: React.MouseEvent) => { e.stopPropagation(); setLightboxIndex((p) => (p - 1 + allLightboxImages.length) % allLightboxImages.length); };
+
+    // Hero carousel
+    const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
+    useEffect(() => {
+        const timer = setInterval(() => setCurrentHeroIndex((p) => (p + 1) % heroImages.length), 4500);
+        return () => clearInterval(timer);
+    }, []);
+
+    // Keyboard nav for lightbox
+    useEffect(() => {
+        if (!lightboxOpen) return;
+        const handler = (e: KeyboardEvent) => {
+            if (e.key === 'ArrowRight') setLightboxIndex((p) => (p + 1) % allLightboxImages.length);
+            if (e.key === 'ArrowLeft') setLightboxIndex((p) => (p - 1 + allLightboxImages.length) % allLightboxImages.length);
+            if (e.key === 'Escape') setLightboxOpen(false);
+        };
+        window.addEventListener('keydown', handler);
+        return () => window.removeEventListener('keydown', handler);
+    }, [lightboxOpen, allLightboxImages.length]);
 
     return (
         <div className="min-h-screen bg-white">
             <FloatingNav />
             <PropertySectionTabs />
 
-            {/* ═══════════════════════════════════════════════════════════
-                HERO — panoramic image + elevated floating card
-            ═══════════════════════════════════════════════════════════ */}
-            <section id="overview" className="bg-white">
-                {/* ── Panoramic cinematic image ── */}
-                <div className="relative w-full overflow-hidden" style={{ height: '65vh', minHeight: 360, maxHeight: 700 }}>
-                    <Image src={img1} alt="NewtownJ Panorama" fill className="object-cover" priority />
-                    {/* Gradient: lighter at top (for nav), heavier at bottom (for card bleed) */}
-                    <div className="absolute inset-0"
-                        style={{ background: 'linear-gradient(to bottom, rgba(0,0,0,0.22) 0%, rgba(0,0,0,0) 40%, rgba(255,255,255,0.12) 80%, rgba(255,255,255,0.55) 100%)' }} />
-
-
-                    {/* Two small secondary images pinned bottom-right — peeking behind the card */}
-                    <div className="hidden lg:flex absolute bottom-0 right-6 gap-2 items-end pb-4 z-10">
-                        <div className="relative w-28 h-20 rounded-t-2xl overflow-hidden border-2 border-white/40 shadow-lg">
-                            <Image src={img2} alt="View 2" fill className="object-cover" />
-                        </div>
-                        <div className="relative w-28 h-28 rounded-t-2xl overflow-hidden border-2 border-white/40 shadow-lg">
-                            <Image src={img3} alt="View 3" fill className="object-cover" />
-                        </div>
-                    </div>
+            {/* ═══════════════════════════════════
+                HERO — full viewport cinematic crossfade
+            ═══════════════════════════════════ */}
+            <section className="relative w-full flex flex-col justify-end pb-8 pt-32 px-4 md:px-8 overflow-hidden" id="overview" style={{ minHeight: '90vh' }}>
+                {/* Crossfading background carousel */}
+                <div className="absolute inset-0 bg-black">
+                    {heroImages.map((src, i) => (
+                        <Image key={i} src={src} alt={`NewtownJ ${i + 1}`} fill
+                            className={`object-cover transition-all duration-[2500ms] ease-in-out ${i === currentHeroIndex ? 'opacity-100 scale-105' : 'opacity-0 scale-100'}`}
+                            priority={i === 0} />
+                    ))}
                 </div>
+                {/* Gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/90 pointer-events-none" />
 
-                {/* ── Elevated floating card ── */}
-                <div className="relative z-20 mx-4 md:mx-8 lg:mx-14 -mt-16 bg-white rounded-[2rem] border border-black/8"
-                    style={{ boxShadow: '0 -4px 0 0 #FF5722, 0 32px 80px rgba(0,0,0,0.14)' }}>
-                    {/* Orange top-accent bar is achieved via boxShadow above */}
+                {/* Floating glass console */}
+                <div className="relative z-10 max-w-7xl mx-auto w-full">
+                    <div className="bg-black/20 backdrop-blur-2xl rounded-[2rem] border border-white/15 p-8 md:p-12 shadow-2xl overflow-hidden">
 
-                    <div className="px-8 md:px-14 pt-10 pb-0">
-                        {/* Title row */}
-                        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-8">
+                        <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-12">
+                            {/* Left: Title */}
                             <div className="flex-1">
-                                <h1 className="font-display text-black leading-[0.85] mb-3"
-                                    style={{ fontSize: 'clamp(3.2rem,8vw,6.5rem)' }}>
-                                    NewtownJ
+                                <div className="flex flex-wrap items-center gap-3 mb-6">
+                                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest bg-[#FF5722] text-white">
+                                        <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+                                        PKM-UDA Approved
+                                    </span>
+                                    <div className="flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-widest text-white/70 bg-white/10 px-3 py-1 rounded-full border border-white/10">
+                                        <MapPin className="h-3 w-3 text-[#FF5722]" /> Punganur · Andhra Pradesh
+                                    </div>
+                                </div>
+                                <h1 className="font-display text-white leading-[0.95] mb-6" style={{ fontSize: 'clamp(3.5rem,7vw,6.5rem)' }}>
+                                    Newtown<span className="text-[#FF7043] italic font-light">J</span>
                                 </h1>
-                                <p className="font-display italic text-[#FF7043]"
-                                    style={{ fontSize: 'clamp(1rem,2.5vw,1.5rem)' }}>
-                                    A Modern Era Township
+                                <p className="text-white/55 font-light leading-relaxed max-w-md text-sm md:text-base">
+                                    A modern era township spread across 41 acres, offering 600 thoughtfully laid out plots with twin lakes, a 3-star theater, clubhouse, and 30+ smart amenities.
                                 </p>
                             </div>
 
-                            {/* Right — description + CTAs */}
-                            <div className="md:max-w-sm flex flex-col gap-5 md:pt-2">
-                                <p className="text-black/45 font-light text-sm leading-relaxed">
-                                    Experience luxury living with over 30 top-tier amenities — twin lakes, landscaped parks, clubhouse, 3-star theater and superb connectivity in Punganur.
-                                </p>
-                                <div className="flex flex-wrap gap-3">
+                            {/* Right: CTAs + Stats */}
+                            <div className="flex flex-col gap-4 min-w-[260px]">
+                                <div className="flex flex-col gap-3">
                                     <a href="tel:+919845012345">
-                                        <Button className="rounded-full px-7 py-5 font-semibold text-white"
-                                            style={{ background: 'linear-gradient(135deg,#FF5722,#E64A19)', boxShadow: '0 8px 24px rgba(255,87,34,0.35)' }}>
-                                            <Phone className="mr-2 h-4 w-4" />Call Now
+                                        <Button className="w-full rounded-full px-8 py-5 font-semibold text-white justify-center"
+                                            style={{ background: 'linear-gradient(135deg,#FF5722,#E64A19)', boxShadow: '0 8px 28px rgba(255,87,34,0.5)' }}>
+                                            <Phone className="mr-2 h-4 w-4" />Call Now to Book
                                         </Button>
                                     </a>
                                     <a href={brochureUrl} target="_blank" rel="noopener noreferrer"
-                                        className="flex items-center gap-2 px-5 py-3 rounded-full border border-[#FF5722]/30 text-[#FF5722] text-sm font-semibold hover:bg-[#FF5722]/6 transition-colors">
-                                        <FileText className="h-4 w-4" />Brochure
+                                        className="flex items-center justify-center gap-2 px-6 py-3.5 rounded-full border border-white/35 text-white text-sm font-semibold hover:bg-white/10 transition-colors backdrop-blur-sm">
+                                        <FileText className="h-4 w-4" />Download Brochure
                                     </a>
+                                </div>
+
+                                {/* Mini stats */}
+                                <div className="grid grid-cols-2 gap-px rounded-2xl overflow-hidden border border-white/15 mt-2"
+                                    style={{ background: 'rgba(255,255,255,0.08)', backdropFilter: 'blur(16px)' }}>
+                                    {[
+                                        { v: '41 Acres', u: 'Total Land' },
+                                        { v: '600 Plots', u: 'Total Units' },
+                                        { v: '30+', u: 'Amenities' },
+                                        { v: 'PKM-UDA', u: 'Approved' },
+                                    ].map(({ v, u }) => (
+                                        <div key={u} className="px-4 py-3 border-r border-b border-white/10 last:border-r-0">
+                                            <div className="text-white font-semibold text-sm">{v}</div>
+                                            <div className="text-white/45 text-[9px] font-black uppercase tracking-widest mt-0.5">{u}</div>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    {/* Stat bar — bottom of card, flush to edge */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-black/8 border-t border-black/8 rounded-b-[2rem] overflow-hidden">
-                        {[
-                            { v: '41 Acres', u: 'Total Land' },
-                            { v: '600 Plots', u: 'Total Units' },
-                            { v: '30×50 & 40×50', u: 'Plot Sizes' },
-                            { v: 'PKM-UDA', u: 'Approval' },
-                        ].map(({ v, u }) => (
-                            <div key={u} className="px-6 py-5">
-                                <div className="text-black font-semibold text-base">{v}</div>
-                                <div className="text-[#FF5722] text-[10px] font-black uppercase tracking-widest mt-0.5">{u}</div>
-                            </div>
-                        ))}
-                    </div>
                 </div>
             </section>
+
+            {/* Stats Ticker */}
+            <StatsTickerBanner />
 
             {/* ═══════════════════════════════════════
                 VIDEO TOUR
@@ -143,7 +195,7 @@ export default function NewtownJPage() {
                             </h2>
                         </div>
                         <p className="text-black/40 text-sm font-light max-w-xs">
-                            Walk through NewtownJ's twin-lake landscape, clubhouse, and smart amenities.
+                            Walk through NewtownJ&apos;s twin-lake landscape, clubhouse, and smart amenities.
                         </p>
                     </div>
 
@@ -178,13 +230,19 @@ export default function NewtownJPage() {
                             </>
                         )}
                     </div>
+
+                    {/* Feature pills */}
+                    <div className="mt-6 flex flex-wrap gap-2 justify-center">
+                        {features.map(f => (
+                            <span key={f} className="px-4 py-2 rounded-full text-xs font-semibold border border-[#FF5722]/25 text-[#FF5722] bg-[#FF5722]/[0.05]">{f}</span>
+                        ))}
+                    </div>
                 </div>
             </section>
 
-            {/* Stats Ticker */}
-            <StatsTickerBanner />
-
-            {/* MASTER PLAN */}
+            {/* ═══════════════════════════════════════
+                MASTER PLAN
+            ═══════════════════════════════════════ */}
             <section className="py-20 px-6 md:px-12 bg-white border-t border-black/6" id="gallery">
                 <div className="max-w-7xl mx-auto">
                     <div className="mb-12">
@@ -195,19 +253,33 @@ export default function NewtownJPage() {
                     </div>
 
                     <div className="flex flex-col lg:flex-row gap-10 items-start">
-                        {/* LEFT — tall vertical plan */}
+                        {/* LEFT — map + 2 supplementary images */}
                         <div className="w-full lg:w-[55%]">
-                            <div className="relative w-full min-h-[700px] lg:min-h-[950px] rounded-3xl overflow-hidden border border-black/8 bg-white">
-                                <Image
-                                    src={masterPlanImage}
-                                    alt="NewtownJ Master Plan"
-                                    fill
-                                    className="object-contain object-top"
-                                />
+                            <div className="relative w-full rounded-3xl bg-white border border-black/8 overflow-hidden drop-shadow-xl cursor-pointer group" onClick={() => openLightbox(0)}>
+                                <Image src={masterPlanImage} alt="NewtownJ Master Plan" width={1200} height={1200}
+                                    className="w-full h-auto object-contain object-top group-hover:scale-[1.02] transition-transform duration-700" />
                                 <div className="absolute top-4 left-4 px-3 py-1.5 rounded-xl text-xs font-bold uppercase tracking-widest text-white"
-                                    style={{ background: 'linear-gradient(135deg,#FF5722,#E64A19)' }}>
-                                    Master Plan
+                                    style={{ background: 'linear-gradient(135deg,#FF5722,#E64A19)' }}>Master Plan</div>
+                                <div className="absolute inset-0 bg-transparent group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center pointer-events-none">
+                                    <div className="w-12 h-12 rounded-full bg-white/30 backdrop-blur-sm opacity-0 group-hover:opacity-100 flex items-center justify-center text-white border border-white/40 shadow-lg transition-opacity">
+                                        <Maximize className="h-5 w-5" />
+                                    </div>
                                 </div>
+                            </div>
+
+                            {/* 2 supplementary images below map */}
+                            <div className="grid grid-cols-2 gap-4 pt-4">
+                                {[5, 6].map((idx) => (
+                                    <div key={idx} className="relative aspect-[4/3] rounded-2xl overflow-hidden cursor-pointer group shadow-sm" onClick={() => openLightbox(idx + 1)}>
+                                        <Image src={galleryImages[idx]} alt={`NewtownJ view ${idx}`} fill
+                                            className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center pointer-events-none">
+                                            <div className="w-10 h-10 rounded-full bg-white/30 backdrop-blur-sm opacity-0 group-hover:opacity-100 flex items-center justify-center text-white border border-white/40 shadow-lg transition-opacity">
+                                                <Maximize className="h-4 w-4" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
                         </div>
 
@@ -216,10 +288,7 @@ export default function NewtownJPage() {
                             <div>
                                 <h3 className="font-display text-3xl text-black mb-3">41-Acre Smart Township</h3>
                                 <p className="text-black/55 font-light leading-relaxed text-sm">
-                                    NewtownJ is a modern era township spread across 41 acres in Punganur,
-                                    offering 600 thoughtfully laid out plots with twin lakes, man-made
-                                    plantations and 30+ smart amenities — a glimpse into the future of
-                                    urbanization in this locality.
+                                    NewtownJ is a modern era township spread across 41 acres in Punganur, offering 600 thoughtfully laid out plots with twin lakes, man-made plantations and 30+ smart amenities — a glimpse into the future of urbanization.
                                 </p>
                             </div>
 
@@ -278,8 +347,45 @@ export default function NewtownJPage() {
                 </div>
             </section>
 
+            {/* ═══════════════════════════════════
+                GALLERY — masonry photo grid
+            ═══════════════════════════════════ */}
+            <section className="py-20 px-6 md:px-12 bg-[#FAFAFA] border-t border-black/5" id="photo-gallery">
+                <div className="max-w-7xl mx-auto">
+                    <div className="mb-12 text-center flex flex-col items-center">
+                        <span className="inline-flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-[#FF5722] mb-3">
+                            <span className="w-8 h-px bg-[#FF5722]" />Life at NewtownJ
+                        </span>
+                        <h2 className="font-display text-5xl text-black">Township <span className="italic font-light text-[#FF7043]">Gallery</span></h2>
+                        <p className="text-black/40 text-sm font-light max-w-md mt-4 leading-relaxed">
+                            41 acres of curated smart township living — twin lakes, landscaped parks, and a clubhouse that redefines community.
+                        </p>
+                    </div>
+
+                    <div className="columns-1 sm:columns-2 md:columns-3 xl:columns-4 gap-4 space-y-4">
+                        {galleryImages.map((src, idx) => (
+                            <div key={idx} className="relative overflow-hidden rounded-2xl break-inside-avoid group shadow-sm hover:shadow-xl transition-all duration-300 border border-black/5 bg-white cursor-pointer" onClick={() => openLightbox(idx + 1)}>
+                                <Image
+                                    src={src}
+                                    alt={`NewtownJ Snapshot ${idx + 1}`}
+                                    width={600}
+                                    height={800}
+                                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-5 pointer-events-none">
+                                    <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                        <div className="text-white font-bold text-sm drop-shadow-md">Site View {idx + 1}</div>
+                                        <div className="text-white/80 text-xs mt-1 drop-shadow-md">NewtownJ · Punganur</div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
             {/* ═══════════════════════════════════════
-                SMART AMENITIES — numbered icon grid
+                SMART AMENITIES
             ═══════════════════════════════════════ */}
             <section className="py-20 px-6 md:px-12 bg-white border-t border-black/6" id="amenities">
                 <div className="max-w-6xl mx-auto">
@@ -346,7 +452,7 @@ export default function NewtownJPage() {
             </section>
 
             {/* ═══════════════════════════════════════
-                LOCATION — map left · info right
+                LOCATION
             ═══════════════════════════════════════ */}
             <section className="py-20 px-6 md:px-12 bg-white border-t border-black/6" id="location">
                 <div className="max-w-6xl mx-auto">
@@ -362,6 +468,10 @@ export default function NewtownJPage() {
                     <div className="flex flex-col lg:flex-row gap-8 items-start">
                         {/* LEFT — tall map */}
                         <div className="w-full lg:w-[60%]">
+                            <a href="https://maps.app.goo.gl/yourNewtownJLink" target="_blank" rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#FF5722]/10 text-[#FF5722] font-bold hover:bg-[#FF5722]/20 transition-colors mb-6 border border-[#FF5722]/25">
+                                <Route className="h-4 w-4" /> Open in Google Maps
+                            </a>
                             <div className="rounded-3xl overflow-hidden border border-black/8"
                                 style={{ height: 560, boxShadow: '0 16px 50px rgba(0,0,0,0.08)' }}>
                                 <iframe
@@ -407,8 +517,6 @@ export default function NewtownJPage() {
                 </div>
             </section>
 
-
-            {/* CTA */}
             {/* Promo Banner */}
             <div className="py-8 bg-background">
                 <BannerPlaceholder
@@ -421,14 +529,45 @@ export default function NewtownJPage() {
                 />
             </div>
 
-            <PropertyCTA propertyName="NewtownJ" image={img1} variant="overlay" brochureUrl={brochureUrl} />
-
+            <PropertyCTA propertyName="NewtownJ" image={galleryImages[0]} variant="overlay" brochureUrl={brochureUrl} />
 
             <div className="py-8 text-center bg-white border-t border-black/8">
                 <Link href="/properties" className="inline-flex items-center font-semibold text-[#FF5722] hover:text-[#E64A19] transition-colors text-sm">
                     <ArrowLeft className="mr-2 h-4 w-4" />Back to All Plots
                 </Link>
             </div>
+
+            {/* ═══════════════════════════════════
+                FULL-SCREEN LIGHTBOX
+            ═══════════════════════════════════ */}
+            {lightboxOpen && (
+                <div className="fixed inset-0 z-[9999] bg-black/95 flex items-center justify-center" onClick={() => setLightboxOpen(false)}>
+                    <button onClick={() => setLightboxOpen(false)}
+                        className="absolute top-5 right-5 w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white border border-white/20 transition-colors z-10">
+                        <X className="h-5 w-5" />
+                    </button>
+                    <button onClick={prevImage}
+                        className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white border border-white/20 transition-colors z-10">
+                        <ChevronLeft className="h-6 w-6" />
+                    </button>
+                    <div className="relative max-w-5xl max-h-[85vh] w-full mx-12" onClick={(e) => e.stopPropagation()}>
+                        <Image
+                            src={allLightboxImages[lightboxIndex]}
+                            alt={`Gallery image ${lightboxIndex + 1}`}
+                            width={1400}
+                            height={900}
+                            className="w-full h-auto max-h-[85vh] object-contain rounded-2xl"
+                        />
+                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white text-xs px-4 py-2 rounded-full backdrop-blur-sm border border-white/10">
+                            {lightboxIndex + 1} / {allLightboxImages.length}
+                        </div>
+                    </div>
+                    <button onClick={nextImage}
+                        className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-white border border-white/20 transition-colors z-10">
+                        <ChevronRight className="h-6 w-6" />
+                    </button>
+                </div>
+            )}
         </div>
     );
 }

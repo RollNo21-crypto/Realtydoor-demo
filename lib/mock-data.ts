@@ -91,9 +91,9 @@ export const mockProperties = [
         updatedAt: new Date(),
         userId: 'agent1',
         images: [
-            { id: 'ns1', url: 'https://realtydoor.com/wp-content/uploads/2025/09/banner-1-1-scaled.png', alt: 'Neo Serene Entrance', order: 0 },
-            { id: 'ns2', url: 'https://realtydoor.com/wp-content/uploads/2025/09/banner-1-2-scaled.png', alt: 'Neo Serene Layout', order: 1 },
-            { id: 'ns3', url: 'https://realtydoor.com/wp-content/uploads/2025/09/Untitled-design-71.png', alt: 'Neo Serene Master Plan', order: 2 }
+            { id: 'ns1', url: '/aashrithaa-serene/image-1.jpeg', alt: 'Aashrithaa Serene View', order: 0 },
+            { id: 'ns2', url: '/aashrithaa-serene/image-2.jpeg', alt: 'Aashrithaa Serene Layout', order: 1 },
+            { id: 'ns3', url: '/aashrithaa-serene/image-3.jpeg', alt: 'Aashrithaa Serene Greenery', order: 2 }
         ]
     },
     {
@@ -141,7 +141,9 @@ export const mockProperties = [
         updatedAt: new Date(),
         userId: 'agent1',
         images: [
-            { id: 'gp1', url: 'https://realtydoor.com/wp-content/uploads/2025/12/banner-1-scaled.webp', alt: 'Green Park Entrance', order: 0 }
+            { id: 'gp1', url: '/green-park/image-1.jpeg', alt: 'Green Park View', order: 0 },
+            { id: 'gp2', url: '/green-park/image-2.jpeg', alt: 'Green Park Layout', order: 1 },
+            { id: 'gp3', url: '/green-park/image-3.jpeg', alt: 'Green Park Greenery', order: 2 }
         ]
     },
     {
@@ -241,9 +243,9 @@ export const mockProperties = [
         updatedAt: new Date(),
         userId: 'agent1',
         images: [
-            { id: 'ad1', url: 'https://realtydoor.com/wp-content/uploads/2024/05/devine-1.webp', alt: 'Divine Entrance', order: 0 },
-            { id: 'ad2', url: 'https://realtydoor.com/wp-content/uploads/2024/05/devine-2.webp', alt: 'Divine Wide Roads', order: 1 },
-            { id: 'ad3', url: 'https://realtydoor.com/wp-content/uploads/2024/05/devine-3.webp', alt: 'Divine Greenery', order: 2 }
+            { id: 'ad1', url: '/aashrithaa-divine/image-5.jpeg', alt: 'Divine Entrance', order: 0 },
+            { id: 'ad2', url: '/aashrithaa-divine/image-6.jpeg', alt: 'Divine Wide Roads', order: 1 },
+            { id: 'ad3', url: '/aashrithaa-divine/image-7.jpeg', alt: 'Divine Greenery', order: 2 }
         ]
     },
     {
@@ -292,9 +294,9 @@ export const mockProperties = [
         updatedAt: new Date(),
         userId: 'agent1',
         images: [
-            { id: 'ntj1', url: 'https://realtydoor.com/wp-content/uploads/2024/05/j-town-1.webp', alt: 'NewtownJ Main', order: 0 },
-            { id: 'ntj2', url: 'https://realtydoor.com/wp-content/uploads/2024/05/j-town-2.webp', alt: 'NewtownJ Lakes', order: 1 },
-            { id: 'ntj3', url: 'https://realtydoor.com/wp-content/uploads/2024/05/j-town-3.webp', alt: 'NewtownJ Greens', order: 2 }
+            { id: 'ntj1', url: '/newtownj/image-1.jpeg', alt: 'NewtownJ Main', order: 0 },
+            { id: 'ntj2', url: '/newtownj/image-2.jpeg', alt: 'NewtownJ Lakes', order: 1 },
+            { id: 'ntj3', url: '/newtownj/image-3.jpeg', alt: 'NewtownJ Greens', order: 2 }
         ]
     }
 ];
