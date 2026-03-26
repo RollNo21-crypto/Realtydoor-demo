@@ -188,9 +188,11 @@ export const mockProperties = [
         updatedAt: new Date(),
         userId: 'agent1',
         images: [
-            { id: 'ab1', url: 'https://realtydoor.com/wp-content/uploads/2024/05/aashrithaa-brindhavan1-1.jpg', alt: 'Brindavan View', order: 0 },
-            { id: 'ab2', url: 'https://realtydoor.com/wp-content/uploads/2024/05/aashrithaa-brindhavan-2.jpg', alt: 'Brindavan Community', order: 1 },
-            { id: 'ab3', url: 'https://realtydoor.com/wp-content/uploads/2024/05/aashrithaa-brindhavan-3.jpg', alt: 'Brindavan Parks', order: 2 }
+            { id: 'ab1', url: '/aashrithaa-brindavan/image-1.jpeg', alt: 'Brindavan View', order: 0 },
+            { id: 'ab2', url: '/aashrithaa-brindavan/image-2.jpeg', alt: 'Brindavan Community', order: 1 },
+            { id: 'ab3', url: '/aashrithaa-brindavan/image-3.jpeg', alt: 'Brindavan Parks', order: 2 },
+            { id: 'ab4', url: '/aashrithaa-brindavan/image-4.jpeg', alt: 'Brindavan Layout', order: 3 },
+            { id: 'ab5', url: '/aashrithaa-brindavan/image-5.jpeg', alt: 'Brindavan Plot Details', order: 4 }
         ]
     },
     {
