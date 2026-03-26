@@ -45,6 +45,7 @@ interface PropertyCardProps {
     plotType?: string;
     sqYards?: number;
     dimensions?: string;
+    sizeRange?: string;
 }
 
 export function PropertyCard({
@@ -70,6 +71,7 @@ export function PropertyCard({
     plotType,
     sqYards,
     dimensions,
+    sizeRange,
 }: PropertyCardProps) {
     const [imageError, setImageError] = React.useState(false);
     const [imageLoaded, setImageLoaded] = React.useState(false);
@@ -188,7 +190,7 @@ export function PropertyCard({
                     <div className="mb-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground border-t border-b border-border/50 py-3">
                         <div className="flex items-center gap-1.5">
                             <Maximize className="h-4 w-4 text-primary/70" />
-                            <span className="font-medium">{formatNumber(sqft)} <span className="text-[11px] font-normal uppercase tracking-wider opacity-80">Sq.ft</span></span>
+                            <span className="font-medium">{sizeRange ? sizeRange : formatNumber(sqft)} <span className="text-[11px] font-normal uppercase tracking-wider opacity-80">Sq.ft</span></span>
                         </div>
                         {sqYards && (
                             <>
@@ -212,10 +214,10 @@ export function PropertyCard({
 
                     <div className="flex items-end justify-between">
                         <div>
-                            <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1">{priceLabel || 'Price'}</p>
+                            <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-1">{priceLabel || 'Starting Price'}</p>
                             <p className="font-display text-2xl font-bold text-primary flex items-baseline gap-1">
                                 {formatPrice(Number(price))}
-                                {priceSuffix && <span className="text-sm font-medium text-muted-foreground">{priceSuffix}</span>}
+                                <span className="text-sm font-medium text-muted-foreground">{priceSuffix || ' onwards'}</span>
                             </p>
                         </div>
                         <Badge variant="outline" className="capitalize font-medium border-primary/30 text-primary px-3 py-1 bg-primary/5">

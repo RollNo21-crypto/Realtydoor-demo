@@ -25,7 +25,7 @@ const infraFeatures = ['CC Roads', 'STP Tank', '24/7 Water Supply', 'Overhead Wa
 const securityFeatures = ['Entrance Gate', '24/7 Security', 'CCTV Surveillance'];
 const leisureFeatures = ['Parks', 'Jogging Track', "Children's Play Area"];
 const keyHighlights = [
-    { Icon: LayoutGrid, label: '236 Plots' }, { Icon: Leaf, label: '14 Acres' },
+    { Icon: LayoutGrid, label: '218 Plots' }, { Icon: Leaf, label: '13 Acres' },
     { Icon: Route, label: 'Wide CC Roads' }, { Icon: Landmark, label: 'Near Art of Living' },
     { Icon: Droplets, label: 'Underground Utilities' }, { Icon: Lock, label: 'Gated Community' },
 ];
@@ -95,7 +95,7 @@ export default function AashrithaaPage() {
                             <div className="flex flex-col gap-6 w-full md:w-auto flex-shrink-0">
                                 {/* Stats Grid inside Glass */}
                                 <div className="grid grid-cols-2 gap-3 h-full">
-                                    {[{ v: '14', u: 'Acres Total' }, { v: '236', u: 'Premium Plots' }, { v: '916+', u: 'Sq.Ft. Sizes' }, { v: '30 min', u: 'To Airport' }].map(({ v, u }) => (
+                                    {[{ v: '13', u: 'Acres Total' }, { v: '218', u: 'Premium Plots' }, { v: '1200+', u: 'Sq.Ft. Sizes' }, { v: '30 min', u: 'To Airport' }].map(({ v, u }) => (
                                         <div key={u} className="bg-white/5 border border-white/10 rounded-2xl p-4 flex flex-col justify-center text-center hover:bg-white/10 transition-colors">
                                             <div className="text-2xl md:text-3xl font-light text-white mb-1">{v}</div>
                                             <div className="text-[9px] font-black uppercase tracking-widest text-white/50">{u}</div>
@@ -142,7 +142,7 @@ export default function AashrithaaPage() {
                                 Where life is all about celebrating cherished family moments amidst <span className="italic font-light text-[#FF7043]">nature&apos;s splendour.</span>
                             </h2>
                             <p className="text-black/50 font-light leading-relaxed mb-10 text-lg">
-                                Over 14 acres of meticulously planned landscapes, offering wide CC roads, underground utilities, and premium lifestyle amenities—all fully developed and ready for your dream home.
+                                Over 13 acres of meticulously planned landscapes, offering wide CC roads, underground utilities, and premium lifestyle amenities—all fully developed and ready for your dream home.
                             </p>
 
                             {/* Premium Icon Grid */}
@@ -221,28 +221,23 @@ export default function AashrithaaPage() {
                             <div>
                                 <h3 className="font-display text-3xl text-black mb-3">A Nature-First Layout</h3>
                                 <p className="text-black/55 font-light leading-relaxed text-sm">
-                                    Spread across 14 lush acres near the Art of Living International Center, Aashrithaa Brindavan
-                                    offers 236 thoughtfully planned plots ranging from 916 to 2,155 sq. ft. The layout is designed to
+                                    Spread across 13 lush acres near the Art of Living International Center, Aashrithaa Brindavan
+                                    offers 218 thoughtfully planned plots ranging from 1,200 to 2,400 sq. ft. The layout is designed to
                                     maximize green open spaces while ensuring wide internal roads and complete infrastructure.
                                 </p>
                             </div>
 
-                            {/* Plot size bars */}
                             <div>
-                                <h4 className="text-[10px] font-black uppercase tracking-widest mb-4 text-[#FF5722]">Plot Size Range</h4>
+                                <h4 className="text-[10px] font-black uppercase tracking-widest mb-4 text-[#FF5722]">Pricing & Dimensions</h4>
                                 {[
-                                    { range: '916 sq. ft.', label: 'Entry Plots', pct: 43 },
-                                    { range: '1,200 sq. ft.', label: 'Standard Plots', pct: 56 },
-                                    { range: '1,500 sq. ft.', label: 'Spacious Lots', pct: 70 },
-                                    { range: '2,155 sq. ft.', label: 'Premium Corner', pct: 100 },
+                                    { range: '1,200 sq. ft.', price: '₹66,00,000', label: '@ ₹5,500/sq.ft' },
+                                    { range: '1,500 sq. ft.', price: '₹82,50,000', label: '@ ₹5,500/sq.ft' },
+                                    { range: '2,400 sq. ft.', price: '₹1,32,00,000', label: '@ ₹5,500/sq.ft' }
                                 ].map(item => (
                                     <div key={item.range} className="mb-4">
-                                        <div className="flex justify-between text-xs mb-1.5">
-                                            <span className="text-black font-medium">{item.range}</span>
-                                            <span className="text-black/40">{item.label}</span>
-                                        </div>
-                                        <div className="h-1.5 rounded-full bg-black/8">
-                                            <div className="h-full rounded-full bg-[#FF5722] transition-all" style={{ width: `${item.pct}%` }} />
+                                        <div className="flex justify-between text-xs mb-1.5 border-b border-black/6 pb-2">
+                                            <span className="text-black font-medium">{item.range} <span className="text-black/40 ml-1">{item.label}</span></span>
+                                            <span className="text-[#FF5722] font-bold">{item.price}</span>
                                         </div>
                                     </div>
                                 ))}
@@ -343,15 +338,20 @@ export default function AashrithaaPage() {
                     {/* Map full-width with side list below on mobile, beside on desktop */}
                     <div className="grid md:grid-cols-3 gap-6 items-start">
                         {/* Map — 2 cols */}
-                        <div className="md:col-span-2 rounded-3xl overflow-hidden border border-black/8"
-                            style={{ height: 500, boxShadow: '0 20px 60px rgba(0,0,0,0.08)' }}>
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.7212956304256!2d77.51508937483818!3d12.796594187502942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae41002f1c1a77%3A0xa9d238c4837a6403!2sAashrita%20Brindavan!5e0!3m2!1sen!2sin!4v1772036752115!5m2!1sen!2sin"
-                                width="100%" height="100%" style={{ border: 0 }}
-                                allowFullScreen loading="lazy"
-                                referrerPolicy="no-referrer-when-downgrade"
-                                title="Aashrithaa Brindavan Location"
-                            />
+                        <div className="md:col-span-2">
+                            <a href="https://maps.app.goo.gl/UYFRS95xBA88XUJ79" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#FF5722]/10 text-[#FF5722] font-bold hover:bg-[#FF5722]/20 transition-colors mb-6 border border-[#FF5722]/25">
+                                <Route className="h-4 w-4" /> Open in Google Maps
+                            </a>
+                            <div className="rounded-3xl overflow-hidden border border-black/8"
+                                style={{ height: 430, boxShadow: '0 20px 60px rgba(0,0,0,0.08)' }}>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.7212956304256!2d77.51508937483818!3d12.796594187502942!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae41002f1c1a77%3A0xa9d238c4837a6403!2sAashrita%20Brindavan!5e0!3m2!1sen!2sin!4v1772036752115!5m2!1sen!2sin"
+                                    width="100%" height="100%" style={{ border: 0 }}
+                                    allowFullScreen loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                    title="Aashrithaa Brindavan Location"
+                                />
+                            </div>
                         </div>
 
                         {/* Proximity list — 1 col */}

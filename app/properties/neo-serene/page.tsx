@@ -128,12 +128,12 @@ export default function NeoSerenePage() {
                             <div className="bg-[#1A2744] text-white rounded-[2rem] p-6 lg:p-8 flex flex-col justify-center relative overflow-hidden group shadow-sm">
                                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full blur-2xl -mr-10 -mt-10 group-hover:bg-white/10 transition-colors" />
                                 <div className="absolute inset-x-0 bottom-0 h-1.5 bg-gradient-to-r from-[#FF5722] to-[#E64A19] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
-                                <span className="text-4xl lg:text-5xl font-light mb-1 relative z-10">11<span className="text-[#FF5722]">.0</span></span>
+                                <span className="text-4xl lg:text-5xl font-light mb-1 relative z-10">10<span className="text-[#FF5722]">.0</span></span>
                                 <span className="text-[10px] font-black uppercase tracking-widest text-white/50 relative z-10">Acres of Land</span>
                             </div>
                             <div className="bg-white border border-black/5 shadow-sm rounded-[2rem] p-6 lg:p-8 flex flex-col justify-center relative overflow-hidden group">
                                 <div className="absolute inset-x-0 bottom-0 h-1.5 bg-gradient-to-r from-black/20 to-black/10 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500" />
-                                <span className="text-4xl lg:text-5xl font-light mb-1 text-black relative z-10">154</span>
+                                <span className="text-4xl lg:text-5xl font-light mb-1 text-black relative z-10">172</span>
                                 <span className="text-[10px] font-black uppercase tracking-widest text-black/40 relative z-10">Exclusive Plots</span>
                             </div>
                         </div>
@@ -156,11 +156,11 @@ export default function NeoSerenePage() {
                             style={{ background: 'linear-gradient(135deg,#FF5722,#E64A19)', boxShadow: '0 8px 24px rgba(255,87,34,0.5)' }}>
                             <div className="grid grid-cols-2 gap-4 text-center">
                                 <div>
-                                    <div className="text-2xl font-light text-white">154</div>
+                                    <div className="text-2xl font-light text-white">172</div>
                                     <div className="text-[9px] font-black uppercase tracking-widest text-white/60">Total Plots</div>
                                 </div>
                                 <div>
-                                    <div className="text-2xl font-light text-white">11</div>
+                                    <div className="text-2xl font-light text-white">10</div>
                                     <div className="text-[9px] font-black uppercase tracking-widest text-white/60">Acres</div>
                                 </div>
                             </div>
@@ -219,21 +219,22 @@ export default function NeoSerenePage() {
                             <div>
                                 <h3 className="font-display text-3xl text-black mb-3">Thoughtfully Planned</h3>
                                 <p className="text-black/55 font-light leading-relaxed text-sm">
-                                    Neo Serene spans 11 acres with 154 meticulously planned plots ranging from 1,200 to 1,500 sq. ft.
+                                    Neo Serene spans 10 acres with 172 meticulously planned plots ranging from 1,200 to 2,400 sq. ft.
                                     Wide 30 ft and 40 ft black-top roads weave through the community, ensuring excellent accessibility
                                     and a tranquil living experience.
                                 </p>
                             </div>
                             <div>
-                                <h4 className="text-[10px] font-black uppercase tracking-widest mb-4 text-[#FF5722]">Plot Size Range</h4>
-                                {[{ range: '1,200 sq. ft.', label: 'Starter', pct: 50 }, { range: '1,350 sq. ft.', label: 'Standard', pct: 75 }, { range: '1,500 sq. ft.', label: 'Premium Corner', pct: 100 }].map(item => (
+                                <h4 className="text-[10px] font-black uppercase tracking-widest mb-4 text-[#FF5722]">Pricing & Dimensions</h4>
+                                {[
+                                    { range: '1,200 sq. ft.', price: '₹54,00,000', label: '@ ₹4,500/sq.ft' },
+                                    { range: '1,500 sq. ft.', price: '₹67,50,000', label: '@ ₹4,500/sq.ft' },
+                                    { range: '2,400 sq. ft.', price: '₹1,08,00,000', label: '@ ₹4,500/sq.ft' }
+                                ].map(item => (
                                     <div key={item.range} className="mb-4">
-                                        <div className="flex justify-between text-xs mb-1.5">
-                                            <span className="text-black font-medium">{item.range}</span>
-                                            <span className="text-black/40">{item.label}</span>
-                                        </div>
-                                        <div className="h-1.5 rounded-full bg-black/8">
-                                            <div className="h-full rounded-full bg-[#FF5722]" style={{ width: `${item.pct}%` }} />
+                                        <div className="flex justify-between text-xs mb-1.5 border-b border-black/6 pb-2">
+                                            <span className="text-black font-medium">{item.range} <span className="text-black/40 ml-1">{item.label}</span></span>
+                                            <span className="text-[#FF5722] font-bold">{item.price}</span>
                                         </div>
                                     </div>
                                 ))}
@@ -242,7 +243,7 @@ export default function NeoSerenePage() {
                                 <h4 className="text-[10px] font-black uppercase tracking-widest mb-4 text-[#FF5722]">Layout Highlights</h4>
                                 <div className="grid grid-cols-2 gap-3">
                                     {([
-                                        { Icon: LayoutGrid, l: '154 Plots' }, { Icon: Route, l: '30 & 40 Ft Roads' },
+                                        { Icon: LayoutGrid, l: '172 Plots' }, { Icon: Route, l: '30 & 40 Ft Roads' },
                                         { Icon: Leaf, l: 'Green Zones' }, { Icon: Landmark, l: 'Clubhouse' },
                                         { Icon: Droplets, l: 'Underground Drainage' }, { Icon: Lock, l: 'Compound Wall' },
                                     ] as { Icon: React.ElementType; l: string }[]).map(({ Icon, l }) => (
@@ -348,8 +349,11 @@ export default function NeoSerenePage() {
                     <div className="flex flex-col lg:flex-row gap-8 items-start">
                         {/* LEFT — tall vertical map */}
                         <div className="w-full lg:w-[55%]">
+                            <a href="https://maps.app.goo.gl/W5Z7hvbVQnpmMjeC9" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#FF5722]/10 text-[#FF5722] font-bold hover:bg-[#FF5722]/20 transition-colors mb-6 border border-[#FF5722]/25">
+                                <Route className="h-4 w-4" /> Open in Google Maps
+                            </a>
                             <div className="rounded-3xl overflow-hidden border border-black/8"
-                                style={{ height: 560, boxShadow: '0 16px 50px rgba(0,0,0,0.08)' }}>
+                                style={{ height: 490, boxShadow: '0 16px 50px rgba(0,0,0,0.08)' }}>
                                 <iframe
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.662906338247!2d77.83560417484411!3d13.120528587208671!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17336f43a7ed%3A0x21783a63d1cc78ac!2sNeo%20Serene!5e0!3m2!1sen!2sin!4v1772035760946!5m2!1sen!2sin"
                                     width="100%" height="100%" style={{ border: 0 }}

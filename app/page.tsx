@@ -211,19 +211,7 @@ export default async function HomePage() {
                         {featuredProperties.map((property) => (
                             <PropertyCard
                                 key={property.id}
-                                id={property.id}
-                                title={property.title}
-                                price={Number(property.price)}
-                                address={property.address}
-                                city={property.city}
-                                state={property.state}
-                                bedrooms={property.bedrooms}
-                                bathrooms={Number(property.bathrooms)}
-                                sqft={property.sqft}
-                                propertyType={property.propertyType}
-                                status={property.status}
-                                images={property.images}
-                                featured={property.featured}
+                                {...(property as any)}
                             />
                         ))}
                     </div>

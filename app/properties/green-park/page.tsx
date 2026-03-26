@@ -36,16 +36,16 @@ import { BannerPlaceholder } from '@/components/promo-banner';
 // Brand palette: #FF5722 (orange), #FF7043 (orange-light), #E64A19 (orange-dark), #000 (black), #fff (white)
 
 const heroImages = [
-    'https://realtydoor.com/wp-content/uploads/2025/12/banner-3-scaled.webp',
-    'https://realtydoor.com/wp-content/uploads/2025/12/banner-1-scaled.webp',
-    'https://realtydoor.com/wp-content/uploads/2025/12/banner-1-1-copy-scaled.webp',
+    'https://realtydoor.com/wp-content/uploads/2024/05/green-park-1.jpg',
+    'https://realtydoor.com/wp-content/uploads/2024/05/green-park-2.jpg',
+    'https://realtydoor.com/wp-content/uploads/2024/05/green-park-3.jpg',
 ];
 
 const plotStats = [
-    { value: '17', unit: 'Acres', label: 'BMRDA Approved' },
-    { value: '292', unit: 'Plots', label: 'Total Units' },
-    { value: '1200–2400', unit: 'Sq. Ft.', label: 'Plot Sizes' },
-    { value: '20 min', unit: 'Airport', label: 'Connectivity' },
+    { value: '18', unit: 'Acres', label: 'DTCP Approved' },
+    { value: '272', unit: 'Plots', label: 'Total Units' },
+    { value: '1000–2400', unit: 'Sq. Ft.', label: 'Plot Sizes' },
+    { value: 'Fast', unit: 'Developing', label: 'Connectivity' },
 ];
 
 const infraFeatures = [
@@ -70,7 +70,7 @@ const leisureFeatures = [
     'Avenue Plantation',
 ];
 
-export default function VrundaCityPage() {
+export default function GreenParkPage() {
     const [currentSlide, setCurrentSlide] = useState(0);
 
     useEffect(() => {
@@ -98,7 +98,7 @@ export default function VrundaCityPage() {
                         key={idx}
                         className={`absolute inset-0 transition-opacity duration-1000 ${idx === currentSlide ? 'opacity-100' : 'opacity-0'}`}
                     >
-                        <Image src={img} alt={`Vrunda City ${idx + 1}`} fill className="object-cover" priority={idx === 0} />
+                        <Image src={img} alt={`Green Park ${idx + 1}`} fill className="object-cover" priority={idx === 0} />
                     </div>
                 ))}
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/10" />
@@ -129,18 +129,18 @@ export default function VrundaCityPage() {
                             Ready for Registration · Fully Developed
                         </span>
                         <h1 className="font-display text-6xl md:text-8xl text-white leading-[1.05] mb-5">
-                            Vrunda City<br />
-                            <span className="italic font-light text-[#FF7043]">Hoskote, Bengaluru</span>
+                            Green Park<br />
+                            <span className="italic font-light text-[#FF7043]">Chintamani</span>
                         </h1>
                         <div className="flex flex-wrap items-center gap-6 text-white/70">
                             <div className="flex items-center gap-2">
                                 <MapPin className="h-4 w-4 text-[#FF5722]" />
-                                <span>Hoskote–Bagalur Road, Bengaluru</span>
+                                <span>Chintamani Road</span>
                             </div>
                             <span className="w-px h-4 bg-white/25" />
                             <div className="flex items-center gap-2">
                                 <Clock className="h-4 w-4 text-[#FF5722]" />
-                                <span>20 mins to International Airport</span>
+                                <span>Excellent Connectivity</span>
                             </div>
                         </div>
                     </div>
@@ -182,19 +182,19 @@ export default function VrundaCityPage() {
                         <div>
                             <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest mb-6 text-[#FF5722]">
                                 <span className="w-8 h-px bg-[#FF5722]" />
-                                About Vrunda City
+                                About Green Park
                             </span>
                             <h2 className="font-display text-5xl md:text-6xl text-black leading-tight mb-8">
                                 Capitalize on<br />
-                                <span className="italic font-light text-[#FF7043]">Hoskote&apos;s</span> Future
+                                <span className="italic font-light text-[#FF7043]">Chintamani&apos;s</span> Future
                             </h2>
                             <p className="text-lg font-light leading-relaxed mb-6 text-black/60">
-                                Vrunda City is designed to deliver on all of the important bits — convenience,
+                                Green Park is designed to deliver on all of the important bits — convenience,
                                 comfort, space, and wellbeing. It promises an effortlessly connected lifestyle
                                 through the wealth of amenities and established infrastructure.
                             </p>
                             <p className="text-base font-light leading-relaxed text-black/40">
-                                Come, capitalize on Hoskote&apos;s immense potential and
+                                Come, capitalize on immense potential and
                                 secure a stake in its bright future. Fully developed plots, ready for registration.
                             </p>
                         </div>
@@ -203,8 +203,8 @@ export default function VrundaCityPage() {
                         <div className="relative pb-8">
                             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden">
                                 <Image
-                                    src="https://realtydoor.com/wp-content/uploads/2025/12/banner-1-scaled.webp"
-                                    alt="Vrunda City Community" fill className="object-cover"
+                                    src="https://realtydoor.com/wp-content/uploads/2024/05/green-park-1.jpg"
+                                    alt="Green Park Community" fill className="object-cover"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                             </div>
@@ -216,11 +216,11 @@ export default function VrundaCityPage() {
                                 }}>
                                 <div className="grid grid-cols-2 gap-6 text-center">
                                     <div>
-                                        <div className="text-3xl font-light text-white">292</div>
+                                        <div className="text-3xl font-light text-white">272</div>
                                         <div className="text-[10px] font-black uppercase tracking-wider text-white/60 mt-0.5">Total Plots</div>
                                     </div>
                                     <div>
-                                        <div className="text-3xl font-light text-white">17</div>
+                                        <div className="text-3xl font-light text-white">18</div>
                                         <div className="text-[10px] font-black uppercase tracking-wider text-white/60 mt-0.5">Acres</div>
                                     </div>
                                 </div>
@@ -249,8 +249,8 @@ export default function VrundaCityPage() {
                         <div className="w-full lg:w-[55%]">
                             <div className="relative w-full min-h-[640px] lg:min-h-[900px] rounded-3xl overflow-hidden border border-[#FF5722]/20 bg-white">
                                 <Image
-                                    src="https://realtydoor.com/wp-content/uploads/2025/12/master-plan-scaled.webp"
-                                    alt="Vrunda City Master Plan"
+                                    src="https://realtydoor.com/wp-content/uploads/2024/05/masterplan.webp"
+                                    alt="Green Park Master Plan"
                                     fill className="object-contain object-top"
                                 />
                                 <div className="absolute top-4 left-4 rounded-xl px-3 py-1.5 text-xs font-bold uppercase tracking-widest text-white"
@@ -265,8 +265,8 @@ export default function VrundaCityPage() {
                             <div>
                                 <h3 className="font-display text-3xl text-white mb-3">Thoughtfully Planned Layout</h3>
                                 <p className="text-white/55 font-light leading-relaxed">
-                                    Vrunda City spans 17.1 acres with 292 meticulously planned plots
-                                    ranging from 1,200 to 2,800 sq. ft. Wide 30 ft and 40 ft black-top
+                                    Green Park spans 18 acres with 272 meticulously planned plots
+                                    ranging from 1,000 to 2,400 sq. ft. Wide 30 ft and 40 ft black-top
                                     roads weave through the community, ensuring excellent accessibility
                                     and a premium living experience.
                                 </p>
@@ -276,9 +276,10 @@ export default function VrundaCityPage() {
                             <div>
                                 <h4 className="text-xs font-black uppercase tracking-widest mb-4 text-[#FF5722]">Pricing & Dimensions</h4>
                                 {[
-                                    { range: '1,200 sq. ft.', price: '₹42,00,000', label: '@ ₹3,500/sq.ft' },
-                                    { range: '1,500 sq. ft.', price: '₹52,50,000', label: '@ ₹3,500/sq.ft' },
-                                    { range: '2,400 sq. ft.', price: '₹84,00,000', label: '@ ₹3,500/sq.ft' },
+                                    { range: '1,000 sq. ft.', price: '₹19,50,000', label: '@ ₹1,950/sq.ft' },
+                                    { range: '1,200 sq. ft.', price: '₹23,40,000', label: '@ ₹1,950/sq.ft' },
+                                    { range: '1,500 sq. ft.', price: '₹29,25,000', label: '@ ₹1,950/sq.ft' },
+                                    { range: '2,400 sq. ft.', price: '₹46,80,000', label: '@ ₹1,950/sq.ft' },
                                 ].map((item) => (
                                     <div key={item.range} className="mb-4">
                                         <div className="flex justify-between text-sm mb-1.5 border-b border-white/10 pb-2">
@@ -294,7 +295,7 @@ export default function VrundaCityPage() {
                                 <h4 className="text-xs font-black uppercase tracking-widest mb-5 text-[#FF5722]">Layout Highlights</h4>
                                 <div className="grid grid-cols-2 gap-3">
                                     {([
-                                        { Icon: LayoutGrid, l: '292 Plots' },
+                                        { Icon: LayoutGrid, l: '272 Plots' },
                                         { Icon: Route, l: '30 & 40 Ft Roads' },
                                         { Icon: Leaf, l: 'Green Zones' },
                                         { Icon: Landmark, l: 'Central Clubhouse' },
@@ -312,8 +313,8 @@ export default function VrundaCityPage() {
                             <div className="flex gap-3 text-sm text-white/40 leading-relaxed">
                                 <MapPin className="h-4 w-4 flex-shrink-0 mt-0.5 text-[#FF5722]" />
                                 <p>
-                                    Located in <span className="text-white font-medium">Hoskote, Bengaluru</span> — one of the fastest-growing
-                                    corridors, just <span className="text-white font-medium">20 minutes to the International Airport</span>.
+                                    Located in <span className="text-white font-medium">Chintamani</span> — one of the fastest-growing
+                                    corridors in the region.
                                 </p>
                             </div>
                         </div>
@@ -400,7 +401,7 @@ export default function VrundaCityPage() {
                         {heroImages.map((src, idx) => (
                             <div key={idx}
                                 className={`relative overflow-hidden rounded-2xl group ${idx === 0 ? 'md:col-span-2 aspect-[16/9]' : 'aspect-[4/3]'}`}>
-                                <Image src={src} alt={`Vrunda City View ${idx + 1}`} fill
+                                <Image src={src} alt={`Green Park View ${idx + 1}`} fill
                                     className="object-cover group-hover:scale-105 transition-transform duration-1000" />
                                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-black/60 to-transparent" />
                             </div>
@@ -423,10 +424,10 @@ export default function VrundaCityPage() {
                                 Perfectly <span className="italic font-light text-[#FF7043]">Connected</span>
                             </h2>
                             <p className="text-black/55 text-lg font-light leading-relaxed mb-10">
-                                Vrunda City is strategically located in Hoskote, one of Bengaluru&apos;s
-                                fastest-growing suburbs with excellent road and rail connectivity.
+                                Green Park is strategically located in Chintamani, offering
+                                excellent road connectivity and investment appreciation.
                             </p>
-                            <a href="https://maps.app.goo.gl/qQVqsxwkXt13Zfkf6" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#FF5722]/10 text-[#FF5722] font-bold hover:bg-[#FF5722]/20 transition-colors mb-10 border border-[#FF5722]/20">
+                            <a href="https://maps.app.goo.gl/q7dc8hetG8t2mUAz6" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#FF5722]/10 text-[#FF5722] font-bold hover:bg-[#FF5722]/20 transition-colors mb-10 border border-[#FF5722]/20">
                                 <Route className="h-4 w-4" /> Open in Google Maps
                             </a>
                             <div className="space-y-0">
@@ -453,14 +454,14 @@ export default function VrundaCityPage() {
                         {/* Google Maps */}
                         <div className="rounded-3xl overflow-hidden border border-[#FF5722]/20" style={{ height: 500, boxShadow: '0 20px 60px rgba(0,0,0,0.12)' }}>
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3885.1559305835276!2d77.85361257484463!3d13.152562487179695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae07f31b0d75b1%3A0x9508a20eac1eede9!2sVrunda%20City!5e0!3m2!1sen!2sin!4v1772018816134!5m2!1sen!2sin"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15535.132808269554!2d78.04694435!3d13.4005556!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDI0JzAyLjAiTiA3OMKwMDInNDkuMCJF!5e0!3m2!1sen!2sin!4v1622549293!5m2!1sen!2sin"
                                 width="100%"
                                 height="100%"
                                 style={{ border: 0 }}
                                 allowFullScreen
                                 loading="lazy"
                                 referrerPolicy="no-referrer-when-downgrade"
-                                title="Vrunda City Location Map"
+                                title="Green Park Location Map"
                             />
                         </div>
                     </div>
@@ -481,7 +482,7 @@ export default function VrundaCityPage() {
                 />
             </div>
 
-            <PropertyCTA propertyName="Vrunda City" image="https://realtydoor.com/wp-content/uploads/2025/12/banner-3-scaled.webp" variant="split" />
+            <PropertyCTA propertyName="Green Park" image="https://realtydoor.com/wp-content/uploads/2024/05/green-park-1.jpg" variant="split" />
 
             {/* back link */}
             <div className="py-10 text-center bg-white border-t border-black/10">

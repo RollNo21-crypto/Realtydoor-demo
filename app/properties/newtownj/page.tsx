@@ -114,8 +114,8 @@ export default function NewtownJPage() {
                     {/* Stat bar — bottom of card, flush to edge */}
                     <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-black/8 border-t border-black/8 rounded-b-[2rem] overflow-hidden">
                         {[
-                            { v: '60 Acres', u: 'Total Land' },
-                            { v: '750 Plots', u: 'Total Units' },
+                            { v: '41 Acres', u: 'Total Land' },
+                            { v: '600 Plots', u: 'Total Units' },
                             { v: '30×50 & 40×50', u: 'Plot Sizes' },
                             { v: 'PKM-UDA', u: 'Approval' },
                         ].map(({ v, u }) => (
@@ -214,10 +214,10 @@ export default function NewtownJPage() {
                         {/* RIGHT — sticky details */}
                         <div className="w-full lg:w-[45%] lg:sticky lg:top-28 space-y-6">
                             <div>
-                                <h3 className="font-display text-3xl text-black mb-3">60-Acre Smart Township</h3>
+                                <h3 className="font-display text-3xl text-black mb-3">41-Acre Smart Township</h3>
                                 <p className="text-black/55 font-light leading-relaxed text-sm">
-                                    NewtownJ is a modern era township spread across 60 acres in Punganur,
-                                    offering 750 thoughtfully laid out plots with twin lakes, man-made
+                                    NewtownJ is a modern era township spread across 41 acres in Punganur,
+                                    offering 600 thoughtfully laid out plots with twin lakes, man-made
                                     plantations and 30+ smart amenities — a glimpse into the future of
                                     urbanization in this locality.
                                 </p>
@@ -245,8 +245,8 @@ export default function NewtownJPage() {
                             {/* Key stats */}
                             <div className="grid grid-cols-2 gap-3">
                                 {[
-                                    { v: '60', u: 'Acres', d: 'Total Land' },
-                                    { v: '750', u: 'Plots', d: 'Total Units' },
+                                    { v: '41', u: 'Acres', d: 'Total Land' },
+                                    { v: '600', u: 'Plots', d: 'Total Units' },
                                     { v: '30+', u: 'Amenities', d: 'Smart Features' },
                                     { v: 'PKM-UDA', u: 'Approved', d: 'Legal Clearance' },
                                 ].map(({ v, u, d }) => (

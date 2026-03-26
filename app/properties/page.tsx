@@ -627,7 +627,7 @@ function PropertiesPageContent() {
                                                         <div className="h-3 md:h-4 w-px bg-border" />
                                                         <div className="flex items-center gap-1.5">
                                                             <Ruler className="h-3 w-3 md:h-4 md:w-4 text-primary/70 flex-shrink-0" />
-                                                            <span>{(property as any).dimensions ?? `${property.sqft} sq.ft`}</span>
+                                                            <span>{(property as any).sizeRange ? `${(property as any).sizeRange} sq.ft` : ((property as any).dimensions ?? `${property.sqft} sq.ft`)}</span>
                                                         </div>
                                                         <div className="h-3 md:h-4 w-px bg-border" />
                                                         <div className="flex items-center gap-1.5">

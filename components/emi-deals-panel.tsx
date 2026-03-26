@@ -34,7 +34,7 @@ const hotDeals = mockProperties.slice(0, 8).map((p) => ({
     price: p.price,
     image: p.images[0]?.url ?? 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&q=80',
     sqYards: (p as any).sqYards ?? Math.round(p.sqft / 9),
-    dimensions: (p as any).dimensions ?? `${p.sqft} sq.ft`,
+    dimensions: (p as any).sizeRange ? `${(p as any).sizeRange} sq.ft` : ((p as any).dimensions ?? `${p.sqft} sq.ft`),
     plotType: (p as any).plotType ?? p.propertyType.replace(/_/g, ' '),
     featured: p.featured,
 }));

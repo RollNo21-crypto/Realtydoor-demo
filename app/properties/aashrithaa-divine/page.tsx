@@ -57,7 +57,7 @@ export default function AashrithaaPage() {
 
                     {/* Main title */}
                     <h1 className="font-display text-white leading-[0.88] mb-6"
-                        style={{ fontSize: 'clamp(3.5rem,9vw,7.5rem)' }}>
+                        style={{ fontSize: 'clamp(3.5rem,8vw,6.5rem)' }}>
                         Aashrithaa{' '}
                         <span className="text-[#FF7043] italic font-light">Divine</span>
                     </h1>
@@ -80,9 +80,9 @@ export default function AashrithaaPage() {
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-px rounded-2xl overflow-hidden border border-white/15"
                         style={{ background: 'rgba(255,255,255,0.08)', backdropFilter: 'blur(16px)' }}>
                         {[
-                            { v: '14 Acres', u: 'Total Land' },
-                            { v: '236 Plots', u: 'Total Units' },
-                            { v: '916–2155 Sq.Ft.', u: 'Plot Sizes' },
+                            { v: '15 Acres', u: 'Total Land' },
+                            { v: '231 Plots', u: 'Total Units' },
+                            { v: '1000–2400 Sq.Ft.', u: 'Plot Sizes' },
                             { v: '30 min', u: 'To Airport' },
                         ].map(({ v, u }) => (
                             <div key={u} className="px-6 py-4 border-r border-white/10 last:border-r-0">
@@ -185,26 +185,23 @@ export default function AashrithaaPage() {
                             <div>
                                 <h3 className="font-display text-3xl text-black mb-3">Designed for Life</h3>
                                 <p className="text-black/55 font-light leading-relaxed text-sm">
-                                    Spread across 14 lush acres in the heart of Jigani, Aashrithaa Divine offers 236 thoughtfully laid out plots.
+                                    Spread across 15 lush acres in the heart of Jigani, Aashrithaa Divine offers 231 thoughtfully laid out plots.
                                     From the moment you move in, you and your family will enjoy plenty of room to move and breathe.
                                 </p>
                             </div>
 
                             <div>
-                                <h4 className="text-[10px] font-black uppercase tracking-widest mb-4 text-[#FF5722]">Plot Size Range</h4>
+                                <h4 className="text-[10px] font-black uppercase tracking-widest mb-4 text-[#FF5722]">Pricing & Dimensions</h4>
                                 {[
-                                    { range: '916 sq. ft.', label: 'Entry Plots', pct: 43 },
-                                    { range: '1,200 sq. ft.', label: 'Standard Plots', pct: 56 },
-                                    { range: '1,500 sq. ft.', label: 'Spacious Lots', pct: 70 },
-                                    { range: '2,155 sq. ft.', label: 'Premium Corner', pct: 100 },
+                                    { range: '1,000 sq. ft.', price: '₹45,00,000', label: '@ ₹4,500/sq.ft' },
+                                    { range: '1,200 sq. ft.', price: '₹54,00,000', label: '@ ₹4,500/sq.ft' },
+                                    { range: '1,500 sq. ft.', price: '₹67,50,000', label: '@ ₹4,500/sq.ft' },
+                                    { range: '2,400 sq. ft.', price: '₹1,08,00,000', label: '@ ₹4,500/sq.ft' }
                                 ].map(item => (
                                     <div key={item.range} className="mb-4">
-                                        <div className="flex justify-between text-xs mb-1.5">
-                                            <span className="text-black font-medium">{item.range}</span>
-                                            <span className="text-black/40">{item.label}</span>
-                                        </div>
-                                        <div className="h-1.5 rounded-full bg-black/8">
-                                            <div className="h-full rounded-full bg-[#FF5722]" style={{ width: `${item.pct}%` }} />
+                                        <div className="flex justify-between text-xs mb-1.5 border-b border-black/6 pb-2">
+                                            <span className="text-black font-medium">{item.range} <span className="text-black/40 ml-1">{item.label}</span></span>
+                                            <span className="text-[#FF5722] font-bold">{item.price}</span>
                                         </div>
                                     </div>
                                 ))}
@@ -213,8 +210,8 @@ export default function AashrithaaPage() {
                             {/* Key stats */}
                             <div className="grid grid-cols-2 gap-3">
                                 {[
-                                    { v: '14', u: 'Acres', d: 'Total Land' },
-                                    { v: '236', u: 'Plots', d: 'Total Units' },
+                                    { v: '15', u: 'Acres', d: 'Total Land' },
+                                    { v: '231', u: 'Plots', d: 'Total Units' },
                                     { v: '30', u: 'Ft Roads', d: 'Internal Width' },
                                     { v: '30 min', u: 'Airport', d: 'Connectivity' },
                                 ].map(({ v, u, d }) => (
@@ -391,8 +388,11 @@ export default function AashrithaaPage() {
 
                         {/* RIGHT — tall map */}
                         <div className="w-full lg:w-[60%]">
+                            <a href="https://maps.app.goo.gl/yp49w3hTi4vzaPYs5" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#FF5722]/10 text-[#FF5722] font-bold hover:bg-[#FF5722]/20 transition-colors mb-6 border border-[#FF5722]/25">
+                                <Route className="h-4 w-4" /> Open in Google Maps
+                            </a>
                             <div className="rounded-3xl overflow-hidden border border-black/8"
-                                style={{ height: 560, boxShadow: '0 16px 50px rgba(0,0,0,0.08)' }}>
+                                style={{ height: 490, boxShadow: '0 16px 50px rgba(0,0,0,0.08)' }}>
                                 <iframe
                                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3891.3748763735193!2d77.64590517483745!3d12.754149587541555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae696c1973f28b%3A0x6ceb2d292549446a!2sAashrithaa%20Divine!5e0!3m2!1sen!2sin!4v1772038195241!5m2!1sen!2sin"
                                     width="100%" height="100%" style={{ border: 0 }}
